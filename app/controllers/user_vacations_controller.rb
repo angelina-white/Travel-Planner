@@ -1,0 +1,2 @@
+class UserVacationsController < ApplicationController
+end
