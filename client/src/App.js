@@ -45,7 +45,7 @@ function App() {
     <div className="App">
       <button id="logoutButton" onClick={ handleLogout } >Logout</button>
       <h1>Title page</h1>
-      {/* <Router>
+      <Router>
         <div id="navbar">
           <h1>Travel Planner</h1>
           <nav>
@@ -64,7 +64,7 @@ function App() {
             </Route>
           </Switch>
         </div>
-      </Router> */}
+      </Router>
     </div>
   );
 }
