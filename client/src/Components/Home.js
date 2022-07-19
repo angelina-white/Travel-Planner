@@ -2,7 +2,7 @@ import { useState } from "react"
 import VacaName from "./VacaName"
 import ActivityItem from "./ActivityItem"
 
-function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity})
+function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch})
 {
 
     const [vacationInput, setVacationInput] = useState("")
@@ -203,7 +203,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
     const dispActivities = activitiesList.map((item) =>
     {
         return (
-            <ActivityItem item={ item }/>
+            <ActivityItem item={ item } handleActivityPatch={ handleActivityPatch }/>
         )
     })
 

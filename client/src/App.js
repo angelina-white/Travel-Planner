@@ -79,6 +79,19 @@ function App() {
     setActivitiesList([...activitiesList, data])
   }
 
+  function handleActivityPatch(data)
+  {
+    const newListing = activitiesList.map((item) =>
+    {
+      if (item.id == data.id)
+        return data
+      else
+        return item
+    })
+
+    setActivitiesList(newListing)
+  }
+
   return (
     <div className="App">
       <Router>
@@ -99,7 +112,7 @@ function App() {
           </div>
           <Switch>
             <Route path="/">
-              <Home userId={ currentUser.id } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity }/>
+              <Home userId={ currentUser.id } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch }/>
             </Route>
           </Switch>
         </div>
