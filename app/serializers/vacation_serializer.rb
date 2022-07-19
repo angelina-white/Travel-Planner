@@ -1,3 +1,3 @@
 class VacationSerializer < ActiveModel::Serializer
-  attributes :id, :vacationName, :flightToArrive, :flightToArrive, :hotelCheckIn, :hotelCheckOut
+  attributes :id, :vacationName, :flightToArrive, :flightToLeave, :hotelCheckIn, :hotelCheckOut
 end
