@@ -1,4 +1,14 @@
 class VacationsController < ApplicationController
+
+    def index
+        vacations = Vacation.all
+        render json: vacations, status: :ok
+    end
+
+    def show
+        vacation = Vacation.find(params[:id])
+        render json: vacation, status: :ok
+    end
     
     def create
         vacation = Vacation.create!(vacation_params)

@@ -156,6 +156,51 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
         })
     }
 
+    const [actName, setActName] = useState("")
+
+    function handleActivityInput(e)
+    {
+        setActName(e.target.value)
+    }
+
+    function submitActivity()
+    {
+        const activity = {activityName: actName}
+        fetch("/activities", 
+        {
+            method: 'POST',
+            headers: 
+            {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(activity)
+        })
+        .then(resp => resp.json())
+        .then(data => 
+        {
+            // handleAddActivity(data)
+            const vacaAct = 
+            {
+                vacation_id: 9,
+                activity_id: data.id
+            }
+
+            console.log(vacaAct)
+
+            fetch("/vacation_activities", 
+            {
+                method: 'POST',
+                headers: 
+                {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(vacaAct)
+            })
+            .then(resp => resp.json())
+            .then(data => console.log(data))
+        })
+    }
+
     return (
         <div id="home">
             <h1>home</h1>
@@ -174,6 +219,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                         <div>
                             <button onClick={ edit }>Edit</button>
                             { selectedVaca.vacationName }
+                            { selectedVaca.id }
                             <form onSubmit={ submitVacaDetails}>
                                 <label>
                                     Departing flight:
@@ -198,12 +244,21 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                             <h5>Arrive flight: { selectedVaca.flightToLeave }</h5>
                             <h5>Hotel check-in: { selectedVaca.hotelCheckIn }</h5>
                             <h5>Hotel check-out: { selectedVaca.hotelCheckOut }</h5>
+
+                            <h2>Activities</h2>
+                            <h3>Add activity</h3>
+                            <label>
+                                Activity name:
+                                <input onChange={ handleActivityInput }/>
+                                <button onClick={ submitActivity }>Submit</button>
+                            </label>
+                        
                         </div>
                     }
                 </div>
             :
                 <div>
-                    <input onChange={handleVacationInput }></input>
+                    <input onChange={ handleVacationInput }></input>
                     <button onClick={ handleAddVacation }>Add vacation</button>
                     <ul>
                         { vacaNameList }
