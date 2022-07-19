@@ -1,5 +1,5 @@
 import { useState } from "react" 
-import VacaItem from "./VacaItem"
+import VacaName from "./VacaName"
 
 function Home({ userId, vacationList })
 {
@@ -45,21 +45,48 @@ function Home({ userId, vacationList })
         })
     }
 
-    const vacaDispList = vacationList.map((item) =>
+    const vacaNameList = vacationList.map((item) =>
     {
         return (
-            <VacaItem item={ item } />
+            <VacaName item={ item } clickVacation={ clickVacation }/>
         )
     })
+
+    const [isDetails, setIsDetails] = useState(false)
+    const [selectedVaca, setSelectedVaca] = useState("")
+
+    function clickVacation(e)
+    {
+        setIsDetails(true)
+
+        const findVaca = vacationList.find((item) => item.id == e)
+
+        setSelectedVaca(findVaca)
+    }
+
+    function goBack()
+    {
+        setIsDetails(false)
+    }
 
     return (
         <div id="home">
             <h1>home</h1>
-            <input onChange={handleVacationInput }></input>
-            <button onClick={ handleAddVacation }>Add vacation</button>
-            <ul>
-                { vacaDispList }
-            </ul>
+            { isDetails ?
+                <div>
+                    <h2>Vacation Details</h2>
+                    <button onClick={ goBack }>Go back</button>
+                    { selectedVaca.vacationName }
+                </div>
+            :
+                <div>
+                    <input onChange={handleVacationInput }></input>
+                    <button onClick={ handleAddVacation }>Add vacation</button>
+                    <ul>
+                        { vacaNameList }
+                    </ul>
+                </div>
+            }
         </div>
     )
 }

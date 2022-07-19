@@ -1,8 +1,8 @@
-function VacaItem({ item })
+function VacaName({ item, clickVacation })
 {
-    function handleClick(e)
+    function handleClick()
     {
-        console.log("meep")
+        clickVacation(item.id)
     }
 
     return (
@@ -11,4 +11,4 @@ function VacaItem({ item })
         </li>
     )
 }
-export default VacaItem
+export default VacaName
