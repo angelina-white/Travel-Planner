@@ -5,6 +5,12 @@ class VacationsController < ApplicationController
         render json: vacation, status: :created
     end
 
+    def update
+        vacation = Vacation.find(params[:id])
+        vacation.update!(vacation_params)
+        render json: vacation, status: :ok
+    end
+
     private
 
     def vacation_params

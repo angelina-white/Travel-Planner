@@ -69,6 +69,44 @@ function Home({ userId, vacationList })
         setIsDetails(false)
     }
 
+    const [isEdit, setIsEdit] = useState(false)
+    function edit()
+    {
+        setIsEdit((isEdit) => isEdit = !isEdit)
+    }
+
+    const [vacaPatch, setVacaPatch] = useState("")
+
+    function handleEditVaca(e)
+    {
+        setVacaPatch(e.target.value)
+    }
+
+    function submitEdit(e)
+    {
+        const vacaPatchData =
+        {
+            vacationName: vacaPatch,
+            flightToArrive: "",
+            flightToLeave: "",
+            hotelCheckIn: "",
+            hotelCheckOut: ""
+        }
+
+
+        fetch(`/vacations/${selectedVaca.id}`,
+        {
+            method: "PATCH",
+            headers:
+            {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(vacaPatchData)
+        })
+        .then(resp => resp.json())
+        .then(data => console.log(data))
+    }
+
     return (
         <div id="home">
             <h1>home</h1>
@@ -76,7 +114,17 @@ function Home({ userId, vacationList })
                 <div>
                     <h2>Vacation Details</h2>
                     <button onClick={ goBack }>Go back</button>
-                    { selectedVaca.vacationName }
+                    <button onClick={ edit }>Edit</button>
+                    { isEdit ?
+                        <div>
+                            <input onChange={ handleEditVaca }/>
+                            <button onClick={ submitEdit }>Submit</button>
+                        </div>
+                    :
+                        <div>
+                            { selectedVaca.vacationName }
+                        </div>
+                    }
                 </div>
             :
                 <div>
