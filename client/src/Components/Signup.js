@@ -6,13 +6,14 @@ function Signup({ setCurrentUser, handleCloseSignup })
     //handles user sign up
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const [errors, setErrors] = useState("");
 
     function handleSubmit(e) 
     {
         e.preventDefault();
 
-        const user = {username, password}
+        const user = {username, password, email}
 
         fetch("/users", 
         {
@@ -43,8 +44,17 @@ function Signup({ setCurrentUser, handleCloseSignup })
                     id="loginOutline"
                     type="text"
                     placeholder="Username"
-                    value={username}
+                    value={ username }
                     onChange={(e) => setUsername(e.target.value)}
+                  />
+              </div>
+              <div className="signupInput">
+                <input
+                    id="loginOutline"
+                    type="text"
+                    placeholder="Email"
+                    value={ email }
+                    onChange={(e) => setEmail(e.target.value)}
                   />
               </div>
               <div className="signupInput">

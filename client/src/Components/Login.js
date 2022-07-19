@@ -43,7 +43,7 @@ function Login({ setCurrentUser, renderLists })
                     id="loginOutline"
                     type="text"
                     placeholder="Username"
-                    value={username}
+                    value={ username }
                     onChange={(e) => setUsername(e.target.value)}
                   />
               </div>
@@ -52,7 +52,7 @@ function Login({ setCurrentUser, renderLists })
                     id="loginOutline"
                     type="password"
                     placeholder="Password"
-                    value={password}
+                    value={ password }
                     onChange={(e) => setPassword(e.target.value)}
                   />
               </div> 
