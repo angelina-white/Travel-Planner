@@ -1,6 +1,9 @@
 import { useState } from "react" 
-function Home({ userId })
+import VacaItem from "./VacaItem"
+
+function Home({ userId, vacationList })
 {
+
     const [vacationInput, setVacationInput] = useState("")
     function handleVacationInput(e)
     {
@@ -42,11 +45,21 @@ function Home({ userId })
         })
     }
 
+    const vacaDispList = vacationList.map((item) =>
+    {
+        return (
+            <VacaItem item={ item } />
+        )
+    })
+
     return (
         <div id="home">
             <h1>home</h1>
             <input onChange={handleVacationInput }></input>
             <button onClick={ handleAddVacation }>Add vacation</button>
+            <ul>
+                { vacaDispList }
+            </ul>
         </div>
     )
 }

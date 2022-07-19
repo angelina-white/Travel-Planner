@@ -63,7 +63,7 @@ function App() {
           </div>
           <Switch>
             <Route path="/">
-              <Home userId={ currentUser.id }/>
+              <Home userId={ currentUser.id } vacationList={ vacationList }/>
             </Route>
           </Switch>
         </div>
