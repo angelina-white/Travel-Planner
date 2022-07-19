@@ -11,6 +11,12 @@ class UsersController < ApplicationController
         render json: user, status: :created
     end
 
+    def vacations_index
+        user = User.find(params[:user_id])
+        vacations = user.vacations
+        render json: vacations
+    end
+
     private
 
     def user_params

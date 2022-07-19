@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [currentUser, setCurrentUser] = useState("");
+  const [vacationList, setVacationList] = useState([]);
 
   useEffect(() =>
   {
@@ -17,13 +18,14 @@ function App() {
         res.json().then(user => 
         {
           setCurrentUser(user)
+
+          fetch(`/users/${user.id}/vacations`)
+          .then(resp => resp.json())
+          .then(data => setVacationList(data))
         })
       }
     })
   }, [])
-
-  console.log(currentUser.username)
-  
 
   function renderLists()
   {
@@ -43,8 +45,6 @@ function App() {
 
   return (
     <div className="App">
-      <button id="logoutButton" onClick={ handleLogout } >Logout</button>
-      <h1>Title page</h1>
       <Router>
         <div id="navbar">
           <h1>Travel Planner</h1>
@@ -57,10 +57,13 @@ function App() {
           </nav>
         </div>
         <div id="appRight">
-          <p>username</p>
+          <div>
+            <p>username</p>
+            <button id="logoutButton" onClick={ handleLogout } >Logout</button>
+          </div>
           <Switch>
             <Route path="/">
-              <Home />
+              <Home userId={ currentUser.id }/>
             </Route>
           </Switch>
         </div>

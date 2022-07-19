@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
 
   get "/auth", to: "users#show"
+
+  get "/users/:user_id/vacations", to: "users#vacations_index"
 end
