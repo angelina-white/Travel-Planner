@@ -1,7 +1,7 @@
 import { useState } from "react" 
 import VacaName from "./VacaName"
 
-function Home({ userId, vacationList })
+function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca })
 {
 
     const [vacationInput, setVacationInput] = useState("")
@@ -25,6 +25,7 @@ function Home({ userId, vacationList })
         .then(resp => resp.json())
         .then(data => 
         {
+            handleAddVaca(data)
             const userVaca = 
             {
                 user_id: userId,
@@ -41,7 +42,6 @@ function Home({ userId, vacationList })
                 body: JSON.stringify(userVaca)
             })
             .then(resp => resp.json())
-            .then(data => console.log(data))
         })
     }
 
@@ -104,7 +104,11 @@ function Home({ userId, vacationList })
             body: JSON.stringify(vacaPatchData)
         })
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => 
+        {
+            handleVacaPatch(data)
+            // setIsEdit(false)
+        })
     }
 
     function deleteVaca()
@@ -113,7 +117,7 @@ function Home({ userId, vacationList })
             method: "DELETE",
           })
         .then((res) => res.json())
-        .then((data) => console.log(data));
+        .then((data) => handleDeleteVaca(data));
     }
 
     return (
@@ -123,15 +127,16 @@ function Home({ userId, vacationList })
                 <div>
                     <h2>Vacation Details</h2>
                     <button onClick={ goBack }>Go back</button>
-                    <button onClick={ edit }>Edit</button>
                     { isEdit ?
                         <div>
+                            <button onClick={ edit }>Unedit</button>
                             <input onChange={ handleEditVaca }/>
                             <button onClick={ submitEditVaca }>Submit</button>
                             <button onClick={ deleteVaca }>Delete</button>
                         </div>
                     :
                         <div>
+                            <button onClick={ edit }>Edit</button>
                             { selectedVaca.vacationName }
                         </div>
                     }

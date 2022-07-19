@@ -42,6 +42,29 @@ function App() {
     }).then(() => setCurrentUser(""));
   }
 
+  function handleAddVaca(data)
+  {
+    setVacationList([...vacationList, data])
+  }
+
+  function handleVacaPatch(data)
+  {
+    const newListing = vacationList.map((item) =>
+    {
+      if (item.id == data.id)
+        return data
+      else
+        return item
+    })
+
+    setVacationList(newListing)
+  }
+
+  function handleDeleteVaca(data)
+  {
+    const filteredList = vacationList.filter(item => item.id !== data)
+    setVacationList(filteredList)
+  }
 
   return (
     <div className="App">
@@ -63,7 +86,7 @@ function App() {
           </div>
           <Switch>
             <Route path="/">
-              <Home userId={ currentUser.id } vacationList={ vacationList }/>
+              <Home userId={ currentUser.id } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca }/>
             </Route>
           </Switch>
         </div>
