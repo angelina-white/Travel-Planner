@@ -13,7 +13,7 @@ function Signup({ setCurrentUser, handleCloseSignup })
     {
         e.preventDefault();
 
-        const user = {username, password}
+        const user = {username, password, email}
 
         fetch("/users", 
         {

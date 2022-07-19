@@ -7,8 +7,11 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.create!(user_params)
-        render json: user, status: :created
+        @user = User.create!(user_params)
+            if @user.save
+                UserMailer.welcome_email(@user).deliver_later
+                render json: :user, status: :created
+            end
     end
 
     def vacations_index
@@ -28,6 +31,6 @@ class UsersController < ApplicationController
     private
 
     def user_params
-        params.permit(:username, :password)
+        params.permit(:username, :password, :email)
     end
 end
