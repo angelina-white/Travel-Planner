@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function ActivityItem({ item, handleActivityPatch })
+function ActivityItem({ item, handleActivityPatch, handleDeleteActivity })
 {
     const [isEdit, setIsEdit] = useState(false)
     const [activityInput, setActivityInput] = useState("")
@@ -39,6 +39,15 @@ function ActivityItem({ item, handleActivityPatch })
         })
     }
 
+    function handleDelete()
+    {
+        fetch(`/activities/${item.id}`, {
+            method: "DELETE",
+          })
+        .then((res) => res.json())
+        .then((data) => handleDeleteActivity(data));
+    }
+
     return (
         <li>
             {isEdit ?
@@ -46,6 +55,7 @@ function ActivityItem({ item, handleActivityPatch })
                     <input onChange={ handleActivityInput } placeholder="Enter..." />
                     <button onClick={ handleEdit }>Unedit</button>
                     <button onClick={ handleSubmit }>Submit</button>
+                    <button onClick= { handleDelete }>Delete</button>
                 </div>
             :
                 <div>

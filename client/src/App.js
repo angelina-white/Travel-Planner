@@ -92,6 +92,12 @@ function App() {
     setActivitiesList(newListing)
   }
 
+  function handleDeleteActivity(data)
+  {
+    const filteredList = activitiesList.filter(item => item.id !== data)
+    setActivitiesList(filteredList)
+  }
+
   return (
     <div className="App">
       <Router>
@@ -112,7 +118,7 @@ function App() {
           </div>
           <Switch>
             <Route path="/">
-              <Home userId={ currentUser.id } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch }/>
+              <Home userId={ currentUser.id } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity }/>
             </Route>
           </Switch>
         </div>
