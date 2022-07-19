@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get "/auth", to: "users#show"
 
   get "/users/:user_id/vacations", to: "users#vacations_index"
+  get "/users/:user_id/vacations/:vacation_id/activities", to: "users#activities_index"
 end

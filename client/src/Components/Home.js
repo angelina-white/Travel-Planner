@@ -1,7 +1,8 @@
 import { useState } from "react" 
 import VacaName from "./VacaName"
+import ActivityItem from "./ActivityItem"
 
-function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca })
+function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity})
 {
 
     const [vacationInput, setVacationInput] = useState("")
@@ -62,6 +63,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
         const findVaca = vacationList.find((item) => item.id == e)
 
         setSelectedVaca(findVaca)
+        getActivities(e)
     }
 
     function goBack()
@@ -178,14 +180,12 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
         .then(resp => resp.json())
         .then(data => 
         {
-            // handleAddActivity(data)
+            handleAddActivity(data)
             const vacaAct = 
             {
                 vacation_id: 9,
                 activity_id: data.id
             }
-
-            console.log(vacaAct)
 
             fetch("/vacation_activities", 
             {
@@ -197,9 +197,15 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                 body: JSON.stringify(vacaAct)
             })
             .then(resp => resp.json())
-            .then(data => console.log(data))
         })
     }
+
+    const dispActivities = activitiesList.map((item) =>
+    {
+        return (
+            <ActivityItem item={ item }/>
+        )
+    })
 
     return (
         <div id="home">
@@ -253,6 +259,9 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                                 <button onClick={ submitActivity }>Submit</button>
                             </label>
                         
+                            <ul>
+                                { dispActivities }
+                            </ul>
                         </div>
                     }
                 </div>

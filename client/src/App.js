@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [vacationList, setVacationList] = useState([]);
+  const [activitiesList, setActivitiesList] = useState([]);
 
   useEffect(() =>
   {
@@ -66,6 +67,18 @@ function App() {
     setVacationList(filteredList)
   }
 
+  function getActivities(data)
+  {
+    fetch(`/users/${currentUser.id}/vacations/${data}/activities`)
+    .then(resp => resp.json())
+    .then(data => setActivitiesList(data))
+  }
+
+  function handleAddActivity(data)
+  {
+    setActivitiesList([...activitiesList, data])
+  }
+
   return (
     <div className="App">
       <Router>
@@ -86,7 +99,7 @@ function App() {
           </div>
           <Switch>
             <Route path="/">
-              <Home userId={ currentUser.id } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca }/>
+              <Home userId={ currentUser.id } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity }/>
             </Route>
           </Switch>
         </div>
