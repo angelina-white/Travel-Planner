@@ -82,7 +82,7 @@ function Home({ userId, vacationList })
         setVacaPatch(e.target.value)
     }
 
-    function submitEdit(e)
+    function submitEditVaca(e)
     {
         const vacaPatchData =
         {
@@ -107,6 +107,15 @@ function Home({ userId, vacationList })
         .then(data => console.log(data))
     }
 
+    function deleteVaca()
+    {
+        fetch(`/vacations/${selectedVaca.id}`, {
+            method: "DELETE",
+          })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    }
+
     return (
         <div id="home">
             <h1>home</h1>
@@ -118,7 +127,8 @@ function Home({ userId, vacationList })
                     { isEdit ?
                         <div>
                             <input onChange={ handleEditVaca }/>
-                            <button onClick={ submitEdit }>Submit</button>
+                            <button onClick={ submitEditVaca }>Submit</button>
+                            <button onClick={ deleteVaca }>Delete</button>
                         </div>
                     :
                         <div>

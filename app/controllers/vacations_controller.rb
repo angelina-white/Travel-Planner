@@ -11,6 +11,13 @@ class VacationsController < ApplicationController
         render json: vacation, status: :ok
     end
 
+    def destroy
+        vacation = Vacation.find(params[:id])
+        vacation.destroy
+        # head :no_content
+        render json: params[:id]
+    end
+
     private
 
     def vacation_params
