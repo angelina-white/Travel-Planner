@@ -3,11 +3,17 @@ import Home from "./Components/Home"
 import HomeLogin from "./Components/HomeLogin"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { increment } from "./actions"; //action
 
 function App() {
   const [currentUser, setCurrentUser] = useState("");
   const [vacationList, setVacationList] = useState([]);
   const [activitiesList, setActivitiesList] = useState([]);
+
+  const counter = useSelector(state => state.counter); //state
+  const dispatch = useDispatch();
+  console.log(counter)
 
   useEffect(() =>
   {
@@ -97,8 +103,11 @@ function App() {
     setActivitiesList(filteredList)
   }
 
+
   return (
     <div className="App">
+      <h1>Counter: { counter }</h1>
+      <button onClick={ () => dispatch(increment()) }>+</button>
       <Router>
         <div id="navbar">
           <h1>Travel Planner</h1>
