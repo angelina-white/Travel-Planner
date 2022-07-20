@@ -6,3 +6,12 @@ export const increment = () =>
         }
     )
 }
+
+export const vacation = () =>
+{
+    return (
+        {
+            type: "VACATION"
+        }
+    )
+}

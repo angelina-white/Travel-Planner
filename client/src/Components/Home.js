@@ -1,9 +1,13 @@
 import { useState } from "react" 
 import VacaName from "./VacaName"
 import ActivityItem from "./ActivityItem"
+import { useSelector, useDispatch } from "react-redux";
+import { vacation } from "../actions"; //action
 
 function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity })
 {
+    const isDetail = useSelector(state => state.isDetails); //state
+    const dispatch = useDispatch();
 
     const [vacationInput, setVacationInput] = useState("")
     function handleVacationInput(e)
@@ -56,9 +60,12 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
     const [isDetails, setIsDetails] = useState(false)
     const [selectedVaca, setSelectedVaca] = useState("")
 
+    //where it set isDetails
     function clickVacation(e)
     {
         setIsDetails(true)
+
+        
 
         const findVaca = vacationList.find((item) => item.id == e)
 
@@ -68,7 +75,8 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
 
     function goBack()
     {
-        setIsDetails(false)
+        // setIsDetails(false)
+        dispatch(vacation())
         setIsEdit(false)
     }
 
@@ -210,7 +218,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
     return (
         <div id="home">
             <h1>home</h1>
-            { isDetails ?
+            { isDetail ?
                 <div>
                     <h2>Vacation Details</h2>
                     <button onClick={ goBack }>Go back</button>

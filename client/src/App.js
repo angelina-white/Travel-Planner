@@ -13,7 +13,6 @@ function App() {
 
   const counter = useSelector(state => state.counter); //state
   const dispatch = useDispatch();
-  console.log(counter)
 
   useEffect(() =>
   {
