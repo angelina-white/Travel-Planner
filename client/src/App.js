@@ -33,8 +33,7 @@ function App() {
     console.log("hi")
   }
 
-
-  if(!currentUser) return <HomeLogin setCurrentUser = {setCurrentUser} renderLists={ renderLists }/>
+  if(!currentUser) return <HomeLogin setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
 
   //logs user out
   function handleLogout() {

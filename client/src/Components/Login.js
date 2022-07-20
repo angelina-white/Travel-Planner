@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 
-function Login({ setCurrentUser, renderLists })
+function Login({ setCurrentUser, renderLists, setIsNotPassword })
 {
     //handles user login 
     const [username, setUsername] = useState("");
@@ -34,6 +34,34 @@ function Login({ setCurrentUser, renderLists })
         })
         .then(() => renderLists());
     }
+    
+    const [isForgot, setIsForgot] = useState(false)
+    function forgotPass(e)
+    {
+      setIsForgot((isForgot) => isForgot = !isForgot)
+    }
+
+    const [resetEmail, setResetEmail] = useState("")
+
+    function handleResetEmail(e)
+    {
+      setResetEmail(e.target.value)
+    }
+
+    function sendReset()
+    {
+      const data = { email: resetEmail}
+      fetch(`/reset`,
+      {
+        method: 'POST',
+        headers: 
+        {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+      })
+      .then(resp => resp.json())
+    }
 
     return (
         <div classname="login">
@@ -63,6 +91,18 @@ function Login({ setCurrentUser, renderLists })
                 <p>{ errors }</p>
               </div>
             </form>
+
+            <a onClick={ forgotPass }>Forgot password?</a>
+                  {isForgot?
+                    <div>
+                      <p>Send email to reset password</p>
+                      <input onChange={ handleResetEmail } placeholder="email"/>
+                      <button onClick={ sendReset }>Send</button>
+                    </div>
+                  :
+                    <div>
+                    </div>
+                  }
         </div>
     )
 }
