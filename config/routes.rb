@@ -7,12 +7,17 @@ Rails.application.routes.draw do
   resources :users
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
-  get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
+  # get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  post "/reset", to: "users#reset"
+  # post "/reset", to: "users#reset"
+  # get "/reset/edit", to: "users#edit"
+
+  post "/password/reset", to: "password_reset#create"
+  get "/password/reset/edit", to: "password_reset#edit"
+
 
   get "/auth", to: "users#show"
 
