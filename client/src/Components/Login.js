@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
+import jwt from "jsonwebtoken";
 
 function Login({ setCurrentUser, renderLists, setIsNotPassword })
 {
+
     //handles user login 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -50,8 +52,12 @@ function Login({ setCurrentUser, renderLists, setIsNotPassword })
 
     function sendReset()
     {
-      const data = { email: resetEmail}
-      fetch(`/reset`,
+      const data = 
+      { 
+        email: resetEmail
+      }
+
+      fetch(`/password/reset`,
       {
         method: 'POST',
         headers: 
@@ -61,6 +67,34 @@ function Login({ setCurrentUser, renderLists, setIsNotPassword })
         body: JSON.stringify(data)
       })
       .then(resp => resp.json())
+      // .then((data) =>
+      // {
+      //   const secret = data.password_digest
+      //   const payload =
+      //   {
+      //     id: data.id,
+      //     email: data.email
+      //   }
+      //   const token = jwt.sign(payload, secret, {expiresIn: '10m'})
+      //   const link = `http://localhost:3000/resetpassword/${data.id}/${token}`
+
+      //   const newData = 
+      //   {
+      //     email: data.email,
+      //     link: link
+      //   }
+
+      //   fetch(`/reset`,
+      //   {
+      //     method: 'POST',
+      //     headers: 
+      //     {
+      //         'Content-Type': 'application/json',
+      //     },
+      //     body: JSON.stringify(newData)
+      //   })
+      //   .then(resp => resp.json())
+      // })
     }
 
     return (
@@ -92,10 +126,10 @@ function Login({ setCurrentUser, renderLists, setIsNotPassword })
               </div>
             </form>
 
-            <a onClick={ forgotPass }>Forgot password?</a>
+            <a onClick={ forgotPass }>Forgot username?</a>
                   {isForgot?
                     <div>
-                      <p>Send email to reset password</p>
+                      <p>Send email to reset username</p>
                       <input onChange={ handleResetEmail } placeholder="email"/>
                       <button onClick={ sendReset }>Send</button>
                     </div>

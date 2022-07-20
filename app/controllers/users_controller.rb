@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorized, only: [:create, :reset, :update]
+    skip_before_action :authorized, only: [:create, :reset, :update, :find, :edit]
 
     def show
         current_user = User.find(session[:user_id])
@@ -20,11 +20,14 @@ class UsersController < ApplicationController
         render json: user, status: :ok
     end
 
-    def reset
-        @user = User.find_by(email: params[:email])
-        UserMailer.reset_password(@user).deliver_now
-        render json: @user, status: :ok
-    end
+    # def reset
+    #     @user = User.find_by(email: params[:email])
+    #     UserMailer.reset_password(@user).deliver_now
+    # end
+
+    # def edit
+    #     @user = User.find_signed(params[:token], purpose: "edit")
+    # end
 
     def vacations_index
         user = User.find(params[:user_id])
