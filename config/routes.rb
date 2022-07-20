@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
+  post "reset", to: "users#reset_show"
+
   get "/auth", to: "users#show"
 
   get "/users/:user_id/vacations", to: "users#vacations_index"
