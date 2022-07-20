@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 
-function Login({ setCurrentUser, renderLists })
+function Login({ setCurrentUser, renderLists, setIsNotPassword })
 {
     //handles user login 
     const [username, setUsername] = useState("");
@@ -50,6 +50,7 @@ function Login({ setCurrentUser, renderLists })
 
     function sendReset()
     {
+      const data = { email: resetEmail}
       fetch(`/reset`,
       {
         method: 'POST',
@@ -57,10 +58,9 @@ function Login({ setCurrentUser, renderLists })
         {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify(resetEmail)
+        body: JSON.stringify(data)
       })
       .then(resp => resp.json())
-      .then(data => console.log(data))
     }
 
     return (

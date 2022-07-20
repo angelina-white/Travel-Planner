@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
 
-  post "reset", to: "users#reset_show"
+  post "/reset", to: "users#reset"
 
   get "/auth", to: "users#show"
 
