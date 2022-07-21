@@ -20,7 +20,7 @@ function HomeLogin({ setCurrentUser, renderLists })
                         <h3>Login:</h3>
                         <Login setCurrentUser={ setCurrentUser } renderLists={ renderLists } />
                         <h3>Signup:</h3>
-                        <Signup setCurrentUser={ setCurrentUser }/>
+                        <Signup setCurrentUser={ setCurrentUser } renderLists={ renderLists }/>
                     </Route>
                 </Switch>
             </Router>

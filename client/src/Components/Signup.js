@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 
-function Signup({ setCurrentUser, handleCloseSignup })
+function Signup({ setCurrentUser, handleCloseSignup, renderLists })
 {
     //handles user sign up
     const [username, setUsername] = useState("");
@@ -33,7 +33,7 @@ function Signup({ setCurrentUser, handleCloseSignup })
             res.json().then( e => setErrors(Object.entries(e.error).flat()))
           }
         })
-        .then((user) => console.log("hi"))
+        .then(() => renderLists(username))
     }
 
     return (

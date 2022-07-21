@@ -8,29 +8,22 @@ import { increment } from "./actions"; //action
 import { addBook } from "./actions"; //action
 import io from 'socket.io-client';
 
-const socket = io("http://localhost:4001");
+// const socket = io("http://localhost:4001");
 
 function App() 
 {
-  const [isConnected, setIsConnected] = useState(socket.connected);
+  // const [isConnected, setIsConnected] = useState(socket.connected);
+  const [socket, setSocket] = useState(null)
   useEffect(() =>
   {
-    socket.on('connect', () => 
-    {
-      setIsConnected(true);
+    setSocket(io("http://localhost:4001"))
 
-      socket.on('connect', () => 
-      {
-        setIsConnected(true);
-      });
-
-      return () => {
-        socket.off('connect');
-        socket.off('disconnect');
-      };
-    });
+    // //console log message from server
+    // socket.on("firstEvent", (msg) =>
+    // {
+    //   console.log(msg)
+    // })
   }, [])
-
 
   const [currentUser, setCurrentUser] = useState("");
   const [vacationList, setVacationList] = useState([]);
@@ -60,18 +53,22 @@ function App()
     })
   }, [])
 
-  function renderLists()
-  {
-    console.log("hi")
-  }
-
   if(!currentUser) return <HomeLogin setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
+
+  function renderLists(data)
+  {
+    socket.emit("newUser", data)
+  }
 
   //logs user out
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
-    }).then(() => setCurrentUser(""));
+    }).then(() => 
+    {
+      socket.emit("remove")
+      setCurrentUser("")
+    });
   }
 
   function handleAddVaca(data)
@@ -133,7 +130,7 @@ function App()
   return (
     <div className="App">
       <div>
-        <p>Connected: { '' + isConnected }</p>
+        {/* <p>Connected: { '' + isConnected }</p> */}
       </div>
 
 
