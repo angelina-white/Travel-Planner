@@ -15,3 +15,26 @@ export const vacation = () =>
         }
     )
 }
+
+export const updateName = () =>
+{
+    return (
+        {
+            type: "UPDATENAME"
+        }
+    )
+}
+
+export const addBook = (book) => {
+    return {
+      type: "books/add",
+      payload: book,
+    };
+  };
+  
+  export const removeBook = (id) => {
+    return {
+      type: "books/remove",
+      payload: id,
+    };
+  };
