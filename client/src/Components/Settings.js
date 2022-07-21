@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import io from 'socket.io-client';
 
 function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca})
@@ -62,35 +61,29 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca})
         .then(resp => resp.json())
     }
 
+    const [isEditName, setIsEditName] = useState(false)
+    const [isAddUser, setIsAddUser] = useState(false)
+
     return (
         <div>
-            <Router>
-                <Switch>
-                    <Route path="/editName">
-                        <Link to="/">Go back</Link>
-                        <input onChange={ (e) => setVacaName(e.target.value) } placeholder="Enter new name..." />
-                        <button onClick={ submitName }>Submit</button>
-                    </Route>
-                    <Route path="/addUser">
-                        <Link to="/">Go back</Link>
-                        <input onChange={ addUserInput }placeholder="Enter username..." />
-                        <button onClick={ submitAddUser }>Submit</button>
-                    </Route>
-                    <Route path="/">
-                        <h1>settings home</h1>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/editName">Edit name</Link>
-                                </li>
-                                <li>
-                                    <Link to="/addUser">Add user</Link>
-                                </li>
-                            </ul>
-                        </nav>
-                    </Route>
-                </Switch>
-            </Router>
+            <h1>Settings</h1>
+            <button onClick={ () => setIsEditName((isEditName) => isEditName = !isEditName)}>Edit vacation name</button>
+            {isEditName ?
+                <div>
+                    <input onChange={ (e) => setVacaName(e.target.value) } placeholder="Enter new name..." />
+                    <button onClick={ submitName }>Submit</button>
+                </div>
+            : <div></div>
+            }
+
+            <button onClick={ () => setIsAddUser((isAddUser) => isAddUser = !isAddUser)}>Add user</button>
+            {isAddUser ?
+                <div>
+                    <input onChange={ addUserInput }placeholder="Enter username..." />
+                    <button onClick={ submitAddUser }>Submit</button>
+                </div>
+            : <div></div>
+            }
         </div>
     )
 }
