@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import io from 'socket.io-client';
 
-function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca})
+function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, handleDeleteVaca})
 {
     const [socket, setSocket] = useState(null)
     useEffect(() =>
@@ -63,6 +63,16 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca})
 
     const [isEditName, setIsEditName] = useState(false)
     const [isAddUser, setIsAddUser] = useState(false)
+    const [isDelete, setIsDelete] = useState(false)
+
+    function deleteVaca()
+    {
+        fetch(`/vacations/${selectedVaca.id}`, {
+            method: "DELETE",
+          })
+        .then((res) => res.json())
+        .then((data) => handleDeleteVaca(data));
+    }
 
     return (
         <div>
@@ -84,6 +94,11 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca})
                 </div>
             : <div></div>
             }
+
+            <button onClick={() => setIsDelete((isDelete) => isDelete = !isDelete)}>Delete vacation</button>
+            {isDelete ?
+                <button onClick={ deleteVaca }>Delete now</button>
+            : <div></div>}
         </div>
     )
 }

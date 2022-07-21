@@ -7,6 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { createStore} from "redux";
 import allReducer from "./reducers";
 import { Provider } from "react-redux";
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 const store = createStore(allReducer);
 
