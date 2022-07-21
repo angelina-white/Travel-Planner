@@ -1,5 +1,6 @@
 import { useState } from "react" 
 import VacaName from "./VacaName"
+import Information from "./Information"
 import Settings from "./Settings"
 import ActivityItem from "./ActivityItem"
 import Agenda from "./Agenda"
@@ -123,89 +124,6 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
     //     .then((data) => handleDeleteVaca(data));
     // }
 
-    // const [vacaDetails, setVacaDetails] = useState({flightToArrive: "", flightToLeave: "", hotelCheckIn: "", hotelCheckOut: ""})
-
-    // function handleDetailInput(e)
-    // {
-    //     setVacaDetails({...vacaDetails, [e.target.name]: e.target.value})
-    // }
-
-    // function submitVacaDetails(e)
-    // {
-    //     e.preventDefault()
-    //     const detailData = 
-    //     {
-    //         vacationName: selectedVaca.vacationName,
-    //         flightToArrive: vacaDetails.flightToArrive,
-    //         flightToLeave: vacaDetails.flightToLeave,
-    //         hotelCheckIn: vacaDetails.hotelCheckIn,
-    //         hotelCheckOut: vacaDetails.hotelCheckOut
-    //     }
-
-    //     fetch(`/vacations/${selectedVaca.id}`,
-    //     {
-    //         method: "PATCH",
-    //         headers:
-    //         {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(detailData)
-    //     })
-    //     .then(resp => resp.json())
-    //     .then(data => 
-    //     {
-    //         handleVacaPatch(data)
-    //     })
-    // }
-
-    // const [actName, setActName] = useState("")
-
-    // function handleActivityInput(e)
-    // {
-    //     setActName(e.target.value)
-    // }
-
-    // function submitActivity()
-    // {
-    //     const activity = {activityName: actName}
-    //     fetch("/activities", 
-    //     {
-    //         method: 'POST',
-    //         headers: 
-    //         {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(activity)
-    //     })
-    //     .then(resp => resp.json())
-    //     .then(data => 
-    //     {
-    //         handleAddActivity(data)
-    //         const vacaAct = 
-    //         {
-    //             vacation_id: 9,
-    //             activity_id: data.id
-    //         }
-
-    //         fetch("/vacation_activities", 
-    //         {
-    //             method: 'POST',
-    //             headers: 
-    //             {
-    //                 'Content-Type': 'application/json',
-    //             },
-    //             body: JSON.stringify(vacaAct)
-    //         })
-    //         .then(resp => resp.json())
-    //     })
-    // }
-
-    // const dispActivities = activitiesList.map((item) =>
-    // {
-    //     return (
-    //         <ActivityItem item={ item } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity }/>
-    //     )
-    // })
 
     const [vacaDetails, setVacaDetails] = useState({flightToArrive: "", flightToLeave: "", hotelCheckIn: "", hotelCheckOut: ""})
 
@@ -266,6 +184,9 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                                     <Link to="/homepage">Homepage</Link>
                                 </li>
                                 <li>
+                                    <Link to="/tripInfo">Trip info</Link>
+                                </li>
+                                <li>
                                     <Link to="/agenda">Calendar</Link>
                                 </li>
                                 <li>
@@ -285,6 +206,9 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                         <Switch>
                             <Route path="/homepage">
                                 <h1>Nothing selected</h1>
+                            </Route>
+                            <Route path="/tripInfo">
+                                <Information selectedVaca={ selectedVaca } handleVacaPatch={ handleVacaPatch } handleAddActivity={ handleAddActivity } activitiesList={ activitiesList } setSelectedVaca= { setSelectedVaca }/>
                             </Route>
                             <Route path="/agenda">
                                 <Agenda />
