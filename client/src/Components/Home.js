@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { vacation } from "../actions"; //action
 import { goToSettings } from "../actions";
 import { updateName } from "../actions"; //action
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 
 function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList})
@@ -241,7 +242,75 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
 
     return (
         <div id="home">
+            <h1>homepage</h1>
+
             { isDetail ?
+                <div>
+                    {/* shows names */}
+                    <input onChange={ handleVacationInput }></input>
+                    <button onClick={ handleAddVacation }>Add vacation</button>
+                    <ul>
+                        { vacaNameList }
+                    </ul>
+                </div>
+            :
+                <div>
+                    {/* showsdetails */}
+                    { selectedName }
+                    <button onClick= { () => dispatch(vacation()) }>Go back</button>
+                    
+                    {/* vacation menu */}
+                    <Router>
+                        <nav>
+                            <ul>
+                                <li>
+                                    <Link to="/homepage">Homepage</Link>
+                                </li>
+                                <li>
+                                    <Link to="/agenda">Agenda</Link>
+                                </li>
+                                <li>
+                                    <Link to="/helper">Planning Helper</Link>
+                                </li>
+                                <li>
+                                    <Link to="/chat">Chat</Link>
+                                </li>
+                                <li>
+                                    <Link to="/timeline">Timeline</Link>
+                                </li>
+                                <li>
+                                    <Link to="/settings">Settings</Link>
+                                </li>
+                            </ul>
+                        </nav>
+                        <Switch>
+                            <Route path="/homepage">
+                                <h1>Nothing selected</h1>
+                            </Route>
+                            <Route path="/agenda">
+                                <h1>Agenda</h1>
+                            </Route>
+                            <Route path="/helper">
+                                <h1>Helper</h1>
+                            </Route>
+                            <Route path="/chat">
+                                <h1>Chat</h1>
+                            </Route>
+                            <Route path="/timeline">
+                                <h1>Timeline</h1>
+                            </Route>
+                            <Route path="/settings">
+                                <Settings handleNamePatch={ handleNamePatch } setSelectedName={ setSelectedName } userList={ userList } selectedVaca={ selectedVaca }/>
+                            </Route>
+                        </Switch>
+                    </Router> 
+                </div>
+            }     
+
+
+
+
+            {/* { isDetail ?
                 <div>
                     { selectedName }
                     <button onClick= { () => dispatch(vacation()) }>Go back</button>
@@ -256,7 +325,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                             <button onClick={ () => dispatch(goToSettings()) }>Settings</button>
                             <h1>not settings</h1>
                         </div>
-                    }
+                    } */}
                     {/* { isVacaName ?
                         <div>
                             <button onClick={ () => dispatch(updateName()) }>Unedit</button>
@@ -307,7 +376,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                             </ul>
                         </div>
                     } */}
-                </div>
+                {/* </div>
             :
                 <div>
                     <input onChange={ handleVacationInput }></input>
@@ -316,7 +385,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                         { vacaNameList }
                     </ul>
                 </div>
-            }
+            } */}
         </div>
     )
 }
