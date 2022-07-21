@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { vacation } from "../actions"; //action
 import { updateName } from "../actions"; //action
 
+
 function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity })
 {
     const isDetail = useSelector(state => state.isDetails); //state
