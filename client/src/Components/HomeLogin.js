@@ -13,9 +13,9 @@ function HomeLogin({ setCurrentUser, renderLists })
             <Router>
                 <Switch>
                     {/* <Route path="/password"> */}
-                    {/* <Route path="/reset/edit">
+                    <Route path="/reset/edit?">
                         <ResetPassword />
-                    </Route> */}
+                    </Route>
                     <Route path="/">
                         <h3>Login:</h3>
                         <Login setCurrentUser={ setCurrentUser } renderLists={ renderLists } />

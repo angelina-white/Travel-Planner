@@ -8,8 +8,8 @@ class PasswordResetController < ApplicationController
 
     def edit
         @user = User.find_signed(params[:token], purpose: "password_reset")
-        testing = @user.username
-        render json: testing, status: :ok
+        # testing = @user.username
+        # render json: testing, status: :ok
         # render template: "edit.html.erb"
     end
 
