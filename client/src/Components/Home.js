@@ -299,7 +299,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                                 <h1>Timeline</h1>
                             </Route>
                             <Route path="/settings">
-                                <Settings handleNamePatch={ handleNamePatch } setSelectedName={ setSelectedName } userList={ userList } selectedVaca={ selectedVaca }/>
+                                <Settings handleNamePatch={ handleNamePatch } setSelectedName={ setSelectedName } userList={ userList } selectedVaca={ selectedVaca } handleDeleteVaca={ handleDeleteVaca }/>
                             </Route>
                         </Switch>
                     </Router> 
