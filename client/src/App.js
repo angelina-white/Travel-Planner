@@ -6,16 +6,18 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment } from "./actions"; //action
 import { addBook } from "./actions"; //action
-// import io from 'socket.io-client';
-
-// const socket = io();
+import io from 'socket.io-client';
 
 function App() 
 {
+  useEffect(() =>
+  {
+    const socket = io("http://localhost:4001");
+  }, [])
 
   // // socketio docs
   // const [isConnected, setIsConnected] = useState(socket.connected);
-  // const [lastPong, setLastPong] = useState(null);
+  // // const [lastPong, setLastPong] = useState(null);
   // useEffect(() => {
   //   socket.on('connect', () => {
   //     setIsConnected(true);
@@ -32,7 +34,7 @@ function App()
   //   return () => {
   //     socket.off('connect');
   //     socket.off('disconnect');
-  //     socket.off('pong');
+  //     // socket.off('pong');
   //   };
   // }, []);
 
@@ -141,11 +143,11 @@ function App()
 
   return (
     <div className="App">
-      {/* <div>
-        <p>Connected: { '' + isConnected }</p>
-        <p>Last pong: { lastPong || '-' }</p>
-        <button onClick={ sendPing }>Send ping</button>
-      </div> */}
+      <div>
+        {/* <p>Connected: { '' + isConnected }</p> */}
+        {/* <p>Last pong: { lastPong || '-' }</p>
+        <button onClick={ sendPing }>Send ping</button> */}
+      </div>
 
 
 
