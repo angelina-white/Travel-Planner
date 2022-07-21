@@ -1,17 +1,12 @@
-#navbar {
+/* #navbar {
   width:200px;
   height: 100vh;
   background-color: pink;
   float: left;
-}
+} */
 
-#appRight {
-  width: 1245px;
+#appCont {
+  width: 1440px;
   height: 100vh;
-  background-color: green;
-  float: left;
-}
-
-#home {
   float: left;
 }

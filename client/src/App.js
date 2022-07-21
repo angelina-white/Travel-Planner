@@ -12,22 +12,38 @@ import io from 'socket.io-client';
 
 function App() 
 {
+  const [message, setMessage] = useState("message goes here")
   // const [isConnected, setIsConnected] = useState(socket.connected);
-  const [socket, setSocket] = useState(null)
-  useEffect(() =>
-  {
-    setSocket(io("http://localhost:4001"))
-
+  // const [socket, setSocket] = useState(null)
+  // useEffect(() =>
+  // {
+  //   setSocket(io("http://localhost:4001"))
+    
+    
+    // socket.on("newMessage", (msg) =>
+    // {
+    //   console.log(msg)
+    // })
     // //console log message from server
     // socket.on("firstEvent", (msg) =>
     // {
     //   console.log(msg)
     // })
-  }, [])
+  // }, [])
+
+  // useEffect(() =>
+  // {
+  //   const socket = io("http://localhost:4001");
+  //   socket.on("newMessage", (msg) =>
+  //   {
+  //     setMessage(msg)
+  //   })
+  // })
 
   const [currentUser, setCurrentUser] = useState("");
   const [vacationList, setVacationList] = useState([]);
   const [activitiesList, setActivitiesList] = useState([]);
+  const [userList, setUserList] = useState([]);
 
   const counter = useSelector(state => state.counter); //state
   const books = useSelector(state => state.books); //state
@@ -48,6 +64,10 @@ function App()
           fetch(`/users/${user.id}/vacations`)
           .then(resp => resp.json())
           .then(data => setVacationList(data))
+
+          fetch(`/users`)
+          .then(resp => resp.json())
+          .then(data => setUserList(data))
         })
       }
     })
@@ -57,7 +77,7 @@ function App()
 
   function renderLists(data)
   {
-    socket.emit("newUser", data)
+    // socket.emit("newUser", data)
   }
 
   //logs user out
@@ -66,7 +86,7 @@ function App()
       method: "DELETE",
     }).then(() => 
     {
-      socket.emit("remove")
+      // socket.emit("remove")
       setCurrentUser("")
     });
   }
@@ -127,23 +147,18 @@ function App()
   }
 
 
+
   return (
     <div className="App">
-      <div>
-        {/* <p>Connected: { '' + isConnected }</p> */}
-      </div>
-
-
-
-
-      <h1>Counter: { counter }</h1>
+      <h1>{message}</h1>
+      {/* <h1>Counter: { counter }</h1>
       <button onClick={ () => dispatch(increment()) }>+</button>
       <button onClick={ () => dispatch(addBook({ title: "Snow Crash", author: "Neal Stephenson" })) 
       }>Add book</button>
       <button onClick={ () => dispatch(addBook({ title: "Bobs burgers", author: "Bob" })) 
-      }>Add book</button>
+      }>Add book</button> */}
       <Router>
-        <div id="navbar">
+        {/* <div id="navbar">
           <h1>Travel Planner</h1>
           <nav>
             <ul>
@@ -152,15 +167,16 @@ function App()
                 </li>
             </ul>
           </nav>
-        </div>
-        <div id="appRight">
+        </div> */}
+        <div id="appCont">
           <div>
+            <h1>Travel Planner</h1>
             <p>username</p>
             <button id="logoutButton" onClick={ handleLogout } >Logout</button>
           </div>
           <Switch>
             <Route path="/">
-              <Home userId={ currentUser.id } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity }/>
+              <Home userId={ currentUser.id } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity } userList={ userList }/>
             </Route>
           </Switch>
         </div>

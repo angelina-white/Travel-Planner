@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
     skip_before_action :authorized, only: [:create, :reset, :update, :find, :edit]
 
+    def index
+        users = User.all
+        render json: users, status: :ok
+    end
+
     def show
         current_user = User.find(session[:user_id])
         render json: current_user
