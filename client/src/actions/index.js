@@ -24,3 +24,17 @@ export const updateName = () =>
         }
     )
 }
+
+export const addBook = (book) => {
+    return {
+      type: "books/add",
+      payload: book,
+    };
+  };
+  
+  export const removeBook = (id) => {
+    return {
+      type: "books/remove",
+      payload: id,
+    };
+  };
