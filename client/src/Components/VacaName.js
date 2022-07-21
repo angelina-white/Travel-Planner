@@ -1,9 +1,8 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { vacation } from "../actions"; //action
 
 function VacaName({ item, clickVacation })
 {
-    const isDetail = useSelector(state => state.isDetails); //state
     const dispatch = useDispatch();
 
     function handleClick()

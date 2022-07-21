@@ -15,3 +15,12 @@ export const vacation = () =>
         }
     )
 }
+
+export const updateName = () =>
+{
+    return (
+        {
+            type: "UPDATENAME"
+        }
+    )
+}

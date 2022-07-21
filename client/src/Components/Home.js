@@ -3,10 +3,12 @@ import VacaName from "./VacaName"
 import ActivityItem from "./ActivityItem"
 import { useSelector, useDispatch } from "react-redux";
 import { vacation } from "../actions"; //action
+import { updateName } from "../actions"; //action
 
 function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity })
 {
     const isDetail = useSelector(state => state.isDetails); //state
+    const isVacaName = useSelector(state => state.isVacaName); //state
     const dispatch = useDispatch();
 
     const [vacationInput, setVacationInput] = useState("")
@@ -57,33 +59,15 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
         )
     })
 
-    const [isDetails, setIsDetails] = useState(false)
     const [selectedVaca, setSelectedVaca] = useState("")
 
     //where it set isDetails
     function clickVacation(e)
     {
-        setIsDetails(true)
-
-        
-
         const findVaca = vacationList.find((item) => item.id == e)
 
         setSelectedVaca(findVaca)
         getActivities(e)
-    }
-
-    function goBack()
-    {
-        // setIsDetails(false)
-        dispatch(vacation())
-        setIsEdit(false)
-    }
-
-    const [isEdit, setIsEdit] = useState(false)
-    function edit()
-    {
-        setIsEdit((isEdit) => isEdit = !isEdit)
     }
 
     const [vacaPatch, setVacaPatch] = useState("")
@@ -221,17 +205,17 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
             { isDetail ?
                 <div>
                     <h2>Vacation Details</h2>
-                    <button onClick={ goBack }>Go back</button>
-                    { isEdit ?
+                    <button onClick= { () => dispatch(vacation()) }>Go back</button>
+                    { isVacaName ?
                         <div>
-                            <button onClick={ edit }>Unedit</button>
+                            <button onClick={ () => dispatch(updateName()) }>Unedit</button>
                             <input onChange={ handleEditVaca }/>
                             <button onClick={ submitEditVaca }>Submit</button>
                             <button onClick={ deleteVaca }>Delete</button>
                         </div>
                     :
                         <div>
-                            <button onClick={ edit }>Edit</button>
+                            <button onClick={ () => dispatch(updateName()) }>Edit</button>
                             { selectedVaca.vacationName }
                             { selectedVaca.id }
                             <form onSubmit={ submitVacaDetails}>
