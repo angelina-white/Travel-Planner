@@ -34,7 +34,7 @@ function Login({ setCurrentUser, renderLists, setIsNotPassword })
             res.json().then( e => setErrors(Object.entries(e.error).flat()))
           }
         })
-        .then(() => renderLists());
+        .then((data) => renderLists(username));
     }
     
     const [isForgot, setIsForgot] = useState(false)
