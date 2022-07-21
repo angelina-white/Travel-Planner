@@ -1,14 +1,17 @@
 import { useState } from "react" 
 import VacaName from "./VacaName"
+import Settings from "./Settings"
 import ActivityItem from "./ActivityItem"
 import { useSelector, useDispatch } from "react-redux";
 import { vacation } from "../actions"; //action
+import { goToSettings } from "../actions";
 import { updateName } from "../actions"; //action
 
 
-function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity })
+function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList})
 {
     const isDetail = useSelector(state => state.isDetails); //state
+    const isSettings = useSelector(state => state.isSettings); //state
     const isVacaName = useSelector(state => state.isVacaName); //state
     const dispatch = useDispatch();
 
@@ -61,6 +64,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
     })
 
     const [selectedVaca, setSelectedVaca] = useState("")
+    const [selectedName, setSelectedName] = useState("")
 
     //where it set isDetails
     function clickVacation(e)
@@ -68,53 +72,138 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
         const findVaca = vacationList.find((item) => item.id == e)
 
         setSelectedVaca(findVaca)
+        setSelectedName(findVaca.vacationName)
         getActivities(e)
     }
 
-    const [vacaPatch, setVacaPatch] = useState("")
+    // const [vacaPatch, setVacaPatch] = useState("")
 
-    function handleEditVaca(e)
-    {
-        setVacaPatch(e.target.value)
-    }
+    // function handleEditVaca(e)
+    // {
+    //     setVacaPatch(e.target.value)
+    // }
 
-    function submitEditVaca(e)
-    {
-        const vacaPatchData =
-        {
-            vacationName: vacaPatch,
-            flightToArrive: "",
-            flightToLeave: "",
-            hotelCheckIn: "",
-            hotelCheckOut: ""
-        }
+    // function submitEditVaca(e)
+    // {
+    //     const vacaPatchData =
+    //     {
+    //         vacationName: vacaPatch,
+    //         flightToArrive: "",
+    //         flightToLeave: "",
+    //         hotelCheckIn: "",
+    //         hotelCheckOut: ""
+    //     }
 
 
-        fetch(`/vacations/${selectedVaca.id}`,
-        {
-            method: "PATCH",
-            headers:
-            {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(vacaPatchData)
-        })
-        .then(resp => resp.json())
-        .then(data => 
-        {
-            handleVacaPatch(data)
-            // setIsEdit(false)
-        })
-    }
+    //     fetch(`/vacations/${selectedVaca.id}`,
+    //     {
+    //         method: "PATCH",
+    //         headers:
+    //         {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(vacaPatchData)
+    //     })
+    //     .then(resp => resp.json())
+    //     .then(data => 
+    //     {
+    //         handleVacaPatch(data)
+    //         // setIsEdit(false)
+    //     })
+    // }
 
-    function deleteVaca()
-    {
-        fetch(`/vacations/${selectedVaca.id}`, {
-            method: "DELETE",
-          })
-        .then((res) => res.json())
-        .then((data) => handleDeleteVaca(data));
-    }
+    // function deleteVaca()
+    // {
+    //     fetch(`/vacations/${selectedVaca.id}`, {
+    //         method: "DELETE",
+    //       })
+    //     .then((res) => res.json())
+    //     .then((data) => handleDeleteVaca(data));
+    // }
+
+    // const [vacaDetails, setVacaDetails] = useState({flightToArrive: "", flightToLeave: "", hotelCheckIn: "", hotelCheckOut: ""})
+
+    // function handleDetailInput(e)
+    // {
+    //     setVacaDetails({...vacaDetails, [e.target.name]: e.target.value})
+    // }
+
+    // function submitVacaDetails(e)
+    // {
+    //     e.preventDefault()
+    //     const detailData = 
+    //     {
+    //         vacationName: selectedVaca.vacationName,
+    //         flightToArrive: vacaDetails.flightToArrive,
+    //         flightToLeave: vacaDetails.flightToLeave,
+    //         hotelCheckIn: vacaDetails.hotelCheckIn,
+    //         hotelCheckOut: vacaDetails.hotelCheckOut
+    //     }
+
+    //     fetch(`/vacations/${selectedVaca.id}`,
+    //     {
+    //         method: "PATCH",
+    //         headers:
+    //         {
+    //             "Content-Type": "application/json",
+    //         },
+    //         body: JSON.stringify(detailData)
+    //     })
+    //     .then(resp => resp.json())
+    //     .then(data => 
+    //     {
+    //         handleVacaPatch(data)
+    //     })
+    // }
+
+    // const [actName, setActName] = useState("")
+
+    // function handleActivityInput(e)
+    // {
+    //     setActName(e.target.value)
+    // }
+
+    // function submitActivity()
+    // {
+    //     const activity = {activityName: actName}
+    //     fetch("/activities", 
+    //     {
+    //         method: 'POST',
+    //         headers: 
+    //         {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(activity)
+    //     })
+    //     .then(resp => resp.json())
+    //     .then(data => 
+    //     {
+    //         handleAddActivity(data)
+    //         const vacaAct = 
+    //         {
+    //             vacation_id: 9,
+    //             activity_id: data.id
+    //         }
+
+    //         fetch("/vacation_activities", 
+    //         {
+    //             method: 'POST',
+    //             headers: 
+    //             {
+    //                 'Content-Type': 'application/json',
+    //             },
+    //             body: JSON.stringify(vacaAct)
+    //         })
+    //         .then(resp => resp.json())
+    //     })
+    // }
+
+    // const dispActivities = activitiesList.map((item) =>
+    // {
+    //     return (
+    //         <ActivityItem item={ item } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity }/>
+    //     )
+    // })
 
     const [vacaDetails, setVacaDetails] = useState({flightToArrive: "", flightToLeave: "", hotelCheckIn: "", hotelCheckOut: ""})
 
@@ -123,12 +212,11 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
         setVacaDetails({...vacaDetails, [e.target.name]: e.target.value})
     }
 
-    function submitVacaDetails(e)
+    function handleNamePatch(data)
     {
-        e.preventDefault()
-        const detailData = 
+        const vacaNamePatch =
         {
-            vacationName: selectedVaca.vacationName,
+            vacationName: data,
             flightToArrive: vacaDetails.flightToArrive,
             flightToLeave: vacaDetails.flightToLeave,
             hotelCheckIn: vacaDetails.hotelCheckIn,
@@ -142,7 +230,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
             {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(detailData)
+            body: JSON.stringify(vacaNamePatch)
         })
         .then(resp => resp.json())
         .then(data => 
@@ -151,63 +239,25 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
         })
     }
 
-    const [actName, setActName] = useState("")
-
-    function handleActivityInput(e)
-    {
-        setActName(e.target.value)
-    }
-
-    function submitActivity()
-    {
-        const activity = {activityName: actName}
-        fetch("/activities", 
-        {
-            method: 'POST',
-            headers: 
-            {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(activity)
-        })
-        .then(resp => resp.json())
-        .then(data => 
-        {
-            handleAddActivity(data)
-            const vacaAct = 
-            {
-                vacation_id: 9,
-                activity_id: data.id
-            }
-
-            fetch("/vacation_activities", 
-            {
-                method: 'POST',
-                headers: 
-                {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(vacaAct)
-            })
-            .then(resp => resp.json())
-        })
-    }
-
-    const dispActivities = activitiesList.map((item) =>
-    {
-        return (
-            <ActivityItem item={ item } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity }/>
-        )
-    })
-
     return (
         <div id="home">
-            <h1>home</h1>
             { isDetail ?
                 <div>
-                    <h2>Vacation Details</h2>
+                    { selectedName }
                     <button onClick= { () => dispatch(vacation()) }>Go back</button>
-                    { isVacaName ?
+                    <h2>Vacation Details</h2>
+                    { isSettings ?
+                        <div>
+                            <button onClick={ () => dispatch(goToSettings()) }>Go back</button>
+                            <Settings handleNamePatch={ handleNamePatch } setSelectedName={ setSelectedName } userList={ userList } selectedVaca={ selectedVaca }/>
+                        </div>
+                    :
+                        <div>
+                            <button onClick={ () => dispatch(goToSettings()) }>Settings</button>
+                            <h1>not settings</h1>
+                        </div>
+                    }
+                    {/* { isVacaName ?
                         <div>
                             <button onClick={ () => dispatch(updateName()) }>Unedit</button>
                             <input onChange={ handleEditVaca }/>
@@ -217,7 +267,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                     :
                         <div>
                             <button onClick={ () => dispatch(updateName()) }>Edit</button>
-                            { selectedVaca.vacationName }
+                            // { selectedVaca.vacationName }
                             { selectedVaca.id }
                             <form onSubmit={ submitVacaDetails}>
                                 <label>
@@ -256,7 +306,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                                 { dispActivities }
                             </ul>
                         </div>
-                    }
+                    } */}
                 </div>
             :
                 <div>

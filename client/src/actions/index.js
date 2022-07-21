@@ -16,6 +16,15 @@ export const vacation = () =>
     )
 }
 
+export const goToSettings = () =>
+{
+    return (
+        {
+            type: "GOTOSETTINGS"
+        }
+    )
+}
+
 export const updateName = () =>
 {
     return (

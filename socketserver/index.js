@@ -48,6 +48,12 @@ io.on("connection", (socket) =>
         removeUser(socket.id);
         console.log(onlineUsers)
     })
+
+    socket.on("addUserToVaca", (username) =>
+    {
+        const user = getUser(username)
+        io.to(user.socketId).emit("newMessage", "added")
+    })
 });
 
 io.listen(4001);
