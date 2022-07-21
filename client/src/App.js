@@ -6,8 +6,41 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment } from "./actions"; //action
 import { addBook } from "./actions"; //action
+// import io from 'socket.io-client';
 
-function App() {
+// const socket = io();
+
+function App() 
+{
+
+  // // socketio docs
+  // const [isConnected, setIsConnected] = useState(socket.connected);
+  // const [lastPong, setLastPong] = useState(null);
+  // useEffect(() => {
+  //   socket.on('connect', () => {
+  //     setIsConnected(true);
+  //   });
+
+  //   socket.on('disconnect', () => {
+  //     setIsConnected(false);
+  //   });
+
+  //   socket.on('pong', () => {
+  //     setLastPong(new Date().toISOString());
+  //   });
+
+  //   return () => {
+  //     socket.off('connect');
+  //     socket.off('disconnect');
+  //     socket.off('pong');
+  //   };
+  // }, []);
+
+  // const sendPing = () => {
+  //   socket.emit('ping');
+  // }
+
+
   const [currentUser, setCurrentUser] = useState("");
   const [vacationList, setVacationList] = useState([]);
   const [activitiesList, setActivitiesList] = useState([]);
@@ -16,7 +49,6 @@ function App() {
   const books = useSelector(state => state.books); //state
   const dispatch = useDispatch();
 
-  console.log(books)
 
   useEffect(() =>
   {
@@ -109,6 +141,15 @@ function App() {
 
   return (
     <div className="App">
+      {/* <div>
+        <p>Connected: { '' + isConnected }</p>
+        <p>Last pong: { lastPong || '-' }</p>
+        <button onClick={ sendPing }>Send ping</button>
+      </div> */}
+
+
+
+
       <h1>Counter: { counter }</h1>
       <button onClick={ () => dispatch(increment()) }>+</button>
       <button onClick={ () => dispatch(addBook({ title: "Snow Crash", author: "Neal Stephenson" })) 

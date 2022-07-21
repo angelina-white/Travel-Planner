@@ -3,6 +3,7 @@ import loggedReducer from "./isLogged";
 import detailReducer from "./isDetails";
 import vacaNameReducer from "./isEdit";
 import booksReducer from "./books"
+import vacaReducer from "./vacas"
 import { combineReducers } from "redux";
 
 const allReducers = combineReducers({
@@ -10,7 +11,8 @@ const allReducers = combineReducers({
     isLogged : loggedReducer,
     isDetails : detailReducer,
     isVacaName : vacaNameReducer,
-    books : booksReducer
+    books : booksReducer,
+    vacas : vacaReducer
 })
 
 export default allReducers

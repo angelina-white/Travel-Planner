@@ -38,3 +38,11 @@ export const addBook = (book) => {
       payload: id,
     };
   };
+
+
+export const addVaca = (vaca) => {
+    return {
+      type: "vaca/add",
+      payload: vaca,
+    };
+  };
