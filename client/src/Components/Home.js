@@ -2,6 +2,7 @@ import { useState } from "react"
 import VacaName from "./VacaName"
 import Settings from "./Settings"
 import ActivityItem from "./ActivityItem"
+import Agenda from "./Agenda"
 import { useSelector, useDispatch } from "react-redux";
 import { vacation } from "../actions"; //action
 import { goToSettings } from "../actions";
@@ -242,8 +243,6 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
 
     return (
         <div id="home">
-            <h1>homepage</h1>
-
             { isDetail ?
                 <div>
                     {/* shows names */}
@@ -256,7 +255,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
             :
                 <div>
                     {/* showsdetails */}
-                    { selectedName }
+                    <h1>{ selectedName }</h1>
                     <button onClick= { () => dispatch(vacation()) }>Go back</button>
                     
                     {/* vacation menu */}
@@ -267,7 +266,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                                     <Link to="/homepage">Homepage</Link>
                                 </li>
                                 <li>
-                                    <Link to="/agenda">Agenda</Link>
+                                    <Link to="/agenda">Calendar</Link>
                                 </li>
                                 <li>
                                     <Link to="/helper">Planning Helper</Link>
@@ -288,7 +287,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                                 <h1>Nothing selected</h1>
                             </Route>
                             <Route path="/agenda">
-                                <h1>Agenda</h1>
+                                <Agenda />
                             </Route>
                             <Route path="/helper">
                                 <h1>Helper</h1>
