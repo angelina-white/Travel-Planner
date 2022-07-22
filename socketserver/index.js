@@ -49,9 +49,10 @@ io.on("connection", (socket) =>
         console.log(onlineUsers)
     })
 
-    socket.on("handleMessage", (msg) =>
+    socket.on("handleMessage", (data) =>
     {
-        io.emit("showMessage", (msg))
+        console.log(data)
+        io.emit("showMessage", (data))
     })
 });
 

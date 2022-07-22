@@ -12,7 +12,7 @@ import { updateName } from "../actions"; //action
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 
 
-function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList})
+function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList})
 {
     const isDetail = useSelector(state => state.isDetails); //state
     const isSettings = useSelector(state => state.isSettings); //state
@@ -168,7 +168,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                                 <h1>Helper</h1>
                             </Route>
                             <Route path="/chat">
-                                <Chat />
+                                <Chat username={ username }/>
                             </Route>
                             <Route path="/timeline">
                                 <Timeline selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
