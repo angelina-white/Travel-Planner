@@ -1,7 +1,7 @@
 import io from 'socket.io-client';
 import { useState, useEffect } from "react";
 
-function Chat()
+function Chat({ username })
 {
     const [socket, setSocket] = useState(null)
     const [messageList, setMessageList] = useState([])
@@ -10,8 +10,12 @@ function Chat()
         setSocket(io("http://localhost:4001"))
         const socket = io("http://localhost:4001");
 
-        socket.on("showMessage", (msg) =>
-            setMessageList((messageList) => messageList = [...messageList, msg])
+        // socket.on("showMessage", (msg) =>
+        //     setMessageList((messageList) => messageList = [...messageList, msg])
+        // )
+
+        socket.on("showMessage", (data) =>
+            setMessageList((messageList) => messageList = [...messageList, data])
         )
 
     }, [])
@@ -21,14 +25,14 @@ function Chat()
     function sendMessage(e)
     {
         e.preventDefault();
-        socket.emit("handleMessage", (message))
+        socket.emit("handleMessage", {msg: message, user: username})
         setMessage("")
     }
 
     const dispList = messageList.map((item) => {
         return (
             <li>
-                { item }
+                {item.user}: { item.msg }
             </li>
         )
     })
