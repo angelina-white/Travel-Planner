@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react"
-import { useSelector, useDispatch } from "react-redux";
-import { increment } from "../actions"; //action
 
 function Line({ item, activitiesList, selectedVaca })
 {
@@ -32,13 +30,12 @@ function Line({ item, activitiesList, selectedVaca })
         }
         else if (subYear==0 && subMonth!==0)
         {
-            setSections(Math.round((subMonth*30)/7))
+            setSections(Math.round(((subMonth*30)+subDay)/7))
         }
         else
         {
-            setSections(Math.round((subYear*365)/30))
+            setSections(Math.round(((subYear*365)+(subMonth*30)+(subDay))/30))
         }
-
     }, [])
 
     // 2022 - 2022 = 0
