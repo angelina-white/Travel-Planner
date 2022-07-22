@@ -4,8 +4,9 @@ import parse from 'date-fns/parse'
 import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
+import { useState } from "react"
 
-function Agenda({ selectedVaca })
+function Agenda({ selectedVaca, activitiesList })
 {
     //handles dates for calendar
     const locales = {'en-US': enUS }
@@ -18,7 +19,7 @@ function Agenda({ selectedVaca })
         locales,
     })
     
-    //gets list of vacation details and activities
+    //list of vacation details
     const interviewEvents = 
     [
         {
@@ -47,6 +48,19 @@ function Agenda({ selectedVaca })
             end: new Date(selectedVaca.aFlightY, (selectedVaca.aFlightM - 1), selectedVaca.aFlightD, selectedVaca.oHotelH, selectedVaca.oHotelM),
         }
     ]
+
+    //gets list of activities
+    const actList = activitiesList.map((item) =>
+    {
+        return (
+            {
+                title: item.activityName,
+                start: new Date(item.aYear, (item.aMonth - 1), item.aDay, item.aHour, item.aMinute),
+                end: new Date(item.aYear, (item.aMonth - 1), item.aDay, item.aHour, item.aMinute),
+            }
+        )
+    })
+    const [list, setList] = useState([...interviewEvents, ...actList])
     
     //style for calendar
     function eventStyleGetter(event, start, end, isSelected) 
@@ -70,7 +84,8 @@ function Agenda({ selectedVaca })
         <div>
             <Calendar
                     localizer={localizer}
-                    events={interviewEvents}
+                    // events={interviewEvents}
+                    events={list}
                     startAccessor="start"
                     endAccessor="end"
                     style={{ height: 535, width: 1350 }}
