@@ -2,7 +2,12 @@ class UserVacationsController < ApplicationController
     
     def create
         userVacation = UserVacation.create!(userVacation_params)
-        render json: userVacation, status: :created
+        # if userVacation.save
+            @user = User.find(userVacation.user_id)
+            @vacation = Vacation.find(userVacation.vacation_id)
+            UserMailer.added_to(@user, @vacation).deliver
+            render json: userVacation, status: :created
+        # end
     end
 
     private

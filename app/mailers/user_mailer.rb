@@ -11,4 +11,10 @@ def reset_password(user)
     mail(to: user.email, subject: "Travel-Planner: username")
 end
 
+def added_to(user, vacation)
+    @user = user
+    @vacation = vacation.vacationName
+    mail(to: user.email, subject: "Added to vacation")
+end
+
 end
