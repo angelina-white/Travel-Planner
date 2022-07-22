@@ -5,6 +5,7 @@ import Settings from "./Settings"
 import Agenda from "./Agenda"
 import Chat from "./Chat"
 import Timeline from "./Timeline"
+import Summary from "./Summary"
 import { useSelector, useDispatch } from "react-redux";
 import { vacation } from "../actions"; //action
 import { goToSettings } from "../actions";
@@ -27,7 +28,28 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
 
     function handleAddVacation()
     {
-        const vacation = {vacationName: vacationInput}
+        const vacation = 
+        {
+            vacationName: vacationInput,
+
+            dFlightM: "",
+            dFlightD: "",
+            dFlightY: "",
+            dFlightH: "",
+            dFlightMin: "",
+    
+            aFlightM: "",
+            aFlightD: "",
+            aFlightY: "",
+            aFlightH: "",
+            aFlightMin: "",
+    
+            iHotelH: "",
+            iHotelM: "",
+    
+            oHotelH: "",
+            oHotelM: ""
+        }
         fetch("/vacations", 
         {
             method: 'POST',
@@ -82,22 +104,28 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
         setIsDetails(true)
     }
 
-    const [vacaDetails, setVacaDetails] = useState({flightToArrive: "", flightToLeave: "", hotelCheckIn: "", hotelCheckOut: ""})
-
-    function handleDetailInput(e)
-    {
-        setVacaDetails({...vacaDetails, [e.target.name]: e.target.value})
-    }
-
     function handleNamePatch(data)
     {
         const vacaNamePatch =
         {
             vacationName: data,
-            flightToArrive: vacaDetails.flightToArrive,
-            flightToLeave: vacaDetails.flightToLeave,
-            hotelCheckIn: vacaDetails.hotelCheckIn,
-            hotelCheckOut: vacaDetails.hotelCheckOut
+            dFlightM: selectedVaca.dFlightM,
+            dFlightD: selectedVaca.dFlightD,
+            dFlightY: selectedVaca.dFlightY,
+            dFlightH: selectedVaca.dFlightH,
+            dFlightMin: selectedVaca.dFlightMin,
+    
+            aFlightM: selectedVaca.aFlightM,
+            aFlightD: selectedVaca.aFlightD,
+            aFlightY: selectedVaca.aFlightY,
+            aFlightH: selectedVaca.aFlightH,
+            aFlightMin: selectedVaca.aFlightMin,
+    
+            iHotelH: selectedVaca.iHotelH,
+            iHotelM: selectedVaca.iHotelM,
+    
+            oHotelH: selectedVaca.oHotelH,
+            oHotelM: selectedVaca.oHotelM
         }
 
         fetch(`/vacations/${selectedVaca.id}`,
@@ -135,7 +163,10 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                     <Link to="/homepage">Homepage</Link>
                                 </li>
                                 <li>
-                                    <Link to="/tripInfo">Trip info</Link>
+                                    <Link to="/summary">Summary</Link>
+                                </li>
+                                <li>
+                                    <Link to="/editTrip">Edit trip</Link>
                                 </li>
                                 <li>
                                     <Link to="/agenda">Calendar</Link>
@@ -158,7 +189,10 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                             <Route path="/homepage">
                                 <h1>Nothing selected</h1>
                             </Route>
-                            <Route path="/tripInfo">
+                            <Route path="/summary">
+                                <Summary selectedVaca={ selectedVaca }/>
+                            </Route>
+                            <Route path="/editTrip">
                                 <Information selectedVaca={ selectedVaca } handleVacaPatch={ handleVacaPatch } handleAddActivity={ handleAddActivity } activitiesList={ activitiesList } setSelectedVaca= { setSelectedVaca } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity }/>
                             </Route>
                             <Route path="/agenda">
