@@ -56,6 +56,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                 body: JSON.stringify(userVaca)
             })
             .then(resp => resp.json())
+            .then((data) => console.log(data))
         })
     }
 
@@ -211,7 +212,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                                 <Information selectedVaca={ selectedVaca } handleVacaPatch={ handleVacaPatch } handleAddActivity={ handleAddActivity } activitiesList={ activitiesList } setSelectedVaca= { setSelectedVaca }/>
                             </Route>
                             <Route path="/agenda">
-                                <Agenda />
+                                <Agenda selectedVaca={ selectedVaca }/>
                             </Route>
                             <Route path="/helper">
                                 <h1>Helper</h1>

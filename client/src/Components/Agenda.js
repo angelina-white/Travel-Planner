@@ -5,7 +5,7 @@ import startOfWeek from 'date-fns/startOfWeek'
 import getDay from 'date-fns/getDay'
 import enUS from 'date-fns/locale/en-US'
 
-function Agenda()
+function Agenda({ selectedVaca })
 {
     //handles dates for calendar
     const locales = {'en-US': enUS }
@@ -22,9 +22,29 @@ function Agenda()
     const interviewEvents = 
     [
         {
-            title: "Flight",
+            title: "Test",
             start: new Date(2022, 6, 25, 14, 30),
             end: new Date(2022, 6, 25, 16, 30),
+        },
+        {
+            title: "Departing flight",
+            start: new Date(selectedVaca.dFlightY, (selectedVaca.dFlightM - 1), selectedVaca.dFlightD, selectedVaca.dFlightH, selectedVaca.dFlightMin),
+            end: new Date(selectedVaca.dFlightY, (selectedVaca.dFlightM - 1), selectedVaca.dFlightD, selectedVaca.dFlightH, selectedVaca.dFlightMin),
+        },
+        {
+            title: "Hotel check in",
+            start: new Date(selectedVaca.dFlightY, (selectedVaca.dFlightM - 1), selectedVaca.dFlightD, selectedVaca.iHotelH, selectedVaca.iHotelM),
+            end: new Date(selectedVaca.dFlightY, (selectedVaca.dFlightM - 1), selectedVaca.dFlightD, selectedVaca.iHotelH, selectedVaca.iHotelM),
+        },
+        {
+            title: "Arriving flight",
+            start: new Date(selectedVaca.aFlightY, (selectedVaca.aFlightM - 1), selectedVaca.aFlightD, selectedVaca.aFlightH, selectedVaca.aFlightMin),
+            end: new Date(selectedVaca.aFlightY, (selectedVaca.aFlightM - 1), selectedVaca.aFlightD, selectedVaca.aFlightH, selectedVaca.aFlightMin),
+        },
+        {
+            title: "Hotel check out",
+            start: new Date(selectedVaca.aFlightY, (selectedVaca.aFlightM - 1), selectedVaca.aFlightD, selectedVaca.oHotelH, selectedVaca.oHotelM),
+            end: new Date(selectedVaca.aFlightY, (selectedVaca.aFlightM - 1), selectedVaca.aFlightD, selectedVaca.oHotelH, selectedVaca.oHotelM),
         }
     ]
     

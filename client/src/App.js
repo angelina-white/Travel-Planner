@@ -6,13 +6,13 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment } from "./actions"; //action
 import { addBook } from "./actions"; //action
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 // const socket = io("http://localhost:4001");
 
 function App() 
 {
-  const [message, setMessage] = useState("message goes here")
+  // const [message, setMessage] = useState("message goes here")
   // const [isConnected, setIsConnected] = useState(socket.connected);
   // const [socket, setSocket] = useState(null)
   // useEffect(() =>
@@ -150,7 +150,7 @@ function App()
 
   return (
     <div className="App">
-      <h1>{message}</h1>
+      {/* <h1>{message}</h1> */}
       {/* <h1>Counter: { counter }</h1>
       <button onClick={ () => dispatch(increment()) }>+</button>
       <button onClick={ () => dispatch(addBook({ title: "Snow Crash", author: "Neal Stephenson" })) 
