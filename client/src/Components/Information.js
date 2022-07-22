@@ -1,7 +1,7 @@
 import { useState } from "react"
 import ActivityItem from "./ActivityItem"
 
-function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activitiesList, setSelectedVaca, handleActivityPatch, handleDeleteActivity })
+function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSelectedVaca, handleActivityPatch, handleDeleteActivity, activitiesList })
 {
     const [vacaDetails, setVacaDetails] = useState(
     {
@@ -20,14 +20,10 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
         iHotelH: selectedVaca.iHotelH,
         iHotelM: selectedVaca.iHotelM,
 
-        oHotelH: selectedVaca.iHotelH,
-        oHotelM: selectedVaca.iHotelM
+        oHotelH: selectedVaca.oHotelH,
+        oHotelM: selectedVaca.oHotelM
     })
 
-    const flightToLeave = `${selectedVaca.dFlightM}/${selectedVaca.dFlightD}/${selectedVaca.dFlightY}`
-    const flightToArrive = `${selectedVaca.aFlightM}/${selectedVaca.aFlightD}/${selectedVaca.aFlightY}`
-    const hotelCheckIn = `${selectedVaca.iHotelH}:${selectedVaca.iHotelM}`
-    const hotelCheckOut = `${selectedVaca.oHotelH}:${selectedVaca.oHotelM}`
 
     function handleDetailInput(e)
     {
@@ -56,8 +52,8 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
             iHotelH: vacaDetails.iHotelH,
             iHotelM: vacaDetails.iHotelM,
     
-            oHotelH: vacaDetails.iHotelH,
-            oHotelM: vacaDetails.iHotelM
+            oHotelH: vacaDetails.oHotelH,
+            oHotelM: vacaDetails.oHotelM
         }
 
         fetch(`/vacations/${selectedVaca.id}`,
@@ -221,14 +217,6 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
             :
                 <div></div>}
 
-            <h2>Summary</h2>
-            <h3>Flights</h3>
-            <h4>Departing flight: { flightToLeave }</h4>
-            <h4>Arriving flight: { flightToArrive }</h4>
-            <h3>Hotels</h3>
-            <h4>Hotel check-in: { hotelCheckIn }</h4>
-            <h4>Hotel check-out: { hotelCheckOut }</h4>
-            <h3>Activities</h3>
             <ul>
                 { dispActivities }
             </ul>

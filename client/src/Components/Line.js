@@ -42,13 +42,13 @@ function Line({ item, selectedVaca })
     {
         if (subYear==0 && subMonth==0)
         {
-            setSections(subDay)
+            setSections(subDay + 1)
             const part = end.day-item.aDay
             setDest(part)
         }
         else if (subYear==0 && subMonth!==0)
         {
-            setSections(Math.round(((subMonth*30)+subDay)/7))
+            setSections((Math.round(((subMonth*30)+subDay)/7)) + 1)
 
             //which week
             //08/15
