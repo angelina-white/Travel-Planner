@@ -75,6 +75,22 @@ function Agenda({ selectedVaca, activitiesList })
             display: 'block'
             };
 
+        if (event.title == "Departing flight")
+        {
+            style.backgroundColor = '#ff0000'
+        }
+        else if (event.title == "Arriving flight")
+        {
+            style.backgroundColor = '#ff0000'
+        }
+        else if (event.title == "Hotel check in")
+        {
+            style.backgroundColor = '#FFA500'
+        }
+        else if (event.title == "Hotel check out")
+        {
+            style.backgroundColor = '#FFA500'
+        }
         return {
             style: style
         }
@@ -84,7 +100,6 @@ function Agenda({ selectedVaca, activitiesList })
         <div>
             <Calendar
                     localizer={localizer}
-                    // events={interviewEvents}
                     events={list}
                     startAccessor="start"
                     endAccessor="end"
