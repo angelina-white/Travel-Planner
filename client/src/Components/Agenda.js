@@ -56,10 +56,11 @@ function Agenda({ selectedVaca, activitiesList })
             {
                 title: item.activityName,
                 start: new Date(item.aYear, (item.aMonth - 1), item.aDay, item.aHour, item.aMinute),
-                end: new Date(item.aYear, (item.aMonth - 1), item.aDay, item.aHour, item.aMinute),
+                end: new Date(item.aYear, (item.aMonth - 1), item.aDay, item.aHour, item.aMinute)
             }
         )
     })
+    
     const [list, setList] = useState([...interviewEvents, ...actList])
     
     //style for calendar
