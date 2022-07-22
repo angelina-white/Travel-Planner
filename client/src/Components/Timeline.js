@@ -10,7 +10,7 @@ function Timeline({ selectedVaca, activitiesList })
     const lines = activitiesList.map((item) =>
     {
         return (
-            <Line item={ item } activitiesList={ activitiesList } selectedVaca={ selectedVaca } />
+            <Line item={ item } selectedVaca={ selectedVaca } />
         )
     })
 
