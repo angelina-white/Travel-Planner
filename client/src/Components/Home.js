@@ -124,7 +124,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                 <div>
                     {/* showsdetails */}
                     <h1>{ selectedName }</h1>
-                    <button onClick= { () => dispatch(vacation()) }>Go back</button>
+                    <button onClick= { () => setIsDetails((isDetails) => isDetails = !isDetails) }>Go back</button>
                     
                     {/* vacation menu */}
                     <Router>
