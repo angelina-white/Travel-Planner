@@ -59,6 +59,9 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, ha
             body: JSON.stringify(userVaca)
         })
         .then(resp => resp.json())
+
+        //send email to user saying they've been added
+        //post? with findUser[0].email
     }
 
     const [isEditName, setIsEditName] = useState(false)

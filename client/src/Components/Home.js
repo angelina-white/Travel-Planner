@@ -127,6 +127,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                     <button onClick= { () => setIsDetails((isDetails) => isDetails = !isDetails) }>Go back</button>
                     
                     {/* vacation menu */}
+                    {/* when click on item, styling changes, use toggle */}
                     <Router>
                         <nav>
                             <ul>
