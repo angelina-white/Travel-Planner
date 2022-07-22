@@ -31,7 +31,7 @@ class VacationsController < ApplicationController
     private
 
     def vacation_params
-        params.permit(:vacationName, :flightToArrive, :flightToLeave, :hotelCheckIn, :hotelCheckOut)
+        params.permit(:vacationName, :dFlightM, :aFlightM, :dFlightD, :aFlightD, :dFlightY, :aFlightY, :dFlightH, :aFlightH, :dFlightMin, :aFlightMin, :iHotelH, :oHotelH, :iHotelM, :oHotelM)
     end
     
 end

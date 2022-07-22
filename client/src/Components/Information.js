@@ -3,12 +3,31 @@ import ActivityItem from "./ActivityItem"
 
 function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activitiesList, setSelectedVaca })
 {
-    const [vacaDetails, setVacaDetails] = useState({
-        flightToArrive: selectedVaca.flightToArrive, 
-        flightToLeave: selectedVaca.flightToLeave, 
-        hotelCheckIn: selectedVaca.hotelCheckIn, 
-        hotelCheckOut: selectedVaca.hotelCheckOut
+    const [vacaDetails, setVacaDetails] = useState(
+    {
+        dFlightM: selectedVaca.dFlightM,
+        dFlightD: selectedVaca.dFlightD,
+        dFlightY: selectedVaca.dFlightY,
+        dFlightH: selectedVaca.dFlightH,
+        dFlightMin: selectedVaca.dFlightMin,
+
+        aFlightM: selectedVaca.aFlightM,
+        aFlightD: selectedVaca.aFlightD,
+        aFlightY: selectedVaca.aFlightY,
+        aFlightH: selectedVaca.aFlightH,
+        aFlightMin: selectedVaca.aFlightMin,
+
+        iHotelH: selectedVaca.iHotelH,
+        iHotelM: selectedVaca.iHotelM,
+
+        oHotelH: selectedVaca.iHotelH,
+        oHotelM: selectedVaca.iHotelM
     })
+
+    const flightToLeave = `${selectedVaca.dFlightM}/${selectedVaca.dFlightD}/${selectedVaca.dFlightY}`
+    const flightToArrive = `${selectedVaca.aFlightM}/${selectedVaca.aFlightD}/${selectedVaca.aFlightY}`
+    const hotelCheckIn = `${selectedVaca.iHotelH}:${selectedVaca.iHotelM}`
+    const hotelCheckOut = `${selectedVaca.oHotelH}:${selectedVaca.oHotelM}`
 
     function handleDetailInput(e)
     {
@@ -21,10 +40,24 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
         const detailData = 
         {
             vacationName: selectedVaca.vacationName,
-            flightToArrive: vacaDetails.flightToArrive,
-            flightToLeave: vacaDetails.flightToLeave,
-            hotelCheckIn: vacaDetails.hotelCheckIn,
-            hotelCheckOut: vacaDetails.hotelCheckOut
+
+            dFlightM: vacaDetails.dFlightM,
+            dFlightD: vacaDetails.dFlightD,
+            dFlightY: vacaDetails.dFlightY,
+            dFlightH: vacaDetails.dFlightH,
+            dFlightMin: vacaDetails.dFlightMin,
+    
+            aFlightM: vacaDetails.aFlightM,
+            aFlightD: vacaDetails.aFlightD,
+            aFlightY: vacaDetails.aFlightY,
+            aFlightH: vacaDetails.aFlightH,
+            aFlightMin: vacaDetails.aFlightMin,
+    
+            iHotelH: vacaDetails.iHotelH,
+            iHotelM: vacaDetails.iHotelM,
+    
+            oHotelH: vacaDetails.iHotelH,
+            oHotelM: vacaDetails.iHotelM
         }
 
         fetch(`/vacations/${selectedVaca.id}`,
@@ -119,11 +152,19 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
                     <div>
                         <label>
                             Departing flight:
-                            <input name="flightToArrive" onChange={ handleDetailInput } placeholder="yyyy/mm/dd"/>
+                            <input name="dFlightM" onChange={ handleDetailInput } placeholder="mm"/>
+                            <input name="dFlightD" onChange={ handleDetailInput } placeholder="dd"/>
+                            <input name="dFlightY" onChange={ handleDetailInput } placeholder="yyyy"/>
+                            <input name="dFlightH" onChange={ handleDetailInput } placeholder="hh"/>
+                            <input name="dFlightMin" onChange={ handleDetailInput } placeholder="mm"/>
                         </label>
                         <label>
                             Arriving flight:
-                            <input name="flightToLeave" onChange={ handleDetailInput } placeholder="yyyy/mm/dd"/>
+                            <input name="aFlightM" onChange={ handleDetailInput } placeholder="mm"/>
+                            <input name="aFlightD" onChange={ handleDetailInput } placeholder="dd"/>
+                            <input name="aFlightY" onChange={ handleDetailInput } placeholder="yyyy"/>
+                            <input name="aFlightH" onChange={ handleDetailInput } placeholder="hh"/>
+                            <input name="aFlightMin" onChange={ handleDetailInput } placeholder="mm"/>
                         </label>
                         <button>Submit</button>
                     </div>
@@ -134,11 +175,13 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
                     <div>
                         <label>
                             Hotel check-in:
-                            <input name="hotelCheckIn" onChange={ handleDetailInput } placeholder="Enter..."/>
+                            <input name="iHotelH" onChange={ handleDetailInput } placeholder="hh"/>
+                            <input name="iHotelM" onChange={ handleDetailInput } placeholder="mm"/>
                         </label>
                         <label>
                             Hotel check-out:
-                            <input name="hotelCheckOut" onChange={ handleDetailInput } placeholder="Enter..."/>
+                            <input name="oHotelH" onChange={ handleDetailInput } placeholder="hh"/>
+                            <input name="oHotelM" onChange={ handleDetailInput } placeholder="mm"/>
                         </label>
                         <button>Submit</button>
                     </div>
@@ -159,11 +202,11 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
 
             <h2>Summary</h2>
             <h3>Flights</h3>
-            <h4>Departing flight: {selectedVaca.flightToArrive}</h4>
-            <h4>Arriving flight: {selectedVaca.flightToLeave}</h4>
+            <h4>Departing flight: { flightToLeave }</h4>
+            <h4>Arriving flight: { flightToArrive }</h4>
             <h3>Hotels</h3>
-            <h4>Hotel check-in: {selectedVaca.hotelCheckIn}</h4>
-            <h4>Hotel check-out: {selectedVaca.hotelCheckOut}</h4>
+            <h4>Hotel check-in: { hotelCheckIn }</h4>
+            <h4>Hotel check-out: { hotelCheckOut }</h4>
             <h3>Activities</h3>
             <ul>
                 { dispActivities }

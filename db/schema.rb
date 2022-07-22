@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_19_203953) do
+ActiveRecord::Schema.define(version: 2022_07_22_012101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,10 +41,20 @@ ActiveRecord::Schema.define(version: 2022_07_19_203953) do
 
   create_table "vacations", force: :cascade do |t|
     t.string "vacationName"
-    t.date "flightToArrive"
-    t.date "flightToLeave"
-    t.string "hotelCheckIn"
-    t.string "hotelCheckOut"
+    t.integer "dFlightM"
+    t.integer "aFlightM"
+    t.integer "dFlightD"
+    t.integer "aFlightD"
+    t.integer "dFlightY"
+    t.integer "aFlightY"
+    t.integer "dFlightH"
+    t.integer "aFlightH"
+    t.integer "dFlightMin"
+    t.integer "aFlightMin"
+    t.integer "iHotelH"
+    t.integer "oHotelH"
+    t.integer "iHotelM"
+    t.integer "oHotelM"
   end
 
   add_foreign_key "user_vacations", "users"

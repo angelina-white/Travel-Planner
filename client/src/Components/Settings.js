@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import io from 'socket.io-client';
+// import io from 'socket.io-client';
 
 function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, handleDeleteVaca})
 {
-    const [socket, setSocket] = useState(null)
-    useEffect(() =>
-    {
-      setSocket(io("http://localhost:4001"))
-    }, [])
+    // const [socket, setSocket] = useState(null)
+    // useEffect(() =>
+    // {
+    //   setSocket(io("http://localhost:4001"))
+    // }, [])
 
     const [vacaName, setVacaName] = useState("")
 
