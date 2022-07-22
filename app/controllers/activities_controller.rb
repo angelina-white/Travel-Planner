@@ -21,7 +21,7 @@ class ActivitiesController < ApplicationController
     private
 
     def activity_params
-        params.permit(:activityName)
+        params.permit(:activityName, :aMonth, :aDay, :aYear, :aHour, :aMinute)
     end
 
 end

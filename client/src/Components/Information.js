@@ -1,7 +1,7 @@
 import { useState } from "react"
 import ActivityItem from "./ActivityItem"
 
-function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activitiesList, setSelectedVaca })
+function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activitiesList, setSelectedVaca, handleActivityPatch, handleDeleteActivity })
 {
     const [vacaDetails, setVacaDetails] = useState(
     {
@@ -77,16 +77,32 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
         })
     }
 
-     const [actName, setActName] = useState("")
+     const [activity, setActivity] = useState(
+    {
+        activityName: "",
+        aMonth: "",
+        aDay: "",
+        aYear: "",
+        aHour: "",
+        aMinute: ""
+    })
 
     function handleActivityInput(e)
     {
-        setActName(e.target.value)
+        setActivity({...activity, [e.target.name]: e.target.value})
     }
 
     function submitActivity()
     {
-        const activity = {activityName: actName}
+        const data = 
+        {
+            activityName: activity.activityName,
+            aMonth: parseInt(activity.aMonth),
+            aDay: parseInt(activity.aDay),
+            aYear: parseInt(activity.aYear),
+            aHour: parseInt(activity.aHour),
+            aMinute: parseInt(activity.aMinute)
+        }
         fetch("/activities", 
         {
             method: 'POST',
@@ -94,7 +110,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
             {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(activity)
+            body: JSON.stringify(data)
         })
         .then(resp => resp.json())
         .then(data => 
@@ -127,7 +143,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
     const dispActivities = activitiesList.map((item) =>
     {
         return (
-            <ActivityItem item={ item } />
+            <ActivityItem item={ item } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity }/>
         )
     })
 
@@ -193,7 +209,12 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, activit
                 <div>
                     <label>
                         Activity name:
-                        <input onChange={ handleActivityInput }/>
+                        <input name="activityName" onChange={ handleActivityInput } placeholder="Enter name..."/>
+                        <input name="aMonth" onChange={ handleActivityInput } placeholder="mm"/>
+                        <input name="aDay" onChange={ handleActivityInput } placeholder="dd"/>
+                        <input name="aYear" onChange={ handleActivityInput } placeholder="yyyy"/>
+                        <input name="aHour" onChange={ handleActivityInput } placeholder="hh"/>
+                        <input name="aMinute" onChange={ handleActivityInput } placeholder="mm"/>
                         <button onClick={ submitActivity }>Submit</button>
                     </label>
                 </div>

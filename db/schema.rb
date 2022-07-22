@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_22_012101) do
+ActiveRecord::Schema.define(version: 2022_07_22_021224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "activities", force: :cascade do |t|
     t.string "activityName"
+    t.integer "aMonth"
+    t.integer "aDay"
+    t.integer "aYear"
+    t.integer "aHour"
+    t.integer "aMinute"
   end
 
   create_table "user_vacations", force: :cascade do |t|
