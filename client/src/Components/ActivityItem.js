@@ -48,7 +48,9 @@ function ActivityItem({ item, handleActivityPatch, handleDeleteActivity})
     }
 
     const date = `${item.aMonth}/${item.aDay}/${item.aHour}`
-    const time = `${item.aHour}/${item.aMinute}`
+    const time = `${item.aHour}:${item.aMinute}`
+
+    //need inputs for data and time for activities
 
     return (
         <li>
