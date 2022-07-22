@@ -1,14 +1,7 @@
 import { useState, useEffect } from "react";
-// import io from 'socket.io-client';
 
 function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, handleDeleteVaca})
 {
-    // const [socket, setSocket] = useState(null)
-    // useEffect(() =>
-    // {
-    //   setSocket(io("http://localhost:4001"))
-    // }, [])
-
     const [vacaName, setVacaName] = useState("")
 
     function submitName()
@@ -25,17 +18,6 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, ha
 
     function submitAddUser()
     {
-        // socket.emit("addUserToVaca", addUsername)
-        //get username X
-        //send username to socket server X
-        //socket server gets username and looks for username X
-        //socket server sends message to specific username
-        //find somewhere to put notification
-        //probably recieve in app.js and show note in console first
-
-
-        //gets user id from userList
-        //sends post request to user_vacations
         const findUser = userList.filter((item) =>
         {
             return (
@@ -60,8 +42,21 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, ha
         })
         .then(resp => resp.json())
 
-        //send email to user saying they've been added
-        //post? with findUser[0].email
+        const emailData = 
+        {
+            email: findUser[0].email
+        }
+
+        fetch("/vacations/add", 
+        {
+            method: 'POST',
+            headers: 
+            {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(emailData)
+        })
+        .then(resp => resp.json())
     }
 
     const [isEditName, setIsEditName] = useState(false)

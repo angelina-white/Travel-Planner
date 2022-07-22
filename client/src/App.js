@@ -6,39 +6,9 @@ import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment } from "./actions"; //action
 import { addBook } from "./actions"; //action
-// import io from 'socket.io-client';
-
-// const socket = io("http://localhost:4001");
 
 function App() 
 {
-  // const [message, setMessage] = useState("message goes here")
-  // const [isConnected, setIsConnected] = useState(socket.connected);
-  // const [socket, setSocket] = useState(null)
-  // useEffect(() =>
-  // {
-  //   setSocket(io("http://localhost:4001"))
-    
-    
-    // socket.on("newMessage", (msg) =>
-    // {
-    //   console.log(msg)
-    // })
-    // //console log message from server
-    // socket.on("firstEvent", (msg) =>
-    // {
-    //   console.log(msg)
-    // })
-  // }, [])
-
-  // useEffect(() =>
-  // {
-  //   const socket = io("http://localhost:4001");
-  //   socket.on("newMessage", (msg) =>
-  //   {
-  //     setMessage(msg)
-  //   })
-  // })
 
   const [currentUser, setCurrentUser] = useState("");
   const [vacationList, setVacationList] = useState([]);

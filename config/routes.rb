@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   post "/password/reset", to: "password_reset#create"
   get "/password/reset/edit", to: "password_reset#edit"
 
+  post "/vacations/add", to: "users#add"
+
 
   get "/auth", to: "users#show"
 
