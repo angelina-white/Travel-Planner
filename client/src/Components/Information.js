@@ -131,7 +131,6 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
         })
     }
 
-    const [isEditInfo, setIsEditInfo] = useState(false)
     const [isFlights, setIsFlights] = useState(false)
     const [isHotel, setIsHotel] = useState(false)
     const [isActivity, setIsActivity] = useState(false)
@@ -145,21 +144,13 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
 
     return (
         <div>
-            {isEditInfo ?
-                <div>
-                    <button onClick={() => setIsEditInfo((isEditInfo) => isEditInfo = !isEditInfo)}>Unedit</button>
-                    <button onClick={() => setIsFlights((isFlights) => isFlights = !isFlights)}>Flights</button>
-                    <button onClick={() => setIsHotel((isHotel) => isHotel = !isHotel)}>Hotel</button>
-                    <button onClick={() => setIsActivity((isActivity) => isActivity = !isActivity)}>Activity</button>
-                </div>
-            : 
-                <div>
-                    <button onClick={() => setIsEditInfo((isEditInfo) => isEditInfo = !isEditInfo)}>Edit Info</button>
-                </div>
-            }
+            <div>
+                <button onClick={() => setIsFlights((isFlights) => isFlights = !isFlights)}>Flights</button>
+                <button onClick={() => setIsHotel((isHotel) => isHotel = !isHotel)}>Hotel</button>
+                <button onClick={() => setIsActivity((isActivity) => isActivity = !isActivity)}>Activity</button>
+            </div>
 
             <form onSubmit={ submitVacaDetails}>
-
                 {isFlights?
                     <div>
                         <label>
@@ -204,7 +195,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
             {isActivity ?
                 <div>
                     <label>
-                        Activity name:
+                        Add activity:
                         <input name="activityName" onChange={ handleActivityInput } placeholder="Enter name..."/>
                         <input name="aMonth" onChange={ handleActivityInput } placeholder="mm"/>
                         <input name="aDay" onChange={ handleActivityInput } placeholder="dd"/>
@@ -213,13 +204,13 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
                         <input name="aMinute" onChange={ handleActivityInput } placeholder="mm"/>
                         <button onClick={ submitActivity }>Submit</button>
                     </label>
+                    <h4>Edit activities:</h4>
+                    <ul>
+                        { dispActivities }
+                    </ul>
                 </div>
             :
                 <div></div>}
-
-            <ul>
-                { dispActivities }
-            </ul>
         </div>
     )
 }
