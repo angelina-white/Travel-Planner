@@ -2,8 +2,8 @@ import { useState } from "react"
 import VacaName from "./VacaName"
 import Information from "./Information"
 import Settings from "./Settings"
-import ActivityItem from "./ActivityItem"
 import Agenda from "./Agenda"
+import Chat from "./Chat"
 import Timeline from "./Timeline"
 import { useSelector, useDispatch } from "react-redux";
 import { vacation } from "../actions"; //action
@@ -168,7 +168,7 @@ function Home({ userId, vacationList, handleAddVaca, handleVacaPatch, handleDele
                                 <h1>Helper</h1>
                             </Route>
                             <Route path="/chat">
-                                <h1>Chat</h1>
+                                <Chat />
                             </Route>
                             <Route path="/timeline">
                                 <Timeline selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
