@@ -90,6 +90,9 @@
 
 #signupLeft {
   float: left;
+  height: 100vh;
+  width: 840px;
+  background-color: #F2EFE9;
 }
 
 #signupBorder {
@@ -139,7 +142,7 @@
 }
 
 #signupUsername:focus {
-  outline: solid 2px #F2CEAE;
+  outline: solid 2px #F2E6D8;
 }
 
 #signupEmail {
@@ -149,7 +152,7 @@
 }
 
 #signupEmail:focus {
-  outline: solid 2px #F2CEAE;
+  outline: solid 2px #F2E6D8;
 }
 
 #signupPassword {
@@ -159,7 +162,7 @@
 }
 
 #signupPassword:focus {
-  outline: solid 2px #F2CEAE;
+  outline: solid 2px #F2E6D8;
 }
 
 #signupSubmit {
