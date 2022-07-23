@@ -5,11 +5,8 @@
   float: left;
 } */
 
-#landingPage {
-  height: 100vh;
-  width: 1440px;
-}
 
+/* login page */
 #landingPic2 {
   height: 110vh;
   width: 1640px;
@@ -84,6 +81,102 @@
 #landingSignUp:hover {
   text-decoration: underline;
   cursor: pointer;
+}
+
+/* sign up page */
+#signupPage {
+  margin-top: -15px;
+}
+
+#signupLeft {
+  float: left;
+}
+
+#signupBorder {
+  margin-top: 25px;
+  margin-lefT: 200px;
+  border-radius: 20px;
+  border: 2px solid black;
+  opacity: .25;
+  height: 600px;
+  width: 500px;
+}
+
+#signupRight {
+  float: right;
+  height: 100vh;
+  width: 600px;
+}
+
+#signupPic {
+  height: 100vh;
+  width: 600px;
+}
+
+#signupTopSpace {
+  height: 15px;
+}
+
+#signupBack {
+  color: black;
+  margin-left: 25px;
+}
+
+#signupTitle {
+  margin-left: 375px;
+  margin-top: -525px;
+  position: absolute;
+}
+
+.signupInput {
+  margin-left: 330px;
+}
+
+#signupUsername {
+  position: absolute;
+  margin-top: -410px;
+  font-size: 20px;
+}
+
+#signupUsername:focus {
+  outline: solid 2px #F2CEAE;
+}
+
+#signupEmail {
+  position: absolute;
+  margin-top: -310px;
+  font-size: 20px;
+}
+
+#signupEmail:focus {
+  outline: solid 2px #F2CEAE;
+}
+
+#signupPassword {
+  position: absolute;
+  margin-top: -210px;
+  font-size: 20px;
+}
+
+#signupPassword:focus {
+  outline: solid 2px #F2CEAE;
+}
+
+#signupSubmit {
+  position: absolute;
+  margin-top: -100px;
+  margin-left: 400px;
+  width: 100px;
+  font-size: 25px;
+  background-color: white;
+  border: 1px solid #F2CEAE;
+  color: #F2CEAE;
+}
+
+#signupSubmit:hover {
+  background-color: #F2CEAE;
+  border: 1px solid white;
+  color: white;
 }
 
 
