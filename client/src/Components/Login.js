@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
-import jwt from "jsonwebtoken";
 
 function Login({ setCurrentUser, renderLists, setIsNotPassword })
 {
