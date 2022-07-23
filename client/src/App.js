@@ -49,6 +49,7 @@ function App()
 
   function renderLists(data)
   {
+    console.log("hi")
     // socket.emit("newUser", data)
   }
 

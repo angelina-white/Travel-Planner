@@ -1,6 +1,8 @@
 import { useState } from "react";
 import landingPic2 from "../landingPic2.jpg"
 import Button from 'react-bootstrap/Button';
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import Signup from "./Signup"
 
 function Landing({ setCurrentUser, renderLists })
 {
@@ -97,25 +99,36 @@ function Landing({ setCurrentUser, renderLists })
         }
     return (
         <div id="landingPage">
-           <img id="landingPic2" src={landingPic2}/>
-            <div id="landingBack"></div>
-            <h1 id="landingTitle">Travel Planner</h1>
-            <form onSubmit={handleLogin}>
-                <input 
-                    id="landingUsername" 
-                    type="text"
-                    placeholder="Username"
-                    value={ username }
-                    onChange={(e) => setUsername(e.target.value)}/>
-                <input 
-                    id="landingPassword" 
-                    type="password"
-                    placeholder="Password"
-                    value={ password }
-                    onChange={(e) => setPassword(e.target.value)}/>
-                <Button id="landingLogin" type="submit">Login</Button>
-            </form>
-            <h5 id="landingSignUp">Signup</h5>
+            <Router>
+                <Switch>
+                    <Route path="/signup">
+                        <Signup setCurrentUser={ setCurrentUser } renderLists={ renderLists }/>
+                    </Route>
+                    <Route path="/">
+                        <img id="landingPic2" src={landingPic2}/>
+                        <div id="landingBack"></div>
+                        <h1 id="landingTitle">Travel Planner</h1>
+                        <form onSubmit={handleLogin}>
+                            <input 
+                                id="landingUsername" 
+                                type="text"
+                                placeholder="Username"
+                                value={ username }
+                                onChange={(e) => setUsername(e.target.value)}/>
+                            <input 
+                                id="landingPassword" 
+                                type="password"
+                                placeholder="Password"
+                                value={ password }
+                                onChange={(e) => setPassword(e.target.value)}/>
+                            <Button id="landingLogin" type="submit">Login</Button>
+                        </form>
+                        <Link to="/signup">
+                            <h5 id="landingSignUp">Signup</h5>
+                        </Link>
+                    </Route>
+                </Switch>
+            </Router>
             <p>{ errors }</p>
 
             {/* <a onClick={ forgotPass }>Forgot username?</a>

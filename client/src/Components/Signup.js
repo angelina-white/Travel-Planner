@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Button from 'react-bootstrap/Button';
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import Landing from "./Landing"
+import signupPic from "../signupPic.jpg"
 
-function Signup({ setCurrentUser, handleCloseSignup, renderLists })
+function Signup({ setCurrentUser, renderLists })
 {
     //handles user sign up
     const [username, setUsername] = useState("");
@@ -33,41 +36,65 @@ function Signup({ setCurrentUser, handleCloseSignup, renderLists })
             res.json().then( e => setErrors(Object.entries(e.error).flat()))
           }
         })
-        .then(() => renderLists(username))
+        // .then(() => renderLists(username))
     }
 
     return (
-        <div className="signup">
-            <form onSubmit={handleSubmit}>
-              <div className="signupInput">
-                <input
-                    id="loginOutline"
-                    type="text"
-                    placeholder="Username"
-                    value={ username }
-                    onChange={(e) => setUsername(e.target.value)}
-                  />
-              </div>
-              <div className="signupInput">
-                <input
-                    id="loginOutline"
-                    type="text"
-                    placeholder="Email"
-                    value={ email }
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-              </div>
-              <div className="signupInput">
-                <input
-                    id="loginOutline"
-                    type="password"
-                    placeholder="Password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                  />
-              </div>
-                <Button id="signupSubmit" type="submit">Submit</Button>
-            </form>
+        <div id="signupPage">
+          <Router>
+            <Switch>
+              <Route path="/landing">
+                  <Landing />
+              </Route>
+              <Route path="/signup">
+
+                <div id="signupLeft">
+                  <div id="signupTopSpace"></div>
+                  <Link to="/landing" id="signupBack">
+                      Go back
+                  </Link>
+                  <div id="signupBorder"></div>
+
+                  <h1 id="signupTitle">Sign Up</h1>
+
+                  <form onSubmit={handleSubmit}>
+                    <div className="signupInput">
+                      <input
+                          id="signupUsername"
+                          type="text"
+                          placeholder="Username"
+                          value={ username }
+                          onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
+                    <div className="signupInput">
+                      <input
+                          id="signupEmail"
+                          type="text"
+                          placeholder="Email"
+                          value={ email }
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </div>
+                    <div className="signupInput">
+                      <input
+                          id="signupPassword"
+                          type="password"
+                          placeholder="Password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                      <Button id="signupSubmit" type="submit">Submit</Button>
+                  </form>
+                </div>
+
+                <div id="signupRight">
+                  <img id="signupPic" src={signupPic} />
+                </div>
+              </Route>
+            </Switch>
+          </Router>
         </div>
     )
 }
