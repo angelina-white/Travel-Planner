@@ -56,7 +56,7 @@ function Summary({ selectedVaca })
         //checkin
         if (selectedVaca.iHotelH == null || selectedVaca.iHotelM == null)
         {
-            setCheckIn("")
+            setCheckIn("Add hotel check in")
         }
         else if (selectedVaca.iHotelM == 0)
         {
@@ -71,7 +71,7 @@ function Summary({ selectedVaca })
         //checkout
         if (selectedVaca.oHotelH == null || selectedVaca.oHotelM == null)
         {
-            setCheckOut("")
+            setCheckOut("Add hotel check out")
         }
         else if (selectedVaca.oHotelM == 0)
         {

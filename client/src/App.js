@@ -1,6 +1,7 @@
 import './App.css';
 import Home from "./Components/Home"
 import HomeLogin from "./Components/HomeLogin"
+import Landing from "./Components/Landing"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
@@ -43,7 +44,8 @@ function App()
     })
   }, [])
 
-  if(!currentUser) return <HomeLogin setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
+  // if(!currentUser) return <HomeLogin setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
+  if(!currentUser) return <Landing setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
 
   function renderLists(data)
   {
