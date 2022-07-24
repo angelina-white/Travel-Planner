@@ -201,7 +201,8 @@
   margin-top: 20px;
   margin-left: 25px;
   float: left;
-  color: #F4BF88;
+  /* color: #F4BF88; */
+  color: #F2A766;
 }
 
 #username {
@@ -221,7 +222,13 @@
 }
 
 #addVacaCont {
-  margin-left: 30px;
+  /* margin-left: 30px; */
+  margin-left: 150px;
+  padding-top: 20px;
+}
+
+#vacaNameInput {
+  height: 36px;
 }
 
 #vacaNameInput:focus {
@@ -230,18 +237,18 @@
 
 #addVacaButton {
   margin-left: 10px;
+  background-color: #172623;
+  border: 1px solid #172623;
 }
 
 #vacationListUl {
   margin-top: -525px;
-  margin-left: 12px;
+  margin-left: 110px;
   list-style-type: none;
   position: absolute;
 }
 
 #namesBackground {
-  /* background-color: #FAE9D9; */
-  margin-top: 25px;
   margin-left: 25px;
   height: 550px;
   width: 1390px;
@@ -321,15 +328,35 @@
 
 /* vacaname */
 #vacaNameCont{
-  height: 250px;
-  width: 250px;
-  border: 3px solid #F2CEAE;
+  height: 234px;
+  width: 360px;
+  border: 5px solid #F2CEAE;
   border-radius: 8px;
   margin-bottom: 25px;
   margin-right: 25px;
   text-align: center;
   padding-top: 100px;
   float: left;
+}
+
+#namePic {
+  height: 225px;
+  width: 350px;
+  margin-top: -100px;
+  border-radius: 8px;
+  opacity: .55;
+}
+
+#nameText {
+  position: absolute;
+  margin-top: -130px;
+  margin-left: 60px;
+  background-color: white;
+  border-radius: 8px;
+  height: 50px;
+  width: 230px;
+  padding-top: 4px;
+  color: #172623;
 }
 
 #vacaNameCont:hover {
@@ -364,9 +391,9 @@
   margin-top: 90px;
 }
 
-#start:hover {
+/* #start:hover {
   background-color: purple;
-}
+} */
 
 #end {
   margin-left: 789px;
@@ -374,9 +401,9 @@
 }
 
 
-#end:hover {
+/* #end:hover {
   background-color: purple;
-}
+} */
 
 .line {
   position: absolute;
@@ -389,9 +416,9 @@
   margin-top: 80px;
 }
 
-#first:hover {
+/* #first:hover {
   border-right: 3px solid purple;
-}
+} */
 
 #second {
   margin-left: 400px;
