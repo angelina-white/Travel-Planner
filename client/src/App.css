@@ -183,11 +183,89 @@
 }
 
 
-
+/* app */
 #appCont {
   width: 1440px;
   height: 100vh;
   float: left;
+}
+
+#grad {
+  width: 1440px;
+  height: 100vh;
+  background: rgb(235,217,201);
+  background: linear-gradient(0deg, rgba(235,217,201,1) 0%, rgba(244,234,226,1) 13%, rgba(250,246,242,1) 40%, rgba(253,251,250,1) 62%, rgba(255,255,255,1) 100%);
+}
+
+#travelPlannerTitle {
+  margin-top: 20px;
+  margin-left: 25px;
+  float: left;
+  color: #F4BF88;
+}
+
+#username {
+  float: right;
+  margin-right: 30px;
+  margin-top: 25px;
+}
+
+#usernameCont {
+  background-color: #F2CEAE;
+  border: 1px solid #F2CEAE;
+}
+
+/* home */
+#home {
+  margin-top: 100px;
+}
+
+#addVacaCont {
+  margin-left: 30px;
+}
+
+#vacaNameInput:focus {
+  outline: solid 2px #FAE9D9;
+}
+
+#addVacaButton {
+  margin-left: 10px;
+}
+
+#vacationListUl {
+  margin-top: -525px;
+  margin-left: 12px;
+  list-style-type: none;
+  position: absolute;
+}
+
+#namesBackground {
+  background-color: #FAE9D9;
+  margin-top: 25px;
+  margin-left: 25px;
+  height: 550px;
+  width: 1390px;
+  border-radius: 8px;
+  opacity: .55;
+}
+
+/* vacaname */
+#vacaNameCont{
+  height: 250px;
+  width: 250px;
+  border: 2px solid #F2CEAE;
+  border-radius: 8px;
+  margin-bottom: 25px;
+  margin-right: 25px;
+  text-align: center;
+  padding-top: 100px;
+  float: left;
+  background-color: white;
+}
+
+#vacaNameCont:hover {
+  scale: 1.025;
+  cursor: pointer;
 }
 
 /* timeline */

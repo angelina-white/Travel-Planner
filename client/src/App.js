@@ -1,12 +1,12 @@
 import './App.css';
 import Home from "./Components/Home"
-import HomeLogin from "./Components/HomeLogin"
 import Landing from "./Components/Landing"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { increment } from "./actions"; //action
 import { addBook } from "./actions"; //action
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function App() 
 {
@@ -44,14 +44,14 @@ function App()
     })
   }, [])
 
-  // if(!currentUser) return <HomeLogin setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
-  if(!currentUser) return <Landing setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
-
   function renderLists(data)
   {
     console.log("hi")
     // socket.emit("newUser", data)
   }
+
+  // if(!currentUser) return <HomeLogin setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
+  if(!currentUser) return <Landing setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
 
   //logs user out
   function handleLogout() {
@@ -120,7 +120,7 @@ function App()
   }
 
   return (
-    <div className="App">
+    <div className="App" id="grad">
       {/* <h1>{message}</h1> */}
       {/* <h1>Counter: { counter }</h1>
       <button onClick={ () => dispatch(increment()) }>+</button>
@@ -141,9 +141,13 @@ function App()
         </div> */}
         <div id="appCont">
           <div>
-            <h1>Travel Planner</h1>
-            <p>{ currentUser.username }</p>
-            <button id="logoutButton" onClick={ handleLogout } >Logout</button>
+            <h1 id="travelPlannerTitle">Travel Planner</h1>
+            <Dropdown id="username">
+              <Dropdown.Toggle variant="success" id="usernameCont">{ currentUser.username }</Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item onClick={ handleLogout }>Logout</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
           <Switch>
             <Route path="/">
