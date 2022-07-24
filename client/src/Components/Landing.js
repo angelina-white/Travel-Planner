@@ -35,7 +35,7 @@ function Landing({ setCurrentUser, renderLists })
                 res.json().then( e => setErrors(Object.entries(e.error).flat()))
               }
             })
-            .then((data) => renderLists(username));
+            // .then((data) => renderLists(username));
         }
         
         const [isForgot, setIsForgot] = useState(false)

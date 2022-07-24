@@ -151,44 +151,11 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
             { isDetails ?
                 <div>
                     {/* showsdetails */}
-                    <h1>{ selectedName }</h1>
-                    <button onClick= { () => setIsDetails((isDetails) => isDetails = !isDetails) }>Go back</button>
                     
                     {/* vacation menu */}
-                    {/* when click on item, styling changes, use toggle */}
                     <Router>
-                        <nav>
-                            <ul>
-                                <li>
-                                    <Link to="/homepage">Homepage</Link>
-                                </li>
-                                <li>
-                                    <Link to="/summary">Summary</Link>
-                                </li>
-                                <li>
-                                    <Link to="/editTrip">Edit trip</Link>
-                                </li>
-                                <li>
-                                    <Link to="/agenda">Calendar</Link>
-                                </li>
-                                <li>
-                                    <Link to="/helper">Planning Helper</Link>
-                                </li>
-                                <li>
-                                    <Link to="/chat">Chat</Link>
-                                </li>
-                                <li>
-                                    <Link to="/timeline">Timeline</Link>
-                                </li>
-                                <li>
-                                    <Link to="/settings">Settings</Link>
-                                </li>
-                            </ul>
-                        </nav>
+                        {/* <Link to="/settings" className="menuText">Settings</Link> */}
                         <Switch>
-                            <Route path="/homepage">
-                                <h1>Nothing selected</h1>
-                            </Route>
                             <Route path="/summary">
                                 <Summary selectedVaca={ selectedVaca }/>
                             </Route>
@@ -198,8 +165,8 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                             <Route path="/agenda">
                                 <Agenda selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
                             </Route>
-                            <Route path="/helper">
-                                <h1>Helper</h1>
+                            <Route path="/budget">
+                                <h1>budget goes here</h1>
                             </Route>
                             <Route path="/chat">
                                 <Chat username={ username }/>
@@ -209,6 +176,40 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                             </Route>
                             <Route path="/settings">
                                 <Settings handleNamePatch={ handleNamePatch } setSelectedName={ setSelectedName } userList={ userList } selectedVaca={ selectedVaca } handleDeleteVaca={ handleDeleteVaca }/>
+                            </Route>
+                            <Route path="/">
+                                <h2 id="selectedName">{ selectedName }</h2>
+                                <div>
+                                    <p onClick= { () => setIsDetails((isDetails) => isDetails = !isDetails) } id="menuBack">Go back</p>
+                                    <Link to="/settings" id="settingsLink">Settings</Link>
+                                </div>
+                                
+                                <nav>
+                                    <ul id="menuUl">
+                                        {/* <li>
+                                            <Link to="/homepage">Homepage</Link>
+                                        </li> */}
+                                        <li className="menuCont">
+                                            <Link to="/summary" className="menuText">Summary</Link>
+                                        </li>
+                                        <li className="menuCont">
+                                            <Link to="/editTrip" className="menuText">Edit trip</Link>
+                                        </li>
+                                        <li className="menuCont">
+                                            <Link to="/agenda" className="menuText">Calendar</Link>
+                                        </li>
+                                        <li className="menuCont">
+                                            <Link to="/budget" className="menuText">Budget</Link>
+                                        </li>
+                                        <li className="menuCont">
+                                            <Link to="/chat" className="menuText">Chat</Link>
+                                        </li>
+                                        <li id="menuTimeline">
+                                            {/* <Link to="/timeline" className="menuText">Timeline</Link> */}
+                                            <Timeline selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
+                                        </li>
+                                    </ul>
+                                </nav>
                             </Route>
                         </Switch>
                     </Router> 
