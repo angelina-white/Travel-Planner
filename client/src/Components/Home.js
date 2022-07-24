@@ -11,6 +11,8 @@ import { vacation } from "../actions"; //action
 import { goToSettings } from "../actions";
 import { updateName } from "../actions"; //action
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import luggagePic from "../luggagePic.jpg"
+import Button from 'react-bootstrap/Button';
 
 
 function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList})
@@ -241,7 +243,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                     {/* shows names */}
                     <div id="addVacaCont">
                         <input onChange={ handleVacationInput } placeholder="Enter vacation name..." id="vacaNameInput"></input>
-                        <button onClick={ handleAddVacation } id="addVacaButton">Add</button>
+                        <Button onClick={ handleAddVacation } id="addVacaButton">Add</Button>
                     </div>
                     <div id="namesBackground" />
                     <ul id="vacationListUl">
