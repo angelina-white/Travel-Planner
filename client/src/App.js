@@ -50,7 +50,6 @@ function App()
     // socket.emit("newUser", data)
   }
 
-  // if(!currentUser) return <HomeLogin setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
   if(!currentUser) return <Landing setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
 
   //logs user out
