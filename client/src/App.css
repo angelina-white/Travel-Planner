@@ -202,7 +202,8 @@
   margin-left: 25px;
   float: left;
   /* color: #F4BF88; */
-  color: #F2A766;
+  /* color: #F2A766; */
+  color: #6D788C;
 }
 
 #username {
@@ -212,8 +213,8 @@
 }
 
 #usernameCont {
-  background-color: #F2CEAE;
-  border: 1px solid #F2CEAE;
+  background-color: #A9BAD9;
+  border: 1px solid #A9BAD9;
 }
 
 /* home */
@@ -223,8 +224,8 @@
 
 #addVacaCont {
   /* margin-left: 30px; */
-  margin-left: 150px;
-  padding-top: 20px;
+  margin-left: 250px;
+  padding-top: 80px;
 }
 
 #vacaNameInput {
@@ -232,18 +233,18 @@
 }
 
 #vacaNameInput:focus {
-  outline: solid 2px #FAE9D9;
+  outline: solid 2px #E3D9D3;
 }
 
 #addVacaButton {
   margin-left: 10px;
-  background-color: #172623;
-  border: 1px solid #172623;
+  background-color: #A692A2;
+  border: 1px solid #A692A2;
 }
 
 #vacationListUl {
   margin-top: -525px;
-  margin-left: 110px;
+  margin-left: 210px;
   list-style-type: none;
   position: absolute;
 }
@@ -257,19 +258,20 @@
 }
 
 #selectedName {
-  margin-left: 30px;
-  margin-top: -20px;
+  margin-left: 160px;
+  padding-top: 20px;
+  color: #3F4859;
 }
 
 /* menu */
 #settingsLink {
-  color: black;
+  color: #272F40;
   margin-top: -5px;
   margin-left: 25px;
 }
 
 #menuBack {
-  margin-left: 30px;
+  margin-left: 160px;
   text-decoration: underline;
   cursor: pointer;
   float: left;
@@ -278,16 +280,19 @@
 #menuUl {
   list-style-type: none;
   text-align: center;
-  margin-top: 50px;
+  /* margin-top: 50px; */
+  margin-top: 65px;
+  margin-left: 125px;
 }
 
 .menuCont {
-  border: 3px solid #F2CEAE;
   background-color: white;
   margin-right: 25px;
   margin-bottom: 25px;
-  height: 250px;
-  width: 250px;
+  /* height: 250px;
+  width: 250px; */
+  height: 200px;
+  width: 200px;
   float: left;
   padding-top: 100px;
   font-size: 25px;
@@ -299,24 +304,71 @@
   cursor: pointer;
 }
 
+.menuImageCont {
+  /* height: 250px;
+  width: 250px; */
+  height: 200px;
+  width: 200px;
+  margin-top: -100px;
+  border-radius: 8px;
+}
+
+.menuPic {
+  object-fit: cover;
+  object-position: 0% 0;
+  /* height: 250px;
+  width: 250px; */
+  height: 200px;
+  width: 200px;
+  opacity: .55;
+  border-radius: 8px;
+}
+
+#budgetPic {
+  object-position: right top;
+}
+
+#settingsPic {
+  object-position: right 70%;
+}
+
+#settingsPic2 {
+  object-position: right 10%;
+}
+
+.menuImageText {
+  margin-top: -115px;
+  color: #272F40;
+  opacity: 1;
+  position: absolute;
+  margin-left: 40px;
+  background-color: white;
+  height: 35px;
+  width: 120px;
+  border-radius: 8px;;
+  padding-top: 3px;
+}
+
 .menuText {
   text-decoration: none;
-  color: black;
+  color: #272F40;
 }
 
 .menuText:hover {
   cursor: pointer;
-  color: black;
+  color: #272F40;
 }
 
 #menuTimeline { 
-  width: 1075px;
+  /* width: 1075px; */
   background-color: white;
-  border: 3px solid #F2CEAE;
+  border: 3px solid #E3D9D3;
   margin-right: 25px;
   margin-bottom: 25px;
-  height: 250px;
+  /* height: 250px; */
   float: left;
+  height: 200px;
+  width: 875px;
   padding-top: 100px;
   font-size: 25px;
   border-radius: 8px;
@@ -328,9 +380,13 @@
 
 /* vacaname */
 #vacaNameCont{
-  height: 234px;
-  width: 360px;
-  border: 5px solid #F2CEAE;
+  /* height: 234px;
+  width: 360px; */
+  /* height: 200px;
+  width: 360px; */
+  height: 150px;
+  width: 300px;
+  border: 5px solid #E3D9D3;
   border-radius: 8px;
   margin-bottom: 25px;
   margin-right: 25px;
@@ -340,6 +396,8 @@
 }
 
 #namePic {
+  /* height: 225px;
+  width: 350px; */
   height: 225px;
   width: 350px;
   margin-top: -100px;
@@ -349,14 +407,16 @@
 
 #nameText {
   position: absolute;
-  margin-top: -130px;
-  margin-left: 60px;
+  /* margin-top: -130px; */
+  margin-top: -50px;
+  margin-left: 30px;
   background-color: white;
-  border-radius: 8px;
+  /* border: 5px solid #F2CEAE; */
+  border-radius: 20px;
   height: 50px;
   width: 230px;
-  padding-top: 4px;
-  color: #172623;
+  padding-top: 0px;
+  color: #272F40;
 }
 
 #vacaNameCont:hover {
@@ -366,13 +426,13 @@
 
 /* timeline */
 #timelineCont {
-  margin-top: -65px;
-  margin-left: 75px;
+  margin-top: -100px;
+  margin-left: -25px;
 }
 
 #horizontalLine {
   position: absolute;
-  border-bottom: 7px solid #F4BF88;
+  border-bottom: 7px solid #64718C;
   width: 700px;
   margin-left: 100px;
   margin-top: 100px;
@@ -383,7 +443,7 @@
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  background-color: #F4BF88;
+  background-color: #64718C;
 }
 
 #start {
@@ -407,7 +467,7 @@
 
 .line {
   position: absolute;
-  border-right: 3px solid #F4BF88;
+  border-right: 3px solid #64718C;
   height: 50px;
 }
 

@@ -11,8 +11,13 @@ import { vacation } from "../actions"; //action
 import { goToSettings } from "../actions";
 import { updateName } from "../actions"; //action
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import luggagePic from "../luggagePic.jpg"
 import Button from 'react-bootstrap/Button';
+import chatPic from "../chatPic.jpg"
+import calendarPic from "../calendarPic.jpg"
+import budgetPic from "../budgetPic.jpg"
+import summaryPic from "../summaryPic.jpg"
+import settingsPic from "../settingsPic.jpg"
+import settingsPic3 from "../settingsPic3.jpg"
 
 
 function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList})
@@ -190,35 +195,50 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                         <li>
                                             <Link to="/summary" className="menuText">
                                                 <div className="menuCont">
-                                                    Summary
+                                                <div className="menuImageCont">
+                                                        <img src={ summaryPic } className="menuPic"/>
+                                                        <h4 className="menuImageText">Summary</h4>
+                                                    </div>
                                                 </div>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/editTrip" className="menuText">
                                                 <div className="menuCont">
-                                                    Edit Trip
+                                                    <div className="menuImageCont">
+                                                        <img src={ settingsPic } className="menuPic" id="settingsPic"/>
+                                                        <h4 className="menuImageText">Edit Trip</h4>
+                                                    </div>
                                                 </div>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/agenda" className="menuText">
                                                 <div className="menuCont">
-                                                    Calendar
+                                                    <div className="menuImageCont">
+                                                        <img src={ calendarPic } className="menuPic"/>
+                                                        <h4 className="menuImageText">Calendar</h4>
+                                                    </div>
                                                 </div>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/budget" className="menuText">
                                                 <div className="menuCont">
-                                                    Budget
+                                                    <div className="menuImageCont">
+                                                        <img src={ budgetPic } className="menuPic" id="budgetPic" />
+                                                        <h4 className="menuImageText">Budget</h4>
+                                                    </div>
                                                 </div>
                                             </Link>
                                         </li>
                                         <li>
                                             <Link to="/chat" className="menuText">
                                                 <div className="menuCont">
-                                                    Chat
+                                                    <div className="menuImageCont">
+                                                        <img src={ chatPic } className="menuPic"/>
+                                                        <h4 className="menuImageText">Chat</h4>
+                                                    </div>
                                                 </div>
                                             </Link>
                                         </li>
@@ -228,7 +248,10 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                         <li>
                                             <Link to="/settings" className="menuText">
                                                 <div className="menuCont">
-                                                    Settings
+                                                    <div className="menuImageCont">
+                                                        <img src={ settingsPic3 } className="menuPic" id="settingsPic2"/>
+                                                        <h4 className="menuImageText">Settings</h4>
+                                                    </div>
                                                 </div>
                                             </Link>
                                         </li>
