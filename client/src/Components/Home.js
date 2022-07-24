@@ -192,8 +192,12 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                                 </div>
                                             </Link>
                                         </li>
-                                        <li className="menuCont">
-                                            <Link to="/editTrip" className="menuText">Edit trip</Link>
+                                        <li>
+                                            <Link to="/editTrip" className="menuText">
+                                                <div className="menuCont">
+                                                    Edit Trip
+                                                </div>
+                                            </Link>
                                         </li>
                                         <li>
                                             <Link to="/agenda" className="menuText">
@@ -217,7 +221,6 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                             </Link>
                                         </li>
                                         <li id="menuTimeline">
-                                            {/* <Link to="/timeline" className="menuText">Timeline</Link> */}
                                             <Timeline selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
                                         </li>
                                         <li>
