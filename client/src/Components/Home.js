@@ -185,23 +185,43 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                 
                                 <nav>
                                     <ul id="menuUl">
-                                        <li className="menuCont">
-                                            <Link to="/summary" className="menuText">Summary</Link>
+                                        <li>
+                                            <Link to="/summary" className="menuText">
+                                                <div className="menuCont">
+                                                    Summary
+                                                </div>
+                                            </Link>
                                         </li>
                                         {/* <li className="menuCont">
                                             <Link to="/editTrip" className="menuText">Edit trip</Link>
                                         </li> */}
-                                        <li className="menuCont">
-                                            <Link to="/agenda" className="menuText">Calendar</Link>
+                                        <li>
+                                            <Link to="/agenda" className="menuText">
+                                                <div className="menuCont">
+                                                    Calendar
+                                                </div>
+                                            </Link>
                                         </li>
-                                        <li className="menuCont">
-                                            <Link to="/budget" className="menuText">Budget</Link>
+                                        <li>
+                                            <Link to="/budget" className="menuText">
+                                                <div className="menuCont">
+                                                    Budget
+                                                </div>
+                                            </Link>
                                         </li>
-                                        <li className="menuCont">
-                                            <Link to="/chat" className="menuText">Chat</Link>
+                                        <li>
+                                            <Link to="/chat" className="menuText">
+                                                <div className="menuCont">
+                                                    Chat
+                                                </div>
+                                            </Link>
                                         </li>
-                                        <li className="menuCont">
-                                         <Link to="/settings" className="menuText">Settings</Link>
+                                        <li>
+                                            <Link to="/settings" className="menuText">
+                                                <div className="menuCont">
+                                                    Settings
+                                                </div>
+                                            </Link>
                                         </li>
                                         <li id="menuTimeline">
                                             {/* <Link to="/timeline" className="menuText">Timeline</Link> */}
