@@ -249,6 +249,64 @@
   opacity: .55;
 }
 
+#selectedName {
+  margin-left: 30px;
+  margin-top: -20px;
+}
+
+/* menu */
+#settingsLink {
+  color: black;
+  margin-top: -5px;
+  margin-left: 25px;
+}
+
+#menuBack {
+  margin-left: 30px;
+  text-decoration: underline;
+  cursor: pointer;
+  float: left;
+}
+
+#menuUl {
+  list-style-type: none;
+  text-align: center;
+  margin-top: 25px;
+}
+
+.menuCont {
+  border: 2px solid #F2CEAE;
+  background-color: white;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  height: 250px;
+  width: 250px;
+  float: left;
+  padding-top: 100px;
+  font-size: 25px;
+}
+
+.menuText {
+  text-decoration: none;
+  color: black;
+}
+
+.menuText:hover {
+  cursor: pointer;
+}
+
+#menuTimeline { 
+  width: 1350px;
+  background-color: white;
+  border: 2px solid #F2CEAE;
+  margin-right: 25px;
+  margin-bottom: 25px;
+  height: 250px;
+  float: left;
+  padding-top: 100px;
+  font-size: 25px;
+}
+
 /* vacaname */
 #vacaNameCont{
   height: 250px;
@@ -260,7 +318,6 @@
   text-align: center;
   padding-top: 100px;
   float: left;
-  background-color: white;
 }
 
 #vacaNameCont:hover {
@@ -269,9 +326,14 @@
 }
 
 /* timeline */
+#timelineCont {
+  margin-top: -65px;
+  margin-left: 200px;
+}
+
 #horizontalLine {
   position: absolute;
-  border-bottom: 7px solid pink;
+  border-bottom: 7px solid #F4BF88;
   width: 700px;
   margin-left: 100px;
   margin-top: 100px;
@@ -282,7 +344,7 @@
   height: 25px;
   width: 25px;
   border-radius: 50%;
-  background-color: pink;
+  background-color: #F4BF88;
 }
 
 #start {
@@ -306,7 +368,7 @@
 
 .line {
   position: absolute;
-  border-right: 3px solid pink;
+  border-right: 3px solid #F4BF88;
   height: 50px;
 }
 

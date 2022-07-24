@@ -15,8 +15,7 @@ function Timeline({ selectedVaca, activitiesList })
     })
 
     return (
-        <div>
-            <h1>Timeline</h1>
+        <div id="timelineCont">
             <div id="horizontalLine"></div>
             <div className="circle" id="start"></div>
             <div className="date" id="startDate"> { flightToLeave }</div>
