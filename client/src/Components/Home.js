@@ -152,114 +152,177 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
     }
 
     const [isDetails, setIsDetails] = useState(false)
+    const [isSummary, setIsSummary] = useState(false)
+    const [isEdit, setIsEdit] = useState(false)
+    const [isCalendar, setIsCalendar] = useState(false)
+    const [isBudget, setIsBudget] = useState(false)
+    const [isChat, setIsChat] = useState(false)
+    const [isSettings2, setIsSettings2] = useState(false)
+
+    function showSummary()
+    {
+        setIsSummary((isSummary) => isSummary = !isSummary)
+    }
+
+    function showEdit()
+    {
+        setIsEdit((isEdit) => isEdit = !isEdit)
+    }
+
+    function showCalendar()
+    {
+        setIsCalendar((isCalendar) => isCalendar = !isCalendar)
+    }
+
+    function showBudget()
+    {
+        setIsBudget((isBudget) => isBudget = !isBudget)
+    }
+
+    function showChat()
+    {
+        setIsChat((isChat) => isChat = !isChat)
+    }
+
+    function showSettings()
+    {
+        setIsSettings2((isSettings2) => isSettings2 = !isSettings2)
+    }
 
     return (
         <div id="home">
             { isDetails ?
                 <div>
                     {/* showsdetails */}
-                    
-                    {/* vacation menu */}
-                    <Router>
-                        {/* <Link to="/settings" className="menuText">Settings</Link> */}
-                        <Switch>
-                            <Route path="/summary">
-                                <Summary selectedVaca={ selectedVaca }/>
-                            </Route>
-                            <Route path="/editTrip">
-                                <Information selectedVaca={ selectedVaca } handleVacaPatch={ handleVacaPatch } handleAddActivity={ handleAddActivity } activitiesList={ activitiesList } setSelectedVaca= { setSelectedVaca } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity }/>
-                            </Route>
-                            <Route path="/agenda">
-                                <Agenda selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
-                            </Route>
-                            <Route path="/budget">
-                                <h1>budget goes here</h1>
-                            </Route>
-                            <Route path="/chat">
-                                <Chat username={ username }/>
-                            </Route>
-                            <Route path="/timeline">
-                                <Timeline selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
-                            </Route>
-                            <Route path="/settings">
-                                <Settings handleNamePatch={ handleNamePatch } setSelectedName={ setSelectedName } userList={ userList } selectedVaca={ selectedVaca } handleDeleteVaca={ handleDeleteVaca }/>
-                            </Route>
-                            <Route path="/">
-                                <h2 id="selectedName">{ selectedName }</h2>
+                    <h2 id="selectedName">{ selectedName }</h2>
+
+                    {isSummary ? 
+                        <div>
+                            <p onClick= { showSummary } id="summaryBack">Go back</p>
+                            <Summary selectedVaca={ selectedVaca } vacationList={ vacationList }/>
+                        </div>
+                    :
+                        <div>
+                            {isEdit ?
                                 <div>
-                                    <p onClick= { () => setIsDetails((isDetails) => isDetails = !isDetails) } id="menuBack">Go back</p>
+                                    <p onClick= { showEdit } id="summaryBack">Go back</p>
+                                    <Information selectedVaca={ selectedVaca } handleVacaPatch={ handleVacaPatch } handleAddActivity={ handleAddActivity } activitiesList={ activitiesList } setSelectedVaca= { setSelectedVaca } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity }/>
                                 </div>
-                                
-                                <nav>
-                                    <ul id="menuUl">
-                                        <li>
-                                            <Link to="/summary" className="menuText">
-                                                <div className="menuCont">
-                                                <div className="menuImageCont">
-                                                        <img src={ summaryPic } className="menuPic"/>
-                                                        <h4 className="menuImageText">Summary</h4>
-                                                    </div>
+                            :
+                                <div>
+                                    {isCalendar ?
+                                        <div>
+                                            <p onClick= { showCalendar } id="summaryBack">Go back</p>
+                                            <Agenda selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
+                                        </div>
+                                    :
+                                        <div>
+                                            {isBudget ?
+                                                <div>
+                                                    <p onClick= { showBudget } id="summaryBack">Go back</p>
+                                                    <h1>budget goes here</h1>
                                                 </div>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/editTrip" className="menuText">
-                                                <div className="menuCont">
-                                                    <div className="menuImageCont">
-                                                        <img src={ settingsPic } className="menuPic" id="settingsPic"/>
-                                                        <h4 className="menuImageText">Edit Trip</h4>
-                                                    </div>
+                                            :
+                                                <div>
+                                                    {isChat ?
+                                                        <div>
+                                                            <p onClick= { showChat } id="summaryBack">Go back</p>
+                                                            <Chat username={ username }/>
+                                                        </div>
+                                                    :
+                                                        <div>
+                                                            {isSettings2 ?
+                                                                <div>
+                                                                    <p onClick= { showSettings } id="summaryBack">Go back</p>
+                                                                    <Settings handleNamePatch={ handleNamePatch } setSelectedName={ setSelectedName } userList={ userList } selectedVaca={ selectedVaca } handleDeleteVaca={ handleDeleteVaca }/>
+                                                                </div>
+                                                            :
+                                                                <div>
+                                                                    <div>
+                                                                    <p onClick= { () => setIsDetails((isDetails) => isDetails = !isDetails) } id="menuBack">Go back</p>
+                                                                </div>
+
+                                                                <ul id="menuUl">
+                                                                    <li>
+                                                                        <div to="/summary" className="menuText" onClick={ showSummary }>
+                                                                            <div className="menuCont">
+                                                                                <div className="menuImageCont">
+                                                                                    <img src={ summaryPic } className="menuPic"/>
+                                                                                    <h4 className="menuImageText">Summary</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link to="/editTrip" className="menuText" onClick={ showEdit }>
+                                                                            <div className="menuCont">
+                                                                                <div className="menuImageCont">
+                                                                                    <img src={ settingsPic } className="menuPic" id="settingsPic"/>
+                                                                                    <h4 className="menuImageText">Edit Trip</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link to="/agenda" className="menuText" onClick={ showCalendar }>
+                                                                            <div className="menuCont">
+                                                                                <div className="menuImageCont">
+                                                                                    <img src={ calendarPic } className="menuPic"/>
+                                                                                    <h4 className="menuImageText">Calendar</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link to="/budget" className="menuText" onClick={ showBudget }>
+                                                                            <div className="menuCont">
+                                                                                <div className="menuImageCont">
+                                                                                    <img src={ budgetPic } className="menuPic" id="budgetPic" />
+                                                                                    <h4 className="menuImageText">Budget</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link to="/chat" className="menuText" onClick={ showChat }>
+                                                                            <div className="menuCont">
+                                                                                <div className="menuImageCont">
+                                                                                    <img src={ chatPic } className="menuPic"/>
+                                                                                    <h4 className="menuImageText">Chat</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </Link>
+                                                                    </li>
+                                                                    <li id="menuTimeline">
+                                                                        <Timeline selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
+                                                                    </li>
+                                                                    <li>
+                                                                        <Link to="/settings" className="menuText" onClick={ showSettings }>
+                                                                            <div className="menuCont">
+                                                                                <div className="menuImageCont">
+                                                                                    <img src={ settingsPic3 } className="menuPic" id="settingsPic2"/>
+                                                                                    <h4 className="menuImageText">Settings</h4>
+                                                                                </div>
+                                                                            </div>
+                                                                        </Link>
+                                                                    </li>
+                                                                </ul>
+                                                                </div>
+                                                            }
+                                                        
+                                                        </div>
+                                                    }
+                                                    
                                                 </div>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/agenda" className="menuText">
-                                                <div className="menuCont">
-                                                    <div className="menuImageCont">
-                                                        <img src={ calendarPic } className="menuPic"/>
-                                                        <h4 className="menuImageText">Calendar</h4>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/budget" className="menuText">
-                                                <div className="menuCont">
-                                                    <div className="menuImageCont">
-                                                        <img src={ budgetPic } className="menuPic" id="budgetPic" />
-                                                        <h4 className="menuImageText">Budget</h4>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/chat" className="menuText">
-                                                <div className="menuCont">
-                                                    <div className="menuImageCont">
-                                                        <img src={ chatPic } className="menuPic"/>
-                                                        <h4 className="menuImageText">Chat</h4>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        </li>
-                                        <li id="menuTimeline">
-                                            <Timeline selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
-                                        </li>
-                                        <li>
-                                            <Link to="/settings" className="menuText">
-                                                <div className="menuCont">
-                                                    <div className="menuImageCont">
-                                                        <img src={ settingsPic3 } className="menuPic" id="settingsPic2"/>
-                                                        <h4 className="menuImageText">Settings</h4>
-                                                    </div>
-                                                </div>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </Route>
-                        </Switch>
-                    </Router> 
+                                            }
+                                            
+                                        </div>
+                                    }
+                                </div>
+                            }
+                           
+                        </div>
+                    }
                 </div>
                 :
                 <div>

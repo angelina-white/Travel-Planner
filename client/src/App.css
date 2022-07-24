@@ -225,7 +225,7 @@
 #addVacaCont {
   /* margin-left: 30px; */
   margin-left: 250px;
-  padding-top: 80px;
+  padding-top: 75px;
 }
 
 #vacaNameInput {
@@ -272,9 +272,17 @@
 
 #menuBack {
   margin-left: 160px;
+  margin-top: -60px;
   text-decoration: underline;
   cursor: pointer;
   float: left;
+}
+
+#summaryBack {
+  margin-left: 160px;
+  margin-top: -3px;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 #menuUl {
@@ -384,7 +392,7 @@
   width: 360px; */
   /* height: 200px;
   width: 360px; */
-  height: 150px;
+  height: 175px;
   width: 300px;
   border: 5px solid #E3D9D3;
   border-radius: 8px;
@@ -408,7 +416,7 @@
 #nameText {
   position: absolute;
   /* margin-top: -130px; */
-  margin-top: -50px;
+  margin-top: -40px;
   margin-left: 30px;
   background-color: white;
   /* border: 5px solid #F2CEAE; */

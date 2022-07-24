@@ -85,7 +85,6 @@ function Summary({ selectedVaca })
 
     return (
         <div>
-            <h1>Summary</h1>
             <h2>Summary</h2>
             <h3>Flights</h3>
             <h4>{ leave }</h4>
