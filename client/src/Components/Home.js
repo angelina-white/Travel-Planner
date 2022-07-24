@@ -216,9 +216,12 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                 :
                 <div>
                     {/* shows names */}
-                    <input onChange={ handleVacationInput }></input>
-                    <button onClick={ handleAddVacation }>Add vacation</button>
-                    <ul>
+                    <div id="addVacaCont">
+                        <input onChange={ handleVacationInput } placeholder="Enter vacation name..." id="vacaNameInput"></input>
+                        <button onClick={ handleAddVacation } id="addVacaButton">Add</button>
+                    </div>
+                    <div id="namesBackground" />
+                    <ul id="vacationListUl">
                         { vacaNameList }
                     </ul>
                 </div>

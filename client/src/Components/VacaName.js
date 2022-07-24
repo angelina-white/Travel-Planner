@@ -12,7 +12,7 @@ function VacaName({ item, clickVacation })
     }
 
     return (
-        <li onClick={ handleClick }>
+        <li onClick={ handleClick } id="vacaNameCont">
             <h2>{ item.vacationName }</h2>
         </li>
     )
