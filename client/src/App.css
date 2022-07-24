@@ -193,8 +193,8 @@
 #grad {
   width: 1440px;
   height: 100vh;
-  background: rgb(235,217,201);
-  background: linear-gradient(0deg, rgba(235,217,201,1) 0%, rgba(244,234,226,1) 13%, rgba(250,246,242,1) 40%, rgba(253,251,250,1) 62%, rgba(255,255,255,1) 100%);
+  /* background: rgb(235,217,201);
+  background: linear-gradient(0deg, rgba(235,217,201,1) 0%, rgba(244,234,226,1) 13%, rgba(250,246,242,1) 40%, rgba(253,251,250,1) 62%, rgba(255,255,255,1) 100%); */
 }
 
 #travelPlannerTitle {
@@ -240,7 +240,7 @@
 }
 
 #namesBackground {
-  background-color: #FAE9D9;
+  /* background-color: #FAE9D9; */
   margin-top: 25px;
   margin-left: 25px;
   height: 550px;
@@ -275,7 +275,7 @@
 }
 
 .menuCont {
-  border: 2px solid #F2CEAE;
+  border: 3px solid #F2CEAE;
   background-color: white;
   margin-right: 25px;
   margin-bottom: 25px;
@@ -284,6 +284,12 @@
   float: left;
   padding-top: 100px;
   font-size: 25px;
+  border-radius: 8px;
+}
+
+.menuCont:hover {
+  scale: 1.025;
+  cursor: pointer;
 }
 
 .menuText {
@@ -293,25 +299,31 @@
 
 .menuText:hover {
   cursor: pointer;
+  color: black;
 }
 
 #menuTimeline { 
   width: 1350px;
   background-color: white;
-  border: 2px solid #F2CEAE;
+  border: 3px solid #F2CEAE;
   margin-right: 25px;
   margin-bottom: 25px;
   height: 250px;
   float: left;
   padding-top: 100px;
   font-size: 25px;
+  border-radius: 8px;
+}
+
+#menuTimeline:hover {
+  scale: 1.010;
 }
 
 /* vacaname */
 #vacaNameCont{
   height: 250px;
   width: 250px;
-  border: 2px solid #F2CEAE;
+  border: 3px solid #F2CEAE;
   border-radius: 8px;
   margin-bottom: 25px;
   margin-right: 25px;
