@@ -303,7 +303,7 @@
 }
 
 #menuTimeline { 
-  width: 1350px;
+  width: 1075px;
   background-color: white;
   border: 3px solid #F2CEAE;
   margin-right: 25px;
@@ -340,7 +340,7 @@
 /* timeline */
 #timelineCont {
   margin-top: -65px;
-  margin-left: 200px;
+  margin-left: 75px;
 }
 
 #horizontalLine {
