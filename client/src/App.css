@@ -718,3 +718,9 @@
 #editActList {
   list-style-type: none;
 }
+
+/* calendar */
+#calendar {
+  margin-left: 40px;
+  margin-top: 25px;
+}
