@@ -1,7 +1,18 @@
 import { useState, useEffect } from "react";
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Toast from 'react-bootstrap/Toast';
 
 function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, handleDeleteVaca})
 {
+    const [showA, setShowA] = useState(true);
+    const [showB, setShowB] = useState(true);
+  
+    const toggleShowA = () => setShowA(!showA);
+    const toggleShowB = () => setShowB(!showB);
+
+
     const [vacaName, setVacaName] = useState("")
 
     function submitName()
@@ -59,8 +70,8 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, ha
         .then(resp => resp.json())
     }
 
-    const [isEditName, setIsEditName] = useState(false)
-    const [isAddUser, setIsAddUser] = useState(false)
+    // const [isEditName, setIsEditName] = useState(false)
+    // const [isAddUser, setIsAddUser] = useState(false)
     const [isDelete, setIsDelete] = useState(false)
 
     function deleteVaca()
@@ -74,29 +85,26 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, ha
 
     return (
         <div>
-            <h1>Settings</h1>
-            <button onClick={ () => setIsEditName((isEditName) => isEditName = !isEditName)}>Edit vacation name</button>
-            {isEditName ?
-                <div>
-                    <input onChange={ (e) => setVacaName(e.target.value) } placeholder="Enter new name..." />
-                    <button onClick={ submitName }>Submit</button>
+            <h2 id="settingsTitle">Settings</h2>
+            <div id="settingsCont">
+                <div id="changeName">
+                    <h3 className="settingsHeader">Change trip name:</h3>
+                    <input onChange={ (e) => setVacaName(e.target.value) } placeholder="Enter new name..."  id="changeNameInput"/>
+                    <Button onClick={ submitName } id="submitSettings">Submit</Button>
                 </div>
-            : <div></div>
-            }
-
-            <button onClick={ () => setIsAddUser((isAddUser) => isAddUser = !isAddUser)}>Add user</button>
-            {isAddUser ?
                 <div>
-                    <input onChange={ addUserInput }placeholder="Enter username..." />
-                    <button onClick={ submitAddUser }>Submit</button>
+                    <h3 className="settingsHeader">Add user to trip: </h3>
+                    <input onChange={ addUserInput }placeholder="Enter username..." id="changeNameInput"/>
+                    <Button onClick={ submitAddUser } id="submitSettings">Submit</Button>
                 </div>
-            : <div></div>
-            }
-
-            <button onClick={() => setIsDelete((isDelete) => isDelete = !isDelete)}>Delete vacation</button>
-            {isDelete ?
-                <button onClick={ deleteVaca }>Delete now</button>
-            : <div></div>}
+                <Button id="deleteButton" onClick={() => setIsDelete((isDelete) => isDelete = !isDelete)}>Delete vacation</Button>
+                {isDelete ?
+                    <div>
+                        <h4 id="deleteQ">Are you sure?</h4>
+                        <Button id="deleteAgain" onClick={ deleteVaca }>Delete now</Button>
+                    </div>
+                : <div></div>} 
+            </div>
         </div>
     )
 }
