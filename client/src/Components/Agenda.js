@@ -66,7 +66,7 @@ function Agenda({ selectedVaca, activitiesList })
     //style for calendar
     function eventStyleGetter(event, start, end, isSelected) 
     {
-        var backgroundColor = "#C8E0DD"
+        var backgroundColor = "#B39694"
         var style = {
             backgroundColor: backgroundColor,
             borderRadius: '0px',
@@ -78,19 +78,19 @@ function Agenda({ selectedVaca, activitiesList })
 
         if (event.title == "Departing flight")
         {
-            style.backgroundColor = '#ff0000'
+            style.backgroundColor = '#A692A2'
         }
         else if (event.title == "Arriving flight")
         {
-            style.backgroundColor = '#ff0000'
+            style.backgroundColor = '#A692A2'
         }
         else if (event.title == "Hotel check in")
         {
-            style.backgroundColor = '#FFA500'
+            style.backgroundColor = '#96A692'
         }
         else if (event.title == "Hotel check out")
         {
-            style.backgroundColor = '#FFA500'
+            style.backgroundColor = '#96A692'
         }
         return {
             style: style
@@ -98,13 +98,13 @@ function Agenda({ selectedVaca, activitiesList })
     };
 
     return (
-        <div>
+        <div id="calendar">
             <Calendar
                     localizer={localizer}
                     events={list}
                     startAccessor="start"
                     endAccessor="end"
-                    style={{ height: 535, width: 1350 }}
+                    style={{ height: 510, width: 1360 }}
                     eventPropGetter={(eventStyleGetter)}
                 />
         </div>
