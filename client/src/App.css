@@ -548,3 +548,173 @@
 #sumActUl {
   margin-top: 15px;
 }
+
+/* edit trip */
+#editTitle {
+  margin-left: 645px;
+  margin-top: -45px;
+  color: #64718C;
+}
+
+.editHeader {
+  color: #64718C;
+}
+
+#editButtons {
+  margin-top: 25px;
+  margin-left: 575px;
+}
+
+.editBut {
+  margin-right: 15px;
+}
+
+#editButtonStyle {
+  background-color: #B0BDD9;
+  border: 1px solid #B0BDD9;
+}
+
+.editCont {
+  margin-top: 40px;
+}
+
+#editDept {
+  float: left;
+  margin-left: 425px; 
+  margin-right: 150px;
+}
+
+#editArr {
+  float: left;
+}
+
+.editDeptIn {
+  position: absolute;
+}
+
+#dfm {
+  margin-top: 25px;
+}
+
+#dfd {
+  margin-top: 75px;
+}
+
+#dfy {
+  margin-top: 125px;
+}
+
+#dfh {
+  margin-top: 175px;
+}
+
+#dfMin {
+  margin-top: 225px;
+}
+
+#editSubmit {
+  margin-top: 340px;
+  margin-left: -285px;
+  background-color: #2E3B59;
+  border: 1px solid #2E3B59;
+}
+
+#editIn {
+  float: left;
+  margin-left: 425px;
+  margin-right: 150px;
+}
+
+#editout {
+  float: left;
+}
+
+.editHotel {
+  position: absolute;
+}
+
+#hh {
+  margin-top: 25px;
+}
+
+#hm {
+  margin-top: 75px;
+}
+
+#hotelSubmit {
+  position: absolute;
+  margin-top: 150px;
+  margin-left: -105px;
+  background-color: #2E3B59;
+  border: 1px solid #2E3B59;
+}
+
+#addAct{
+  float: left;
+  margin-left: 425px;
+  margin-right: 175px;
+}
+
+#showAct {
+  float: left;
+  height: 400px;
+  width: 250px;
+  overflow-y: scroll;
+}
+
+.actIn {
+  position: absolute;
+}
+
+#actName {
+  margin-top: 25px;
+}
+
+#actMonth {
+  margin-top: 75px;
+}
+
+#actDay {
+  margin-top: 125px;
+}
+
+#actYear {
+  margin-top: 175px;
+}
+
+#actHour {
+  margin-top: 225px;
+}
+
+#actMin {
+  margin-top: 275px;
+}
+
+#actSubmit {
+  margin-top: 325px;
+  background-color: #2E3B59;
+  border: 1px solid #2E3B59;
+}
+
+#editActButtons {
+  margin-top: 10px;
+}
+
+#editActivities {
+  background-color: #2E3B59;
+  border: 1px solid #2E3B59;
+}
+
+.editAct3 {
+  margin-right: 50px;
+}
+
+#unedit {
+  margin-bottom: 5px;
+    background-color: #2E3B59;
+  border: 1px solid #2E3B59;
+}
+
+#editActList {
+  list-style-type: none;
+}

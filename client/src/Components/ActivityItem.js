@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Button from 'react-bootstrap/Button';
 
 function ActivityItem({ item, handleActivityPatch, handleDeleteActivity})
 {
@@ -102,16 +103,19 @@ function ActivityItem({ item, handleActivityPatch, handleDeleteActivity})
                     <input name="aYear" onChange={ handleActivityInput } placeholder="yyyy"/>
                     <input name="aHour" onChange={ handleActivityInput } placeholder="hh"/>
                     <input name="aMinute" onChange={ handleActivityInput } placeholder="mm"/>
-                    <button onClick={ handleEdit }>Unedit</button>
-                    <button onClick={ handleSubmit }>Submit</button>
-                    <button onClick= { handleDelete }>Delete</button>
+                    <div id="editActButtons">
+                        <Button onClick={ handleEdit } className="editAct3" id="unedit">Unedit</Button>
+                        <Button onClick={ handleSubmit } className="editAct3" id="unedit">Submit</Button>
+                        <Button onClick= { handleDelete } className="editAct3" id="unedit">Delete</Button>
+                    </div>
+                    
                 </div>
             :
                 <div>
                     <h4>{ item.activityName }</h4>
                     <p>{ actDate }</p>
                     <p>{ actTime }</p>
-                    <button onClick={ handleEdit }> Edit</button>
+                    <Button onClick={ handleEdit } id="editActivities"> Edit</Button>
                 </div>
             }
         </li>
