@@ -193,16 +193,12 @@
 #grad {
   width: 1440px;
   height: 100vh;
-  /* background: rgb(235,217,201);
-  background: linear-gradient(0deg, rgba(235,217,201,1) 0%, rgba(244,234,226,1) 13%, rgba(250,246,242,1) 40%, rgba(253,251,250,1) 62%, rgba(255,255,255,1) 100%); */
 }
 
 #travelPlannerTitle {
   margin-top: 20px;
   margin-left: 25px;
   float: left;
-  /* color: #F4BF88; */
-  /* color: #F2A766; */
   color: #6D788C;
 }
 
@@ -218,14 +214,18 @@
 }
 
 /* home */
+#tripText {
+  margin-left: 675px; 
+  padding-top: 25px;
+}
+
 #home {
   margin-top: 100px;
 }
 
 #addVacaCont {
-  /* margin-left: 30px; */
   margin-left: 250px;
-  padding-top: 75px;
+  padding-top: 25px;
 }
 
 #vacaNameInput {
@@ -259,8 +259,8 @@
 
 #selectedName {
   margin-left: 160px;
-  padding-top: 20px;
-  color: #3F4859;
+  margin-top: 0px;
+  color: black;
 }
 
 /* menu */
@@ -288,7 +288,6 @@
 #menuUl {
   list-style-type: none;
   text-align: center;
-  /* margin-top: 50px; */
   margin-top: 65px;
   margin-left: 125px;
 }
@@ -297,8 +296,6 @@
   background-color: white;
   margin-right: 25px;
   margin-bottom: 25px;
-  /* height: 250px;
-  width: 250px; */
   height: 200px;
   width: 200px;
   float: left;
@@ -313,8 +310,6 @@
 }
 
 .menuImageCont {
-  /* height: 250px;
-  width: 250px; */
   height: 200px;
   width: 200px;
   margin-top: -100px;
@@ -324,8 +319,6 @@
 .menuPic {
   object-fit: cover;
   object-position: 0% 0;
-  /* height: 250px;
-  width: 250px; */
   height: 200px;
   width: 200px;
   opacity: .55;
@@ -346,7 +339,7 @@
 
 .menuImageText {
   margin-top: -115px;
-  color: #272F40;
+  color: black;
   opacity: 1;
   position: absolute;
   margin-left: 40px;
@@ -359,21 +352,19 @@
 
 .menuText {
   text-decoration: none;
-  color: #272F40;
+  color: black;
 }
 
 .menuText:hover {
   cursor: pointer;
-  color: #272F40;
+  color: black;
 }
 
 #menuTimeline { 
-  /* width: 1075px; */
   background-color: white;
   border: 3px solid #E3D9D3;
   margin-right: 25px;
   margin-bottom: 25px;
-  /* height: 250px; */
   float: left;
   height: 200px;
   width: 875px;
@@ -388,10 +379,6 @@
 
 /* vacaname */
 #vacaNameCont{
-  /* height: 234px;
-  width: 360px; */
-  /* height: 200px;
-  width: 360px; */
   height: 175px;
   width: 300px;
   border: 5px solid #E3D9D3;
@@ -403,28 +390,23 @@
   float: left;
 }
 
-#namePic {
-  /* height: 225px;
-  width: 350px; */
+/* #namePic {
   height: 225px;
   width: 350px;
   margin-top: -100px;
   border-radius: 8px;
   opacity: .55;
-}
+} */
 
 #nameText {
   position: absolute;
-  /* margin-top: -130px; */
   margin-top: -40px;
   margin-left: 30px;
-  background-color: white;
-  /* border: 5px solid #F2CEAE; */
   border-radius: 20px;
   height: 50px;
   width: 230px;
   padding-top: 0px;
-  color: #272F40;
+  color: black;
 }
 
 #vacaNameCont:hover {
@@ -459,19 +441,10 @@
   margin-top: 90px;
 }
 
-/* #start:hover {
-  background-color: purple;
-} */
-
 #end {
   margin-left: 789px;
   margin-top: 90px;
 }
-
-
-/* #end:hover {
-  background-color: purple;
-} */
 
 .line {
   position: absolute;
@@ -483,10 +456,6 @@
   margin-left: 200px;
   margin-top: 80px;
 }
-
-/* #first:hover {
-  border-right: 3px solid purple;
-} */
 
 #second {
   margin-left: 400px;
@@ -505,4 +474,77 @@
 #endDate {
   margin-top: 50px;
   margin-left: 750px;
+}
+
+/* summary */
+#summaryTitle {
+  margin-left: 645px;
+  margin-top: -45px;
+  color: #64718C;
+}
+
+#sumCont {
+  margin-left: 400px;
+  margin-top: 20px;
+}
+
+#leftSum {
+  float: left;
+  margin-right: 15px;
+}
+
+#rightSum {
+  float: left;
+  width: 300px;
+  height: 481px;
+  border: 4px solid #B0BDD9;
+  border-radius: 8px;
+  overflow-y: scroll;
+}
+
+.sumHeader {
+  color: #64718C;
+}
+
+.sumText {
+  color: #363E4D;
+}
+
+#activitiesSumTitle {
+  margin-top: 15px;
+  margin-left: 85px;
+  color: #64718C;
+}
+
+#flightsSum {
+  border: 4px solid #B0BDD9;
+  border-radius: 8px;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 20px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+#hotelsSum {
+  border: 4px solid #B0BDD9;
+  border-radius: 8px;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+#bugetsSum {
+  border: 4px solid #B0BDD9;
+  border-radius: 8px;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+}
+
+#sumActUl {
+  margin-top: 15px;
 }

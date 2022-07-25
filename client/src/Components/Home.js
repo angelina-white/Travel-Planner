@@ -199,7 +199,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                     {isSummary ? 
                         <div>
                             <p onClick= { showSummary } id="summaryBack">Go back</p>
-                            <Summary selectedVaca={ selectedVaca } vacationList={ vacationList }/>
+                            <Summary selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
                         </div>
                     :
                         <div>
@@ -327,6 +327,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                 :
                 <div>
                     {/* shows names */}
+                    <h2 id="tripText">Trips</h2>
                     <div id="addVacaCont">
                         <input onChange={ handleVacationInput } placeholder="Enter vacation name..." id="vacaNameInput"></input>
                         <Button onClick={ handleAddVacation } id="addVacaButton">Add</Button>
