@@ -35,23 +35,26 @@ io.on("connection", (socket) =>
     {
         removeUser(socket.id);
         console.log(onlineUsers)
+        io.emit("showUsername", (onlineUsers))
     });
 
     socket.on("newUser", (username) =>
     {
         addNewUser(username, socket.id)
         console.log(onlineUsers)
+        io.emit("showUsername", (onlineUsers))
     })
 
-    socket.on("remove", () =>
+    socket.on("remove", (username) =>
     {
-        removeUser(socket.id);
+        const user = getUser(username)
+        removeUser(user.socketId);
         console.log(onlineUsers)
+        io.emit("showUsername", (onlineUsers))
     })
 
     socket.on("handleMessage", (data) =>
     {
-        console.log(data)
         io.emit("showMessage", (data))
     })
 });

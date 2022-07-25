@@ -728,7 +728,7 @@
 
 /* settings */
 #settingsTitle {
-  margin-left: 645px;
+  margin-left: 660px;
   margin-top: -45px;
   color: #64718C;
 }
@@ -771,4 +771,113 @@
 
 .settingsHeader {
   color: #64718C;
+}
+
+/* chat */
+#chatTitle {
+  margin-left: 680px;
+  margin-top: -45px;
+  color: #64718C;
+}
+
+#userCont {
+  float: left;
+  overflow-y: scroll;
+  width: 200px;
+  margin-top: 13px;
+  border: 3px solid black;
+  margin-left: 160px;
+  margin-right: 25px;
+  height: 438px;
+  border-radius: 8px;
+  padding-top: 15px;
+}
+
+#chatDispCont {
+  margin-left: 225px;
+  margin-top: 20px;
+  height: 440px;
+  width: 900px;
+  border: 3px solid black;
+  border-radius: 8px;
+  overflow-y: scroll;
+  overflow-x: none;
+}
+
+#chatInputCont {
+  margin-left: 390px;
+  margin-top: 20px;
+}
+
+#chatInput {
+  font-size: 20px;
+  width: 815px;
+  margin-right: 15px;
+}
+
+#chatHeader {
+  margin-left: 15px;
+}
+
+#usersUl {
+  margin-left: -15px;
+  list-style-type: none;
+  margin-top: 20px;
+}
+
+#chatInput:focus {
+  outline: solid 2px #B0BDD9;
+}
+
+#chatUl {
+  list-style-type: none;
+  margin-top: 15px;
+}
+
+#userOther {
+  margin-left: 10px;
+}
+
+#selfLi {
+  float: right;
+}
+
+#otherLi {
+  float: left;
+  margin-left: -15px;
+  margin-right: 475px;
+}
+
+#messageOther {
+  margin-top: -15px;
+  margin-bottom: 15px;
+  background-color: lightgrey;
+  padding-left: 15px;
+  padding-top: 5px;
+  height: auto;
+  padding-bottom: 10px;
+  border-radius: 20px;
+  display: inline-block; 
+  padding-right: 15px;
+}
+
+#messageSelf {
+  margin-top: 15px;
+  background-color: #E8EFFF;
+  padding-left: 15px;
+  padding-top: 5px;
+  height: auto;
+  padding-bottom: 10px;
+  border-radius: 20px;
+  display: inline-block; 
+  padding-right: 15px;
+  margin-right: 20px;
+  margin-left: 600px;
+}
+
+#chatSend {
+  position: absolute;
+  margin-top: -1px;
+  background-color: #2E3B59;
+  border: 1px solid #2E3B59;
 }

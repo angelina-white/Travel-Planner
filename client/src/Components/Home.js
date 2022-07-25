@@ -226,8 +226,8 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                                 <div>
                                                     {isChat ?
                                                         <div>
-                                                            <p onClick= { showChat } id="summaryBack">Go back</p>
-                                                            <Chat username={ username }/>
+                                                            {/* <p onClick= { showChat } id="summaryBack">Go back</p> */}
+                                                            <Chat username={ username } showChat={ showChat }/>
                                                         </div>
                                                     :
                                                         <div>
