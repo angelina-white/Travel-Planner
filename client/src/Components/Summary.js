@@ -1,7 +1,7 @@
-
+import SummaryActivity from "./SummaryActivity"
 import { useEffect, useState } from "react"
 
-function Summary({ selectedVaca })
+function Summary({ selectedVaca, activitiesList })
 {
     const [leave, setLeave] = useState("")
     const [leaveTime, setLeaveTime] = useState("")
@@ -83,18 +83,48 @@ function Summary({ selectedVaca })
         }
     }, [])
 
+    const dispActivities = activitiesList.map((item) =>
+    {
+        return (
+            <SummaryActivity item={ item } />
+        )
+    })
+
     return (
         <div>
-            <h2>Summary</h2>
-            <h3>Flights</h3>
-            <h4>{ leave }</h4>
-            <h5>{ leaveTime }</h5>
-            <h4>{ arrive }</h4>
-            <h5>{ arriveTime }</h5>
-            <h3>Hotels</h3>
-            <h4>{ checkIn }</h4>
-            <h4>{ checkOut }</h4>
-            <h3>Activities</h3>
+            <h2 id="summaryTitle">Summary</h2>
+
+            <div id="sumCont">
+                <div id="leftSum">
+                    <div id="flightsSum">
+                        <h3 className="sumHeader">Flights</h3>
+                        <h4>{ leave }</h4>
+                        <h5>{ leaveTime }</h5>
+                        <h4>{ arrive }</h4>
+                        <h5>{ arriveTime }</h5>
+                    </div>
+                    <div id="hotelsSum">
+                        <h3 className="sumHeader">Hotel</h3>
+                        <h4>{ checkIn }</h4>
+                        <h4>{ checkOut }</h4>
+                    </div>
+                    <div id="bugetsSum">
+                        <div>
+                            <h3 className="sumHeader">Budget</h3>
+                            <h4>$x.xx</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="rightSum">
+                    <div id="activitiesSum">
+                        <h3 id="activitiesSumTitle">Activities</h3>
+                        <ul id="sumActUl">
+                            { dispActivities }
+                        </ul>
+                    </div>          
+                </div>
+            </div>
         </div>
     )
 }
