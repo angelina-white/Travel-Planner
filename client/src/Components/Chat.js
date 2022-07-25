@@ -1,24 +1,47 @@
 import io from 'socket.io-client';
 import { useState, useEffect } from "react";
+import Button from 'react-bootstrap/Button';
 
-function Chat({ username })
+function Chat({ username, showChat })
 {
     const [socket, setSocket] = useState(null)
     const [messageList, setMessageList] = useState([])
+    const [userList, setUserList] = useState([])
     useEffect(() =>
     {
         setSocket(io("http://localhost:4001"))
         const socket = io("http://localhost:4001");
 
-        // socket.on("showMessage", (msg) =>
-        //     setMessageList((messageList) => messageList = [...messageList, msg])
-        // )
+        socket.emit("newUser", (username))
+
+        socket.on("showUsername", (users) =>
+            setUserList(users)
+        )
 
         socket.on("showMessage", (data) =>
-            setMessageList((messageList) => messageList = [...messageList, data])
+            handleMessage(data)
         )
 
     }, [])
+
+    const users = userList.map((item) =>
+    {
+        return (
+            <li id="userLi">
+                <h5>{ item.username }</h5>
+            </li>
+        )
+    })
+
+    function handleMessage(data)
+    {
+        setMessageList((messageList) => messageList = [...messageList, data])
+        document.querySelector('#chatDispCont').scroll(
+        {
+            top: document.body.offsetHeight,
+            behavior: 'smooth',
+        });
+    }
 
     const [message, setMessage] = useState("")
 
@@ -29,26 +52,52 @@ function Chat({ username })
         setMessage("")
     }
 
-    const dispList = messageList.map((item) => {
-        return (
-            <li>
-                {item.user}: { item.msg }
-            </li>
-        )
+    const sideList = messageList.map((item) =>
+    {
+        if (item.user == username)
+        {
+            return (
+                <li id="selfLi">
+                    <h4 id="messageSelf">{ item.msg }</h4>
+                </li>
+            )
+        }
+        else{
+            return (
+                <li id="otherLi">
+                    <p id="userOther">{item.user}</p> 
+                    <h4 id="messageOther">{ item.msg }</h4>
+                </li>
+            )
+        }
     })
+
+    function handleGoBack()
+    {
+        showChat()
+        socket.emit("remove", (username))
+        socket.disconnect()
+    }
 
     return (
         <div>
-            <h1>Chat</h1>
-            <div>
-                <h2>read from here</h2>
-                <ul>
-                    { dispList }
+            <p onClick= { handleGoBack } id="summaryBack">Go back</p>
+            <h2 id="chatTitle">Chat</h2>
+            <div id="userCont">
+                <h3 id="chatHeader" >Online</h3>
+                <ul id="usersUl">
+                    { users }
                 </ul>
             </div>
-            <form onSubmit={ sendMessage }>
-                <input onChange={ (e) => setMessage(e.target.value) } value={ message } placeholder="Enter message..." />
-                <button>Send</button>
+            <div id="chatDispCont">
+                <ul id="chatUl">
+                    { sideList }
+                </ul>
+                <div id="test" />
+            </div>
+            <form id="chatInputCont" onSubmit={ sendMessage }>
+                <input id="chatInput" onChange={ (e) => setMessage(e.target.value) } value={ message } placeholder="Enter message..." />
+                <Button id="chatSend" >Send</Button>
             </form>
         </div>
     )
