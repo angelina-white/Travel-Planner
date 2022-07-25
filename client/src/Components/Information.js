@@ -1,5 +1,6 @@
-import { useState } from "react"
-import ActivityItem from "./ActivityItem"
+import { useState } from "react";
+import ActivityItem from "./ActivityItem";
+import Button from 'react-bootstrap/Button';
 
 function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSelectedVaca, handleActivityPatch, handleDeleteActivity, activitiesList })
 {
@@ -131,7 +132,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
         })
     }
 
-    const [isFlights, setIsFlights] = useState(false)
+    const [isFlights, setIsFlights] = useState(true)
     const [isHotel, setIsHotel] = useState(false)
     const [isActivity, setIsActivity] = useState(false)
 
@@ -142,72 +143,96 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
         )
     })
 
+    function showFlight()
+    {
+        setIsFlights((isFlights) => isFlights = !isFlights)
+        setIsHotel(false)
+        setIsActivity(false)
+    }
+
+    function showHotel()
+    {
+        setIsHotel((isHotel) => isHotel = !isHotel)
+        setIsFlights(false)
+        setIsActivity(false)
+    }
+
+    function showActivity()
+    {
+        setIsActivity((isActivity) => isActivity= !isActivity)
+        setIsHotel(false)
+        setIsFlights(false)
+    }
+
     return (
         <div>
-            <div>
-                <button onClick={() => setIsFlights((isFlights) => isFlights = !isFlights)}>Flights</button>
-                <button onClick={() => setIsHotel((isHotel) => isHotel = !isHotel)}>Hotel</button>
-                <button onClick={() => setIsActivity((isActivity) => isActivity = !isActivity)}>Activity</button>
+            <h2 id="editTitle">Edit Trip</h2>
+            <div id="editButtons">
+                <Button onClick={ showFlight } className="editBut" id="editButtonStyle">Flights</Button>
+                <Button onClick={ showHotel } className="editBut" id="editButtonStyle">Hotel</Button>
+                <Button onClick={ showActivity } className="editBut" id="editButtonStyle">Activity</Button>
             </div>
 
             <form onSubmit={ submitVacaDetails}>
                 {isFlights?
-                    <div>
-                        <label>
-                            Departing flight:
-                            <input name="dFlightM" onChange={ handleDetailInput } placeholder="mm"/>
-                            <input name="dFlightD" onChange={ handleDetailInput } placeholder="dd"/>
-                            <input name="dFlightY" onChange={ handleDetailInput } placeholder="yyyy"/>
-                            <input name="dFlightH" onChange={ handleDetailInput } placeholder="hh"/>
-                            <input name="dFlightMin" onChange={ handleDetailInput } placeholder="mm"/>
-                        </label>
-                        <label>
-                            Arriving flight:
-                            <input name="aFlightM" onChange={ handleDetailInput } placeholder="mm"/>
-                            <input name="aFlightD" onChange={ handleDetailInput } placeholder="dd"/>
-                            <input name="aFlightY" onChange={ handleDetailInput } placeholder="yyyy"/>
-                            <input name="aFlightH" onChange={ handleDetailInput } placeholder="hh"/>
-                            <input name="aFlightMin" onChange={ handleDetailInput } placeholder="mm"/>
-                        </label>
-                        <button>Submit</button>
+                    <div className="editCont">
+                        <div id="editDept">
+                            <h3 className="editHeader">Departing flight:</h3>
+                            <input name="dFlightM" onChange={ handleDetailInput } placeholder="mm" className="editDeptIn" id="dfm"/>
+                            <input name="dFlightD" onChange={ handleDetailInput } placeholder="dd" className="editDeptIn" id="dfd"/>
+                            <input name="dFlightY" onChange={ handleDetailInput } placeholder="yyyy" className="editDeptIn" id="dfy"/>
+                            <input name="dFlightH" onChange={ handleDetailInput } placeholder="hh" className="editDeptIn" id="dfh"/>
+                            <input name="dFlightMin" onChange={ handleDetailInput } placeholder="mm" className="editDeptIn" id="dfMin"/>
+                        </div>
+                        <div id="editArr">
+                            <h3 className="editHeader">Arriving flight:</h3>
+                            <input name="aFlightM" onChange={ handleDetailInput } placeholder="mm" className="editDeptIn" id="dfm"/>
+                            <input name="aFlightD" onChange={ handleDetailInput } placeholder="dd" className="editDeptIn" id="dfd"/>
+                            <input name="aFlightY" onChange={ handleDetailInput } placeholder="yyyy" className="editDeptIn" id="dfy"/>
+                            <input name="aFlightH" onChange={ handleDetailInput } placeholder="hh" className="editDeptIn" id="dfh"/>
+                            <input name="aFlightMin" onChange={ handleDetailInput } placeholder="mm" className="editDeptIn" id="dfMin"/>
+                        </div>
+                        <Button id="editSubmit">Submit</Button>
                     </div>
                 : <div></div> 
                 }
 
                 {isHotel ?
-                    <div>
-                        <label>
-                            Hotel check-in:
-                            <input name="iHotelH" onChange={ handleDetailInput } placeholder="hh"/>
-                            <input name="iHotelM" onChange={ handleDetailInput } placeholder="mm"/>
-                        </label>
-                        <label>
-                            Hotel check-out:
-                            <input name="oHotelH" onChange={ handleDetailInput } placeholder="hh"/>
-                            <input name="oHotelM" onChange={ handleDetailInput } placeholder="mm"/>
-                        </label>
-                        <button>Submit</button>
+                    <div className="editCont">
+                        <div id="editIn">
+                            <h3 className="editHeader">Hotel check-in:</h3>
+                            <input name="iHotelH" onChange={ handleDetailInput } placeholder="hh" className="editHotel" id="hh"/>
+                            <input name="iHotelM" onChange={ handleDetailInput } placeholder="mm" className="editHotel" id="hm"/>
+                        </div>
+                        <div id="editOut">
+                            <h3 className="editHeader">Hotel check-out:</h3>
+                            <input name="oHotelH" onChange={ handleDetailInput } placeholder="hh" className="editHotel" id="hh"/>
+                            <input name="oHotelM" onChange={ handleDetailInput } placeholder="mm" className="editHotel" id="hm"/>
+                        </div>
+                        <Button id="hotelSubmit">Submit</Button>
                     </div>
                 : <div></div>
                 }
             </form>
 
             {isActivity ?
-                <div>
-                    <label>
-                        Add activity:
-                        <input name="activityName" onChange={ handleActivityInput } placeholder="Enter name..."/>
-                        <input name="aMonth" onChange={ handleActivityInput } placeholder="mm"/>
-                        <input name="aDay" onChange={ handleActivityInput } placeholder="dd"/>
-                        <input name="aYear" onChange={ handleActivityInput } placeholder="yyyy"/>
-                        <input name="aHour" onChange={ handleActivityInput } placeholder="hh"/>
-                        <input name="aMinute" onChange={ handleActivityInput } placeholder="mm"/>
-                        <button onClick={ submitActivity }>Submit</button>
-                    </label>
-                    <h4>Edit activities:</h4>
-                    <ul>
-                        { dispActivities }
-                    </ul>
+                <div className="editCont">
+                    <div id="addAct">
+                        <h3 className="editHeader">Add activity:</h3>
+                        <input name="activityName" onChange={ handleActivityInput } placeholder="Enter name..." className="actIn" id="actName"/>
+                        <input name="aMonth" onChange={ handleActivityInput } placeholder="mm" className="actIn" id="actMonth"/>
+                        <input name="aDay" onChange={ handleActivityInput } placeholder="dd" className="actIn" id="actDay"/>
+                        <input name="aYear" onChange={ handleActivityInput } placeholder="yyyy" className="actIn" id="actYear"/>
+                        <input name="aHour" onChange={ handleActivityInput } placeholder="hh" className="actIn" id="actHour"/>
+                        <input name="aMinute" onChange={ handleActivityInput } placeholder="mm" className="actIn" id="actMin"/>
+                        <Button onClick={ submitActivity } id="actSubmit">Submit</Button>
+                    </div>
+                    <div id="showAct">
+                        <h3 className="editHeader">Edit activities:</h3>
+                        <ul id="editActList">
+                            { dispActivities }
+                        </ul>
+                    </div>
                 </div>
             :
                 <div></div>}
