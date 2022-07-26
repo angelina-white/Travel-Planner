@@ -901,3 +901,14 @@
   background-color: #2E3B59;
   border: 1px solid #2E3B59;
 }
+
+/* budget */
+#budgetTitle {
+  margin-left: 585px;
+  margin-top: -45px;
+  color: #64718C;
+}
+
+#budgetTable {
+  width: 450px;
+}

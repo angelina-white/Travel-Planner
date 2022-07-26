@@ -11,9 +11,12 @@ function App()
   const [currentUser, setCurrentUser] = useState("");
   const [vacationList, setVacationList] = useState([]);
   const [activitiesList, setActivitiesList] = useState([]);
+  const [budgetList, setBudgetList] = useState([])
   const [userList, setUserList] = useState([]);
 
-function renderLists(data)
+  if(!currentUser) return <Landing setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
+
+  function renderLists(data)
   {
     fetch('/auth')
     .then(res => 
@@ -35,8 +38,6 @@ function renderLists(data)
       }
     })
   }
-
-  if(!currentUser) return <Landing setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
 
   //logs user out
   function handleLogout() {
@@ -106,6 +107,13 @@ function renderLists(data)
     setActivitiesList(filteredList)
   }
 
+  function getBudgets(data)
+  {
+    fetch(`/users/${currentUser.id}/vacations/${data}/budgets`)
+    .then(resp => resp.json())
+    .then(data => setBudgetList(data))
+  }
+
   return (
     <div className="App" id="grad">
       <Router>
@@ -131,7 +139,7 @@ function renderLists(data)
           </div>
           <Switch>
             <Route path="/">
-              <Home userId={ currentUser.id } username={ currentUser.username } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity } userList={ userList } />
+              <Home userId={ currentUser.id } username={ currentUser.username } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity } userList={ userList } getBudgets={ getBudgets } budgetList={ budgetList }/>
             </Route>
           </Switch>
         </div>

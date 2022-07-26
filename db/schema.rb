@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_22_021224) do
+ActiveRecord::Schema.define(version: 2022_07_26_145048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2022_07_22_021224) do
     t.integer "aYear"
     t.integer "aHour"
     t.integer "aMinute"
+  end
+
+  create_table "budgets", force: :cascade do |t|
+    t.integer "hotel"
+    t.integer "flight"
+    t.integer "activities"
+    t.integer "food"
+    t.integer "shopping"
+    t.integer "misc"
+    t.bigint "vacation_id", null: false
+    t.index ["vacation_id"], name: "index_budgets_on_vacation_id"
   end
 
   create_table "user_vacations", force: :cascade do |t|
@@ -62,6 +73,7 @@ ActiveRecord::Schema.define(version: 2022_07_22_021224) do
     t.integer "oHotelM"
   end
 
+  add_foreign_key "budgets", "vacations"
   add_foreign_key "user_vacations", "users"
   add_foreign_key "user_vacations", "vacations"
   add_foreign_key "vacation_activities", "activities"

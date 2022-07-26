@@ -6,6 +6,7 @@ import Agenda from "./Agenda"
 import Chat from "./Chat"
 import Timeline from "./Timeline"
 import Summary from "./Summary"
+import Budget from "./Budget"
 import { useSelector, useDispatch } from "react-redux";
 import { vacation } from "../actions"; //action
 import { goToSettings } from "../actions";
@@ -20,7 +21,7 @@ import settingsPic from "../settingsPic.jpg"
 import settingsPic3 from "../settingsPic3.jpg"
 
 
-function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList})
+function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList, getBudgets, budgetList})
 {
     const isDetail = useSelector(state => state.isDetails); //state
     const isSettings = useSelector(state => state.isSettings); //state
@@ -70,6 +71,30 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
         .then(data => 
         {
             handleAddVaca(data)
+            const budgetData =
+            {
+                hotel: "",
+                flight: "",
+                activities: "",
+                food: "",
+                shopping: "",
+                misc: "",
+                vacation_id: data.id
+            }
+    
+            fetch("/budgets", 
+            {
+                method: 'POST',
+                headers: 
+                {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(budgetData)
+            })
+            .then(resp => resp.json())
+            .then(data => console.log(data))
+
+
             const userVaca = 
             {
                 user_id: userId,
@@ -108,6 +133,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
         setSelectedVaca(findVaca)
         setSelectedName(findVaca.vacationName)
         getActivities(e)
+        getBudgets(e)
         setIsDetails(true)
     }
 
@@ -220,7 +246,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                             {isBudget ?
                                                 <div>
                                                     <p onClick= { showBudget } id="summaryBack">Go back</p>
-                                                    <h1>budget goes here</h1>
+                                                    <Budget selectedVaca={ selectedVaca } budgetList={ budgetList }/>
                                                 </div>
                                             :
                                                 <div>

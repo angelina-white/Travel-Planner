@@ -48,6 +48,14 @@ class UsersController < ApplicationController
         render json: activities
     end
 
+    def budgets_index
+        user = User.find(params[:user_id])
+        vacations = user.vacations
+        vacation = vacations.find(params[:vacation_id])
+        budget = vacation.budget
+        render json: budget
+    end
+
     private
 
     def user_params
