@@ -1,8 +1,9 @@
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Slider from '@mui/material/Slider';
 import Chart from "react-apexcharts";
+import Dropdown from 'react-bootstrap/Dropdown';
 
 function Budget({ selectedVaca, budgetList })
 {
@@ -79,12 +80,12 @@ function Budget({ selectedVaca, budgetList })
 
         setFirstChart(
         {
-            hotel: (budgetList.hotel * perc1),
-            flight: (budgetList.flight * perc1),
-            activities: (budgetList.activities * perc1),
-            food: (budgetList.food * perc1),
-            shopping: (budgetList.shopping * perc1),
-            misc: (budgetList.misc * perc1)
+            hotel: Math.round((budgetList.hotel * perc1)),
+            flight: Math.round((budgetList.flight * perc1)),
+            activities: Math.round((budgetList.activities * perc1)),
+            food: Math.round((budgetList.food * perc1)),
+            shopping: Math.round((budgetList.shopping * perc1)),
+            misc: Math.round((budgetList.misc * perc1))
         })
 
         setSecondChart(
@@ -99,6 +100,42 @@ function Budget({ selectedVaca, budgetList })
 
     }
 
+        //1 person
+        const options1= 
+        {
+            chart: {
+                type: 'bar',
+                height: 350
+            },
+            plotOptions: 
+            {
+                bar: 
+                {
+                    borderRadius: 4,
+                    horizontal: true,
+                }
+            },
+            dataLabels: 
+            {
+                enabled: false
+            },
+            xaxis: 
+            {
+                categories: ['Hotel', 'Flight', 'Activities', 'Food', 'Shopping', 'Misc'],
+            },
+            yaxis:
+            {
+                max: highest
+            }
+        }
+    
+        //1 person
+        const series1= 
+        [{
+            data: [budgetList.hotel, budgetList.flight, budgetList.activities, budgetList.food, budgetList.shopping, budgetList.misc]
+        }]
+
+    //2 people, first
     const options= 
     {
         chart: {
@@ -127,13 +164,13 @@ function Budget({ selectedVaca, budgetList })
         }
     }
 
+    //2 people, first
     const series= 
     [{
         data: [firstChart.hotel, firstChart.flight, firstChart.activities, firstChart.food, firstChart.shopping, firstChart.misc]
     }]
 
-
-
+    //2 people, second
     const options2= 
     {
         chart: {
@@ -162,10 +199,29 @@ function Budget({ selectedVaca, budgetList })
         }
     }
 
+    //2 people, second
     const series2= 
     [{
         data: [secondChart.hotel, secondChart.flight, secondChart.activities, secondChart.food, secondChart.shopping, secondChart.misc]
     }]
+
+    const [dropName, setDropName] = useState("1 person")
+    const [is1, setIs1] = useState(true)
+    const [is2, setIs2] = useState(false)
+
+    function handle1()
+    {
+        setIs1(true)
+        setIs2(false)
+        setDropName(("1 person"))
+    }
+
+    function handle2()
+    {
+        setIs2(true)
+        setIs1(false)
+        setDropName(("2 people"))
+    }
 
     return (
         <div>
@@ -222,30 +278,62 @@ function Budget({ selectedVaca, budgetList })
             </Table>
             <Button onClick={ handleSubmit }>Submit</Button>
 
-            <div id="sliderCont">
-                <h5 id="half1">{ sliderHalf1 }%</h5>
-                <Slider value={ sliderHalf1 } aria-label="Default" id="budgetSlider" onChange={ handleSlideChange }/>
-                <h5 id="half2">{ sliderHalf2 }%</h5>
-            </div>
-            
-            <div id="barCharts">
-                <div id="barChartLeft">
+            <Dropdown>
+                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    { dropName }
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu>
+                    <Dropdown.Item onClick={ handle1 }>1 person</Dropdown.Item>
+                    <Dropdown.Item onClick={ handle2 }>2 people</Dropdown.Item>
+                </Dropdown.Menu>
+            </Dropdown>
+
+            {is1?
+                <div>
                     <Chart
-                        options={ options }
-                        series={ series }
+                        options={ options1 }
+                        series={ series1 }
                         type="bar"
                         width={ 500 }
                     />
                 </div>
-                <div id="barCharRight">
-                    <Chart
-                        options={ options2 }
-                        series={ series2 }
-                        type="bar"
-                        width={ 500 }
-                    />
+            :
+                <div>
                 </div>
-            </div>
+            }
+
+            {is2?
+                <div>
+                    <div id="sliderCont">
+                        <h5 id="half1">{ sliderHalf1 }%</h5>
+                        <Slider value={ sliderHalf1 } aria-label="Default" id="budgetSlider" onChange={ handleSlideChange }/>
+                        <h5 id="half2">{ sliderHalf2 }%</h5>
+                    </div>
+                    
+                    <div id="barCharts">
+                        <div id="barChartLeft">
+                            <Chart
+                                options={ options }
+                                series={ series }
+                                type="bar"
+                                width={ 500 }
+                            />
+                        </div>
+                        <div id="barChartRight">
+                            <Chart
+                                options={ options2 }
+                                series={ series2 }
+                                type="bar"
+                                width={ 500 }
+                            />
+                        </div>
+                    </div>
+                </div>
+            :
+                <div>
+                </div>
+            }
         </div>
     )
 }
