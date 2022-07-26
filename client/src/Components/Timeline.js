@@ -1,12 +1,34 @@
+import { useEffect, useState } from "react"
 import Line from "./Line"
 
 function Timeline({ selectedVaca, activitiesList })
 {
-    const flightToLeave = `${selectedVaca.dFlightM}/${selectedVaca.dFlightD}/${selectedVaca.dFlightY}`
-    const flightToArrive = `${selectedVaca.aFlightM}/${selectedVaca.aFlightD}/${selectedVaca.aFlightY}`
+    const [flightL, setFlightL] = useState("")
+    const [flightA, setFlightA] = useState("")
 
-    //make lines show up according to where they are on the timeline
-    //make lines hover
+    useEffect(() =>
+    {
+        //flightL
+        if (selectedVaca.dFlightM == null || selectedVaca.dFlightD == null || selectedVaca.dFlightY == null)
+        {
+            setFlightL("")
+        }
+        else 
+        {
+            setFlightL(`${selectedVaca.dFlightM}/${selectedVaca.dFlightD}/${selectedVaca.dFlightY}`)
+        }
+
+        //flightA
+        if (selectedVaca.aFlightM == null || selectedVaca.aFlightD == null || selectedVaca.aFlightY == null)
+        {
+            setFlightA("")
+        }
+        else 
+        {
+            setFlightA(`${selectedVaca.aFlightM}/${selectedVaca.aFlightD}/${selectedVaca.aFlightY}`)
+        }
+    }, [])
+
     const lines = activitiesList.map((item) =>
     {
         return (
@@ -18,10 +40,9 @@ function Timeline({ selectedVaca, activitiesList })
         <div id="timelineCont">
             <div id="horizontalLine"></div>
             <div className="circle" id="start"></div>
-            <div className="date" id="startDate"> { flightToLeave }</div>
-            {/* <div className="line" id="first"></div> */}
+            <div className="date" id="startDate"> { flightL }</div>
             { lines }
-            <div className="date" id="endDate"> { flightToArrive }</div>
+            <div className="date" id="endDate"> { flightA }</div>
             <div className="circle" id="end"></div>
         </div>
     )
