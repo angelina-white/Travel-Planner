@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :budgets
   resources :user_vacations
   resources :vacation_activities
   resources :vacations
@@ -25,4 +26,5 @@ Rails.application.routes.draw do
 
   get "/users/:user_id/vacations", to: "users#vacations_index"
   get "/users/:user_id/vacations/:vacation_id/activities", to: "users#activities_index"
+  get "/users/:user_id/vacations/:vacation_id/budgets", to: "users#budgets_index"
 end
