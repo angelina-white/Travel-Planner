@@ -7,28 +7,26 @@ import Chart from "react-apexcharts";
 function Budget({ selectedVaca, budgetList })
 {
 
-    const highest = (Math.max(budgetList.hotel, budgetList.flight, budgetList.activities, budgetList.food, budgetList.shopping, budgetList.misc))
-
+    const [highest, setHighest] = useState(Math.max(budgetList.hotel, budgetList.flight, budgetList.activities, budgetList.food, budgetList.shopping, budgetList.misc))
     const [hotelInput, setHotelInput] = useState(budgetList.hotel)
     const [flightInput, setFlightInput] = useState(budgetList.flight)
     const [activitiesInput, setActivitiesInput] = useState(budgetList.activities)
     const [foodInput, setFoodInput] = useState(budgetList.food)
     const [shoppingInput, setShoppingInput] = useState(budgetList.shopping)
     const [miscInput, setMiscInput] = useState(budgetList.misc)
-
-    const total = budgetList.hotel + budgetList.flight + budgetList.activities + budgetList.food + budgetList.shopping + budgetList.misc
+    const [total, setTotal] = useState(budgetList.hotel + budgetList.flight + budgetList.activities + budgetList.food + budgetList.shopping + budgetList.misc)
 
     function handleSubmit(e)
     {
         e.preventDefault()
-        const data =
+        const sendData =
         {
-            hotel: hotelInput,
-            flight: flightInput,
-            activities: activitiesInput,
-            food: foodInput,
-            shopping: shoppingInput,
-            misc: miscInput,
+            hotel: parseInt(hotelInput),
+            flight: parseInt(flightInput),
+            activities: parseInt(activitiesInput),
+            food: parseInt(foodInput),
+            shopping: parseInt(shoppingInput),
+            misc: parseInt(miscInput),
             vacation_id: selectedVaca.id
         }
 
@@ -39,10 +37,15 @@ function Budget({ selectedVaca, budgetList })
             {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(sendData)
         })
         .then(resp => resp.json())
-        .then(data => console.log(data))
+        .then(data => 
+        {
+            setTotal(parseInt(sendData.hotel) + parseInt(sendData.flight) + parseInt(sendData.activities) + parseInt(sendData.food) + parseInt(sendData.shopping) + parseInt(sendData.misc))
+            setHighest(Math.max(parseInt(sendData.hotel), parseInt(sendData.flight), parseInt(sendData.activities), parseInt(sendData.food), parseInt(sendData.shopping), parseInt(sendData.misc)))
+            console.log(data)
+        })
     }
 
     const [sliderHalf1, setSliderHalf1] = useState(50)
