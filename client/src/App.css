@@ -904,18 +904,43 @@
 
 /* budget */
 #budgetTitle {
-  margin-left: 585px;
+  margin-left: 670px;
   margin-top: -45px;
   color: #64718C;
 }
 
+#budgetTableCont {
+  margin-left: 525px;
+}
+
+#chartCont {
+  margin-top: 25px;
+  margin-left: 100px;
+}
+
+#budgetDropdown {
+  margin-left: 565px;
+  margin-top: 50px;
+}
+
 #budgetTable {
-  width: 450px;
+  width: 275px;
+  margin-left: 50px;
+  margin-top: 25px;
+  font-size: 20px;
+}
+
+.budgetInput {
+  width: 100px;
+}
+
+#submitBudget {
+  margin-left: 150px;
 }
 
 #sliderCont {
   margin-top: 50px;
-  margin-left: 25px;
+  margin-left: 400px;
 }
 
 #half1 {
@@ -941,8 +966,14 @@
 #barChartLeft {
   float: left;
   margin-right: 50px;
+  margin-left: 75px;
 }
 
-#barCharRight {
+#barChartRight {
   float: left;
+}
+
+#singleChart {
+  margin-left: 350px;
+  margin-top: 0px;
 }

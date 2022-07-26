@@ -226,114 +226,119 @@ function Budget({ selectedVaca, budgetList })
     return (
         <div>
             <h2 id="budgetTitle">Budget</h2>
-            <Table striped bordered hover id="budgetTable">
-                <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th>Amount</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Hotel</td>
-                        <td>$
-                            <input placeholder="Enter..." value={ hotelInput } onChange={ (e) => setHotelInput(e.target.value) }/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Flight</td>
-                        <td>$
-                            <input placeholder="Enter..." value={ flightInput } onChange={ (e) => setFlightInput(e.target.value) }/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Activities</td>
-                        <td>$
-                            <input placeholder="Enter..." value={ activitiesInput } onChange={ (e) => setActivitiesInput(e.target.value) }/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Food</td>
-                        <td>$
-                            <input placeholder="Enter..." value={ foodInput } onChange={ (e) => setFoodInput(e.target.value) }/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Shopping</td>
-                        <td>$
-                            <input placeholder="Enter..." value={ shoppingInput } onChange={ (e) => setShoppingInput(e.target.value) }/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Misc</td>
-                        <td>$
-                            <input placeholder="Enter..." value={ miscInput } onChange={ (e) => setMiscInput(e.target.value) }/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Total</td>
-                        <td>${ total }</td>
-                    </tr>
-                </tbody>
-            </Table>
-            <Button onClick={ handleSubmit }>Submit</Button>
 
-            <Dropdown>
-                <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    { dropName }
-                </Dropdown.Toggle>
+            <div id="budgetTableCont">
+                <Table striped bordered hover id="budgetTable">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Hotel</td>
+                            <td>$
+                                <input className="budgetInput" placeholder="Enter..." value={ hotelInput } onChange={ (e) => setHotelInput(e.target.value) }/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Flight</td>
+                            <td>$
+                                <input className="budgetInput" placeholder="Enter..." value={ flightInput } onChange={ (e) => setFlightInput(e.target.value) }/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Activities</td>
+                            <td>$
+                                <input className="budgetInput" placeholder="Enter..." value={ activitiesInput } onChange={ (e) => setActivitiesInput(e.target.value) }/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Food</td>
+                            <td>$
+                                <input className="budgetInput" placeholder="Enter..." value={ foodInput } onChange={ (e) => setFoodInput(e.target.value) }/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Shopping</td>
+                            <td>$
+                                <input className="budgetInput" placeholder="Enter..." value={ shoppingInput } onChange={ (e) => setShoppingInput(e.target.value) }/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Misc</td>
+                            <td>$
+                                <input className="budgetInput" placeholder="Enter..." value={ miscInput } onChange={ (e) => setMiscInput(e.target.value) }/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>${ total }</td>
+                        </tr>
+                    </tbody>
+                </Table>
+                <Button onClick={ handleSubmit } id="submitBudget">Submit</Button>
+            </div>
 
-                <Dropdown.Menu>
-                    <Dropdown.Item onClick={ handle1 }>1 person</Dropdown.Item>
-                    <Dropdown.Item onClick={ handle2 }>2 people</Dropdown.Item>
-                </Dropdown.Menu>
-            </Dropdown>
+            <div id="chartCont">
+                <Dropdown id="budgetDropdown">
+                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                        { dropName }
+                    </Dropdown.Toggle>
 
-            {is1?
-                <div>
-                    <Chart
-                        options={ options1 }
-                        series={ series1 }
-                        type="bar"
-                        width={ 500 }
-                    />
-                </div>
-            :
-                <div>
-                </div>
-            }
+                    <Dropdown.Menu>
+                        <Dropdown.Item onClick={ handle1 }>1 person</Dropdown.Item>
+                        <Dropdown.Item onClick={ handle2 }>2 people</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
 
-            {is2?
-                <div>
-                    <div id="sliderCont">
-                        <h5 id="half1">{ sliderHalf1 }%</h5>
-                        <Slider value={ sliderHalf1 } aria-label="Default" id="budgetSlider" onChange={ handleSlideChange }/>
-                        <h5 id="half2">{ sliderHalf2 }%</h5>
+                {is1?
+                    <div id="singleChart">
+                        <Chart
+                            options={ options1 }
+                            series={ series1 }
+                            type="bar"
+                            width={ 500 }
+                        />
                     </div>
-                    
-                    <div id="barCharts">
-                        <div id="barChartLeft">
-                            <Chart
-                                options={ options }
-                                series={ series }
-                                type="bar"
-                                width={ 500 }
-                            />
+                :
+                    <div>
+                    </div>
+                }
+
+                {is2?
+                    <div>
+                        <div id="sliderCont">
+                            <h5 id="half1">{ sliderHalf1 }%</h5>
+                            <Slider value={ sliderHalf1 } aria-label="Default" id="budgetSlider" onChange={ handleSlideChange }/>
+                            <h5 id="half2">{ sliderHalf2 }%</h5>
                         </div>
-                        <div id="barChartRight">
-                            <Chart
-                                options={ options2 }
-                                series={ series2 }
-                                type="bar"
-                                width={ 500 }
-                            />
+                        
+                        <div id="barCharts">
+                            <div id="barChartLeft">
+                                <Chart
+                                    options={ options }
+                                    series={ series }
+                                    type="bar"
+                                    width={ 500 }
+                                />
+                            </div>
+                            <div id="barChartRight">
+                                <Chart
+                                    options={ options2 }
+                                    series={ series2 }
+                                    type="bar"
+                                    width={ 500 }
+                                />
+                            </div>
                         </div>
                     </div>
-                </div>
-            :
-                <div>
-                </div>
-            }
+                :
+                    <div>
+                    </div>
+                }
+            </div>
         </div>
     )
 }
