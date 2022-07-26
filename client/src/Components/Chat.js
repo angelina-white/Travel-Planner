@@ -89,16 +89,18 @@ function Chat({ username, showChat })
                     { users }
                 </ul>
             </div>
-            <div id="chatDispCont">
-                <ul id="chatUl">
-                    { sideList }
-                </ul>
-                <div id="test" />
+            <div id="bigChat">
+                <div id="chatDispCont">
+                    <ul id="chatUl">
+                        { sideList }
+                    </ul>
+                </div>
+                <div id="chatLine" />
+                <form id="chatInputCont" onSubmit={ sendMessage }>
+                    <input id="chatInput" onChange={ (e) => setMessage(e.target.value) } value={ message } placeholder="Enter message..." />
+                    <Button id="chatSend" >Send</Button>
+                </form>
             </div>
-            <form id="chatInputCont" onSubmit={ sendMessage }>
-                <input id="chatInput" onChange={ (e) => setMessage(e.target.value) } value={ message } placeholder="Enter message..." />
-                <Button id="chatSend" >Send</Button>
-            </form>
         </div>
     )
 }

@@ -56,7 +56,7 @@ function Summary({ selectedVaca, activitiesList })
         //checkin
         if (selectedVaca.iHotelH == null || selectedVaca.iHotelM == null)
         {
-            setCheckIn("Add hotel check in")
+            setCheckIn("")
         }
         else if (selectedVaca.iHotelM == 0)
         {
@@ -71,7 +71,7 @@ function Summary({ selectedVaca, activitiesList })
         //checkout
         if (selectedVaca.oHotelH == null || selectedVaca.oHotelM == null)
         {
-            setCheckOut("Add hotel check out")
+            setCheckOut("")
         }
         else if (selectedVaca.oHotelM == 0)
         {
@@ -111,7 +111,6 @@ function Summary({ selectedVaca, activitiesList })
                     <div id="bugetsSum">
                         <div>
                             <h3 className="sumHeader">Budget</h3>
-                            <h4>$x.xx</h4>
                         </div>
                     </div>
                 </div>
