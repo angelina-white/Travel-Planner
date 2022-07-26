@@ -937,3 +937,12 @@
   position: absolute;
   margin-top: 50px;
 }
+
+#barChartLeft {
+  float: left;
+  margin-right: 50px;
+}
+
+#barCharRight {
+  float: left;
+}
