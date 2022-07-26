@@ -1,10 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import { useState, useEffect } from "react";
+import Slider from '@mui/material/Slider';
 
 function Budget({ selectedVaca, budgetList })
 {
-    console.log(budgetList)
 
     const [hotelInput, setHotelInput] = useState(budgetList.hotel)
     const [flightInput, setFlightInput] = useState(budgetList.flight)
@@ -38,6 +38,16 @@ function Budget({ selectedVaca, budgetList })
         })
         .then(resp => resp.json())
         .then(data => console.log(data))
+    }
+
+    const [sliderHalf1, setSliderHalf1] = useState(50)
+    const [sliderHalf2, setSliderHalf2] = useState(50)
+
+    function handleSlideChange(e)
+    {
+        setSliderHalf1(e.target.value)
+        setSliderHalf2(100 - sliderHalf1)
+
     }
 
     return (
@@ -90,7 +100,14 @@ function Budget({ selectedVaca, budgetList })
                 </tbody>
             </Table>
             <Button onClick={ handleSubmit }>Submit</Button>
+
+            <div id="sliderCont">
+                <h5 id="half1">{ sliderHalf1 }%</h5>
+                <Slider value={ sliderHalf1 } aria-label="Default" id="budgetSlider" onChange={ handleSlideChange }/>
+                <h5 id="half2">{ sliderHalf2 }%</h5>
+                </div>
         </div>
     )
 }
 export default Budget
+
