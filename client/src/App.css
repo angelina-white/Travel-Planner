@@ -914,7 +914,7 @@
 }
 
 #sliderCont {
-  margin-top: 25px;
+  margin-top: 50px;
   margin-left: 25px;
 }
 
@@ -931,4 +931,9 @@
 
 #half2 {
   float: left;
+}
+
+#barCharts {
+  position: absolute;
+  margin-top: 50px;
 }
