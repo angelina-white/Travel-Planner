@@ -912,3 +912,23 @@
 #budgetTable {
   width: 450px;
 }
+
+#sliderCont {
+  margin-top: 25px;
+  margin-left: 25px;
+}
+
+#half1 {
+  float: left;
+  margin-right: 15px;
+}
+
+#budgetSlider {
+  width: 300px;
+  float: left;
+  margin-right: 15px;
+}
+
+#half2 {
+  float: left;
+}
