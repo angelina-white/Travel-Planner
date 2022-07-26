@@ -145,7 +145,6 @@ function App()
               <Dropdown.Toggle variant="success" id="usernameCont">{ currentUser.username }</Dropdown.Toggle>
               <Dropdown.Menu>
                 <Dropdown.Item onClick={ handleLogout }>Logout</Dropdown.Item>
-                <Dropdown.Item>Settings</Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>

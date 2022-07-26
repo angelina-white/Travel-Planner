@@ -104,7 +104,7 @@ function Agenda({ selectedVaca, activitiesList })
                     events={list}
                     startAccessor="start"
                     endAccessor="end"
-                    style={{ height: 510, width: 1360 }}
+                    style={{ height: 525, width: 1360 }}
                     eventPropGetter={(eventStyleGetter)}
                 />
         </div>
