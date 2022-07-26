@@ -36,7 +36,7 @@ function Signup({ setCurrentUser, renderLists })
             res.json().then( e => setErrors(Object.entries(e.error).flat()))
           }
         })
-        // .then(() => renderLists(username))
+        .then(() => renderLists(username))
     }
 
     return (

@@ -3,9 +3,6 @@ import Home from "./Components/Home"
 import Landing from "./Components/Landing"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { increment } from "./actions"; //action
-import { addBook } from "./actions"; //action
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function App() 
@@ -16,12 +13,7 @@ function App()
   const [activitiesList, setActivitiesList] = useState([]);
   const [userList, setUserList] = useState([]);
 
-  const counter = useSelector(state => state.counter); //state
-  const books = useSelector(state => state.books); //state
-  const dispatch = useDispatch();
-
-
-  useEffect(() =>
+function renderLists(data)
   {
     fetch('/auth')
     .then(res => 
@@ -42,12 +34,6 @@ function App()
         })
       }
     })
-  }, [])
-
-  function renderLists(data)
-  {
-    console.log("hi")
-    // socket.emit("newUser", data)
   }
 
   if(!currentUser) return <Landing setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
@@ -58,8 +44,10 @@ function App()
       method: "DELETE",
     }).then(() => 
     {
-      // socket.emit("remove")
       setCurrentUser("")
+      setVacationList([])
+      setActivitiesList([])
+      setUserList([])
     });
   }
 
@@ -120,13 +108,6 @@ function App()
 
   return (
     <div className="App" id="grad">
-      {/* <h1>{message}</h1> */}
-      {/* <h1>Counter: { counter }</h1>
-      <button onClick={ () => dispatch(increment()) }>+</button>
-      <button onClick={ () => dispatch(addBook({ title: "Snow Crash", author: "Neal Stephenson" })) 
-      }>Add book</button>
-      <button onClick={ () => dispatch(addBook({ title: "Bobs burgers", author: "Bob" })) 
-      }>Add book</button> */}
       <Router>
         {/* <div id="navbar">
           <h1>Travel Planner</h1>
