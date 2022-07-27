@@ -252,7 +252,6 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                                 <div>
                                                     {isChat ?
                                                         <div>
-                                                            {/* <p onClick= { showChat } id="summaryBack">Go back</p> */}
                                                             <Chat username={ username } showChat={ showChat }/>
                                                         </div>
                                                     :
@@ -270,67 +269,67 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
 
                                                                 <ul id="menuUl">
                                                                     <li>
-                                                                        <div to="/summary" className="menuText" onClick={ showSummary }>
+                                                                        <div to="/summary" onClick={ showSummary }>
                                                                             <div className="menuCont">
-                                                                                <div className="menuImageCont">
+                                                                                <div className="imageCont">
                                                                                     <img src={ summaryPic } className="menuPic"/>
-                                                                                    <h4 className="menuImageText">Summary</h4>
                                                                                 </div>
+                                                                                <h1 className="menuText">Summary</h1>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li >
+                                                                        <div to="/editTrip" onClick={ showEdit }>
+                                                                            <div className="menuCont">
+                                                                                <div className="imageCont">
+                                                                                    <img src={ settingsPic } className="menuPic"/>
+                                                                                </div>
+                                                                                <h1 className="menuText">Edit Trip</h1>
                                                                             </div>
                                                                         </div>
                                                                     </li>
                                                                     <li>
-                                                                        <div to="/editTrip" className="menuText" onClick={ showEdit }>
+                                                                        <div to="/agenda" onClick={ showCalendar }>
                                                                             <div className="menuCont">
-                                                                                <div className="menuImageCont">
-                                                                                    <img src={ settingsPic } className="menuPic" id="settingsPic"/>
-                                                                                    <h4 className="menuImageText">Edit Trip</h4>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                    <li>
-                                                                        <div to="/agenda" className="menuText" onClick={ showCalendar }>
-                                                                            <div className="menuCont">
-                                                                                <div className="menuImageCont">
+                                                                                <div className="imageCont">
                                                                                     <img src={ calendarPic } className="menuPic"/>
-                                                                                    <h4 className="menuImageText">Calendar</h4>
                                                                                 </div>
+                                                                                <h1 className="menuText">Calendar</h1>
                                                                             </div>
                                                                         </div>
                                                                     </li>
                                                                     <li>
-                                                                        <div to="/budget" className="menuText" onClick={ showBudget }>
+                                                                        <div to="/budget" onClick={ showBudget }>
                                                                             <div className="menuCont">
-                                                                                <div className="menuImageCont">
-                                                                                    <img src={ budgetPic } className="menuPic" id="budgetPic" />
-                                                                                    <h4 className="menuImageText">Budget</h4>
+                                                                                <div className="imageCont">
+                                                                                    <img src={ budgetPic } className="menuPic" />
                                                                                 </div>
+                                                                                <h1 className="menuText">Budget</h1>
                                                                             </div>
                                                                         </div>
                                                                     </li>
                                                                     <li>
-                                                                        <div to="/chat" className="menuText" onClick={ showChat }>
+                                                                        <div to="/chat" onClick={ showChat }>
                                                                             <div className="menuCont">
-                                                                                <div className="menuImageCont">
+                                                                                <div className="imageCont">
                                                                                     <img src={ chatPic } className="menuPic"/>
-                                                                                    <h4 className="menuImageText">Chat</h4>
                                                                                 </div>
+                                                                                <h1 className="menuText">Chat</h1>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                    <li>
+                                                                        <div to="/settings" onClick={ showSettings }>
+                                                                            <div className="menuCont">
+                                                                                <div className="imageCont">
+                                                                                    <img src={ settingsPic3 } className="menuPic" />
+                                                                                </div>
+                                                                                <h1 className="menuText">Settings</h1>
                                                                             </div>
                                                                         </div>
                                                                     </li>
                                                                     <li id="menuTimeline">
                                                                         <Timeline selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
-                                                                    </li>
-                                                                    <li>
-                                                                        <div to="/settings" className="menuText" onClick={ showSettings }>
-                                                                            <div className="menuCont">
-                                                                                <div className="menuImageCont">
-                                                                                    <img src={ settingsPic3 } className="menuPic" id="settingsPic2"/>
-                                                                                    <h4 className="menuImageText">Settings</h4>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
                                                                     </li>
                                                                 </ul>
                                                                 </div>
@@ -351,7 +350,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                     }
                 </div>
                 :
-                <div>
+                <div id="tripNamesCont">
                     {/* shows names */}
                     <h2 id="tripText">Trips</h2>
                     <div id="addVacaCont">
