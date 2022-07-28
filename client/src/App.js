@@ -137,6 +137,7 @@ function App()
               </Dropdown.Menu>
             </Dropdown>
           </div>
+          <div id="headerLine" />
           <Switch>
             <Route path="/">
               <Home userId={ currentUser.id } username={ currentUser.username } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity } userList={ userList } getBudgets={ getBudgets } budgetList={ budgetList }/>
