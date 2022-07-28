@@ -215,6 +215,8 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
         setIsSettings2((isSettings2) => isSettings2 = !isSettings2)
     }
 
+    const [budgetTotal, setBudgetTotal] = useState("")
+
     return (
         <div id="home">
             { isDetails ?
@@ -225,7 +227,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                     {isSummary ? 
                         <div>
                             <p onClick= { showSummary } id="summaryBack">Go back</p>
-                            <Summary selectedVaca={ selectedVaca } activitiesList={ activitiesList }/>
+                            <Summary selectedVaca={ selectedVaca } activitiesList={ activitiesList } budgetTotal={ budgetTotal }/>
                         </div>
                     :
                         <div>
@@ -246,7 +248,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                             {isBudget ?
                                                 <div>
                                                     <p onClick= { showBudget } id="summaryBack">Go back</p>
-                                                    <Budget selectedVaca={ selectedVaca } budgetList={ budgetList }/>
+                                                    <Budget selectedVaca={ selectedVaca } budgetList={ budgetList } setBudgetTotal= { setBudgetTotal }/>
                                                 </div>
                                             :
                                                 <div>

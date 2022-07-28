@@ -551,45 +551,46 @@
 #summaryTitle {
   margin-left: 645px;
   margin-top: -45px;
-  color: #64718C;
+  /* color: #64718C; */
 }
 
 #sumCont {
-  margin-left: 400px;
+  margin-left: 375px;
   margin-top: 20px;
 }
 
 #leftSum {
   float: left;
   margin-right: 15px;
-  width: 300px;
+  width: 375px;
 }
 
 #rightSum {
   float: left;
   width: 300px;
   height: 481px;
-  border: 4px solid #B0BDD9;
+  border: 4px solid #E1E9FA;
   border-radius: 8px;
   overflow-y: scroll;
+  margin-bottom: 25px;
 }
 
 .sumHeader {
-  color: #64718C;
+  /* color: #64718C; */
 }
 
 .sumText {
-  color: #363E4D;
+  /* color: #363E4D; */
 }
 
 #activitiesSumTitle {
   margin-top: 15px;
   margin-left: 85px;
-  color: #64718C;
+  /* color: #64718C; */
 }
 
 #flightsSum {
-  border: 4px solid #B0BDD9;
+  border: 4px solid #E1E9FA;
   border-radius: 8px;
   padding-top: 15px;
   padding-left: 15px;
@@ -599,7 +600,7 @@
 }
 
 #hotelsSum {
-  border: 4px solid #B0BDD9;
+  border: 4px solid #E1E9FA;
   border-radius: 8px;
   padding-top: 15px;
   padding-left: 15px;
@@ -609,7 +610,7 @@
 }
 
 #bugetsSum {
-  border: 4px solid #B0BDD9;
+  border: 4px solid #E1E9FA;
   border-radius: 8px;
   padding-top: 15px;
   padding-left: 15px;
@@ -625,12 +626,11 @@
 #editTitle {
   margin-left: 645px;
   margin-top: -45px;
-  color: #64718C;
 }
 
-.editHeader {
+/* .editHeader {
   color: #64718C;
-}
+} */
 
 #editButtons {
   margin-top: 25px;
@@ -739,31 +739,31 @@
 }
 
 #actName {
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
 #actMonth {
-  margin-top: 75px;
+  margin-top: 65px;
 }
 
 #actDay {
-  margin-top: 125px;
+  margin-top: 115px;
 }
 
 #actYear {
-  margin-top: 175px;
+  margin-top: 165px;
 }
 
 #actHour {
-  margin-top: 225px;
+  margin-top: 215px;
 }
 
 #actMin {
-  margin-top: 275px;
+  margin-top: 265px;
 }
 
 #actSubmit {
-  margin-top: 325px;
+  margin-top: 315px;
   background-color: #2E3B59;
   border: 1px solid #2E3B59;
 }
@@ -792,29 +792,42 @@
 }
 
 /* calendar */
+#calendarTitle {
+  margin-left: 600px;
+  margin-bottom: 35px;
+  margin-top: -60px;
+}
+
 #calendar {
   margin-left: 40px;
   margin-top: 25px;
+  margin-bottom: 25px;
 }
 
 /* settings */
 #settingsTitle {
   margin-left: 660px;
   margin-top: -45px;
-  color: #64718C;
 }
 
 #settingsCont{
   margin-top: 25px;
-  margin-left: 550px;
+  margin-left: 575px;
 }
 
 #changeName {
+  margin-bottom: 25px;
+  margin-top: 50px;
+}
+
+#addUserCont {
+  margin-top: 50px;
   margin-bottom: 25px;
 }
 
 #deleteButton {
   margin-top: 30px;
+  margin-left: 75px;
   background-color: #2E3B59;
   border: 1px solid #2E3B59;
 }
@@ -840,15 +853,10 @@
   border: 1px solid #B0BDD9;
 }
 
-.settingsHeader {
-  color: #64718C;
-}
-
 /* chat */
 #chatTitle {
   margin-left: 680px;
   margin-top: -45px;
-  color: #64718C;
 }
 
 #userCont {
@@ -856,7 +864,7 @@
   overflow-y: scroll;
   width: 200px;
   margin-top: 13px;
-  border: 3px solid black;
+  border: 2px solid #B0BDD9;
   margin-left: 160px;
   margin-right: 10px;
   height: 438px;
@@ -867,7 +875,7 @@
 #bigChat {
   height: 440px;
   width: 900px;
-  border: 3px solid black;
+  border: 2px solid #B0BDD9;
   border-radius: 8px;
   margin-left: 385px;
   margin-top: 20px;
@@ -886,7 +894,7 @@
 }
 
 #chatLine {
-  border-top: 1px solid black;
+  border: 1px solid #B0BDD9;
   /* position: absolute; */
   margin-top: 375px;
 }
@@ -915,7 +923,7 @@
 }
 
 #chatInput:focus {
-  outline: solid 2px #B0BDD9;
+  outline: solid 2px #EDEDED;
 }
 
 #chatUl {

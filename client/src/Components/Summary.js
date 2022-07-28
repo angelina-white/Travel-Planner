@@ -1,8 +1,10 @@
 import SummaryActivity from "./SummaryActivity"
 import { useEffect, useState } from "react"
 
-function Summary({ selectedVaca, activitiesList })
+function Summary({ selectedVaca, activitiesList, budgetTotal })
 {
+    console.log(budgetTotal )
+
     const [leave, setLeave] = useState("")
     const [leaveTime, setLeaveTime] = useState("")
     const [arrive, setArrive] = useState("")
@@ -60,11 +62,11 @@ function Summary({ selectedVaca, activitiesList })
         }
         else if (selectedVaca.iHotelM == 0)
         {
-            setCheckIn(`Hotel check in: ${selectedVaca.iHotelH}:00`)
+            setCheckIn(`Check in: ${selectedVaca.iHotelH}:00`)
         }
         else
         {
-            setCheckIn(`Hotel check in: ${selectedVaca.iHotelH}:${selectedVaca.iHotelM}`)
+            setCheckIn(`Check in: ${selectedVaca.iHotelH}:${selectedVaca.iHotelM}`)
         }
 
 
@@ -75,11 +77,11 @@ function Summary({ selectedVaca, activitiesList })
         }
         else if (selectedVaca.oHotelM == 0)
         {
-            setCheckOut(`Hotel check out: ${selectedVaca.oHotelH}:00`)
+            setCheckOut(`Check out: ${selectedVaca.oHotelH}:00`)
         }
         else
         {
-            setCheckOut(`Hotel check out: ${selectedVaca.oHotelH}:${selectedVaca.oHotelM}`)
+            setCheckOut(`Check out: ${selectedVaca.oHotelH}:${selectedVaca.oHotelM}`)
         }
     }, [])
 
@@ -111,6 +113,7 @@ function Summary({ selectedVaca, activitiesList })
                     <div id="bugetsSum">
                         <div>
                             <h3 className="sumHeader">Budget</h3>
+                            <h4>${ budgetTotal }</h4>
                         </div>
                     </div>
                 </div>

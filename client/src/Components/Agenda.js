@@ -23,11 +23,6 @@ function Agenda({ selectedVaca, activitiesList })
     const interviewEvents = 
     [
         {
-            title: "Test",
-            start: new Date(2022, 6, 25, 14, 30),
-            end: new Date(2022, 6, 25, 16, 30),
-        },
-        {
             title: "Departing flight",
             start: new Date(selectedVaca.dFlightY, (selectedVaca.dFlightM - 1), selectedVaca.dFlightD, selectedVaca.dFlightH, selectedVaca.dFlightMin),
             end: new Date(selectedVaca.dFlightY, (selectedVaca.dFlightM - 1), selectedVaca.dFlightD, selectedVaca.dFlightH, selectedVaca.dFlightMin),
@@ -99,12 +94,13 @@ function Agenda({ selectedVaca, activitiesList })
 
     return (
         <div id="calendar">
+            <h2 id="calendarTitle">Calendar</h2>
             <Calendar
                     localizer={localizer}
                     events={list}
                     startAccessor="start"
                     endAccessor="end"
-                    style={{ height: 525, width: 1360 }}
+                    style={{ height: 600, width: 1360 }}
                     eventPropGetter={(eventStyleGetter)}
                 />
         </div>
