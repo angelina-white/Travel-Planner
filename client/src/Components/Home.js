@@ -272,7 +272,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                                                         <div to="/summary" onClick={ showSummary }>
                                                                             <div className="menuCont">
                                                                                 <div className="imageCont">
-                                                                                    <img src={ summaryPic } className="menuPic"/>
+                                                                                    <img src={ summaryPic } className="menuPic" />
                                                                                 </div>
                                                                                 <h1 className="menuText">Summary</h1>
                                                                             </div>
@@ -312,7 +312,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                                                         <div to="/chat" onClick={ showChat }>
                                                                             <div className="menuCont">
                                                                                 <div className="imageCont">
-                                                                                    <img src={ chatPic } className="menuPic"/>
+                                                                                    <img src={ chatPic } className="menuPic" lassName="menuPic"/>
                                                                                 </div>
                                                                                 <h1 className="menuText">Chat</h1>
                                                                             </div>
@@ -352,6 +352,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                 :
                 <div id="tripNamesCont">
                     {/* shows names */}
+                    {/* <div id="headerLine" /> */}
                     <h2 id="tripText">Trips</h2>
                     <div id="addVacaCont">
                         <input onChange={ handleVacationInput } placeholder="Enter vacation name..." id="vacaNameInput"></input>
