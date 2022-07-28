@@ -80,8 +80,14 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, ha
             method: "DELETE",
           })
         .then((res) => res.json())
-        .then((data) => handleDeleteVaca(data));
+        .then((data) => 
+        {
+            handleDeleteVaca(data)
+            setIsDeleted(true)
+        });
     }
+
+    const [isDeleted, setIsDeleted] = useState(false)
 
     return (
         <div>
@@ -99,9 +105,17 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, ha
                 </div>
                 <Button id="deleteButton" onClick={() => setIsDelete((isDelete) => isDelete = !isDelete)}>Delete vacation</Button>
                 {isDelete ?
-                    <div>
+                    <div id="deleteQuestion">
                         <h4 id="deleteQ">Are you sure?</h4>
                         <Button id="deleteAgain" onClick={ deleteVaca }>Delete now</Button>
+                        {isDeleted ?
+                            <div>
+                                <p id="deletedMessage">This trip has been deleted.</p>
+                            </div>
+                        :
+                            <div>
+                            </div>
+                        }
                     </div>
                 : <div></div>} 
             </div>

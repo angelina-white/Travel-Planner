@@ -21,7 +21,7 @@ import settingsPic from "../settingsPic.jpg"
 import settingsPic3 from "../settingsPic3.jpg"
 
 
-function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList, getBudgets, budgetList})
+function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList, getBudgets, budgetList, updateBudget})
 {
     const isDetail = useSelector(state => state.isDetails); //state
     const isSettings = useSelector(state => state.isSettings); //state
@@ -214,9 +214,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
     {
         setIsSettings2((isSettings2) => isSettings2 = !isSettings2)
     }
-
-    const [budgetTotal, setBudgetTotal] = useState("")
-
+    
     return (
         <div id="home">
             { isDetails ?
@@ -227,7 +225,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                     {isSummary ? 
                         <div>
                             <p onClick= { showSummary } id="summaryBack">Go back</p>
-                            <Summary selectedVaca={ selectedVaca } activitiesList={ activitiesList } budgetTotal={ budgetTotal }/>
+                            <Summary selectedVaca={ selectedVaca } activitiesList={ activitiesList } budgetList={ budgetList }/>
                         </div>
                     :
                         <div>
@@ -248,7 +246,7 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                                             {isBudget ?
                                                 <div>
                                                     <p onClick= { showBudget } id="summaryBack">Go back</p>
-                                                    <Budget selectedVaca={ selectedVaca } budgetList={ budgetList } setBudgetTotal= { setBudgetTotal }/>
+                                                    <Budget selectedVaca={ selectedVaca } budgetList={ budgetList } updateBudget={ updateBudget }/>
                                                 </div>
                                             :
                                                 <div>

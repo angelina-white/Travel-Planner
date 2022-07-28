@@ -5,9 +5,8 @@ import Slider from '@mui/material/Slider';
 import Chart from "react-apexcharts";
 import Dropdown from 'react-bootstrap/Dropdown';
 
-function Budget({ selectedVaca, budgetList, setBudgetTotal })
+function Budget({ selectedVaca, budgetList, updateBudget })
 {
-
     const [highest, setHighest] = useState(Math.max(budgetList.hotel, budgetList.flight, budgetList.activities, budgetList.food, budgetList.shopping, budgetList.misc))
     const [hotelInput, setHotelInput] = useState(budgetList.hotel)
     const [flightInput, setFlightInput] = useState(budgetList.flight)
@@ -45,8 +44,7 @@ function Budget({ selectedVaca, budgetList, setBudgetTotal })
         {
             setTotal(parseInt(sendData.hotel) + parseInt(sendData.flight) + parseInt(sendData.activities) + parseInt(sendData.food) + parseInt(sendData.shopping) + parseInt(sendData.misc))
             setHighest(Math.max(parseInt(sendData.hotel), parseInt(sendData.flight), parseInt(sendData.activities), parseInt(sendData.food), parseInt(sendData.shopping), parseInt(sendData.misc)))
-            setBudgetTotal(total)
-            console.log(data)
+            updateBudget(sendData)
         })
     }
 
@@ -70,6 +68,42 @@ function Budget({ selectedVaca, budgetList, setBudgetTotal })
         shopping: (budgetList.shopping * .5),
         misc: (budgetList.misc * .5)
     })
+
+    //1 person
+    const options1= 
+    {
+        chart: {
+            type: 'bar',
+            height: 350
+        },
+        plotOptions: 
+        {
+            bar: 
+            {
+                borderRadius: 4,
+                horizontal: true,
+            }
+        },
+        dataLabels: 
+        {
+            enabled: false
+        },
+        xaxis: 
+        {
+            categories: ['Hotel', 'Flight', 'Activities', 'Food', 'Shopping', 'Misc'],
+        },
+        yaxis:
+        {
+            max: highest
+        }
+    }
+
+    //1 person
+    const series1= 
+    [{
+        data: [budgetList.hotel, budgetList.flight, budgetList.activities, budgetList.food, budgetList.shopping, budgetList.misc]
+    }]
+
 
     function handleSlideChange(e)
     {
@@ -98,43 +132,7 @@ function Budget({ selectedVaca, budgetList, setBudgetTotal })
             shopping: (budgetList.shopping * perc2),
             misc: (budgetList.misc * perc2)
         })
-
     }
-
-        //1 person
-        const options1= 
-        {
-            chart: {
-                type: 'bar',
-                height: 350
-            },
-            plotOptions: 
-            {
-                bar: 
-                {
-                    borderRadius: 4,
-                    horizontal: true,
-                }
-            },
-            dataLabels: 
-            {
-                enabled: false
-            },
-            xaxis: 
-            {
-                categories: ['Hotel', 'Flight', 'Activities', 'Food', 'Shopping', 'Misc'],
-            },
-            yaxis:
-            {
-                max: highest
-            }
-        }
-    
-        //1 person
-        const series1= 
-        [{
-            data: [budgetList.hotel, budgetList.flight, budgetList.activities, budgetList.food, budgetList.shopping, budgetList.misc]
-        }]
 
     //2 people, first
     const options= 

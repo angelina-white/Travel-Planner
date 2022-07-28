@@ -1,4 +1,5 @@
 class VacationsController < ApplicationController
+    skip_before_action :authorized, only: :create
 
     def index
         vacations = Vacation.all

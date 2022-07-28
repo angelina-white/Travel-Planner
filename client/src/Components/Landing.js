@@ -129,7 +129,7 @@ function Landing({ setCurrentUser, renderLists })
                     </Route>
                 </Switch>
             </Router>
-            <p>{ errors }</p>
+            <p id="loginErrors">{ errors[1] }</p>
 
             {/* <a onClick={ forgotPass }>Forgot username?</a>
                   {isForgot?

@@ -1,9 +1,10 @@
 import SummaryActivity from "./SummaryActivity"
 import { useEffect, useState } from "react"
 
-function Summary({ selectedVaca, activitiesList, budgetTotal })
+function Summary({ selectedVaca, activitiesList, budgetList })
 {
-    console.log(budgetTotal )
+    const [dispBudget, setDispBudget] = useState("")
+    
 
     const [leave, setLeave] = useState("")
     const [leaveTime, setLeaveTime] = useState("")
@@ -13,6 +14,16 @@ function Summary({ selectedVaca, activitiesList, budgetTotal })
     const [checkOut, setCheckOut] = useState("")
     useEffect(() =>
     {
+        //budget
+        if (budgetList == null )
+        {
+            setDispBudget("")
+        }
+        else
+        {
+            setDispBudget(`$ ${budgetList.hotel + budgetList.flight + budgetList.activities + budgetList.food + budgetList.shopping + budgetList.misc}`)
+        }
+
         //leave
         if (selectedVaca.dFlightM == null || selectedVaca.dFlightD == null || selectedVaca.dFlightY == null)
         {
@@ -113,7 +124,7 @@ function Summary({ selectedVaca, activitiesList, budgetTotal })
                     <div id="bugetsSum">
                         <div>
                             <h3 className="sumHeader">Budget</h3>
-                            <h4>${ budgetTotal }</h4>
+                            <h4>{ dispBudget }</h4>
                         </div>
                     </div>
                 </div>

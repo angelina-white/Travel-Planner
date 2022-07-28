@@ -4,6 +4,8 @@ import Button from 'react-bootstrap/Button';
 
 function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSelectedVaca, handleActivityPatch, handleDeleteActivity, activitiesList })
 {
+    const [isSub, setIsSub] = useState(false)
+
     const [vacaDetails, setVacaDetails] = useState(
     {
         dFlightM: selectedVaca.dFlightM,
@@ -74,6 +76,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
             handleVacaPatch(data)
             setSelectedVaca(data)
             console.log(data)
+            setIsSub(true)
         })
     }
 
@@ -115,6 +118,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
         .then(resp => resp.json())
         .then(data => 
         {
+            setIsSub(true)
             handleAddActivity(data)
             const vacaAct = 
             {
@@ -151,6 +155,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
         setIsFlights((isFlights) => isFlights = !isFlights)
         setIsHotel(false)
         setIsActivity(false)
+        setIsSub(false)
     }
 
     function showHotel()
@@ -158,6 +163,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
         setIsHotel((isHotel) => isHotel = !isHotel)
         setIsFlights(false)
         setIsActivity(false)
+        setIsSub(false)
     }
 
     function showActivity()
@@ -165,6 +171,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
         setIsActivity((isActivity) => isActivity= !isActivity)
         setIsHotel(false)
         setIsFlights(false)
+        setIsSub(false)
     }
 
     return (
@@ -196,6 +203,13 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
                             <input name="aFlightMin" onChange={ handleDetailInput } placeholder="mm" className="editDeptIn" id="dfMin"/>
                         </div>
                         <Button onClick={ submitVacaDetails } id="editSubmit">Submit</Button>
+                        {isSub ?
+                            <div>
+                                <p id="submitted">Submitted</p>
+                            </div>
+                        :
+                            <div></div>
+                        }
                     </div>
                 : <div></div> 
                 }
@@ -213,6 +227,13 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
                             <input name="oHotelM" onChange={ handleDetailInput } placeholder="mm" className="editHotel" id="hm"/>
                         </div>
                         <Button onClick={ submitVacaDetails } id="hotelSubmit">Submit</Button>
+                        {isSub ?
+                            <div>
+                                <p id="submittedHotel">Submitted</p>
+                            </div>
+                        :
+                            <div></div>
+                        }
                     </div>
                 : <div></div>
                 }
@@ -229,6 +250,13 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
                         <input name="aHour" onChange={ handleActivityInput } placeholder="hh" className="actIn" id="actHour"/>
                         <input name="aMinute" onChange={ handleActivityInput } placeholder="mm" className="actIn" id="actMin"/>
                         <Button onClick={ submitActivity } id="actSubmit">Submit</Button>
+                        {isSub ?
+                            <div>
+                                <p id="submittedAct">Submitted</p>
+                            </div>
+                        :
+                            <div></div>
+                        }
                     </div>
                     <div id="showAct">
                         <h3 className="editHeader">Edit activities:</h3>

@@ -114,6 +114,11 @@ function App()
     .then(data => setBudgetList(data))
   }
 
+  function updateBudget(data)
+  {
+    setBudgetList(data)
+  }
+
   return (
     <div className="App" id="grad">
       <Router>
@@ -140,7 +145,7 @@ function App()
           <div id="headerLine" />
           <Switch>
             <Route path="/">
-              <Home userId={ currentUser.id } username={ currentUser.username } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity } userList={ userList } getBudgets={ getBudgets } budgetList={ budgetList }/>
+              <Home userId={ currentUser.id } username={ currentUser.username } vacationList={ vacationList } handleAddVaca={ handleAddVaca } handleVacaPatch={ handleVacaPatch } handleDeleteVaca={ handleDeleteVaca } getActivities={ getActivities } activitiesList={ activitiesList } handleAddActivity={ handleAddActivity } handleActivityPatch={ handleActivityPatch } handleDeleteActivity={ handleDeleteActivity } userList={ userList } getBudgets={ getBudgets } budgetList={ budgetList } updateBudget={ updateBudget }/>
             </Route>
           </Switch>
         </div>

@@ -6,6 +6,12 @@
 } */
 
 /* login page */
+#loginErrors {
+  position: absolute;
+  margin-top: -160px;
+  margin-left: 335px;
+}
+
 #landingPic2 {
   height: 110vh;
   width: 1640px;
@@ -575,14 +581,6 @@
   margin-bottom: 25px;
 }
 
-.sumHeader {
-  /* color: #64718C; */
-}
-
-.sumText {
-  /* color: #363E4D; */
-}
-
 #activitiesSumTitle {
   margin-top: 15px;
   margin-left: 85px;
@@ -623,6 +621,14 @@
 }
 
 /* edit trip */
+#submitted {
+  margin-left: 663px;
+}
+#submittedHotel {
+  margin-left: 663px;
+  margin-top: 200px;
+}
+
 #editTitle {
   margin-left: 645px;
   margin-top: -45px;
@@ -716,7 +722,7 @@
 #hotelSubmit {
   position: absolute;
   margin-top: 150px;
-  margin-left: -105px;
+  margin-left: -100px;
   background-color: #2E3B59;
   border: 1px solid #2E3B59;
 }
@@ -840,6 +846,15 @@
   margin-top: 5px;
   background-color: #2E3B59;
   border: 1px solid #2E3B59;
+  margin-left: 15px;
+}
+
+#deleteQuestion {
+  margin-left: 75px;
+}
+
+#deletedMessage {
+  margin-left: -30px;
 }
 
 #changeNameInput {
