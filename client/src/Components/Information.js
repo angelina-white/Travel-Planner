@@ -57,6 +57,8 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
             oHotelM: vacaDetails.oHotelM
         }
 
+        console.log(detailData)
+
         fetch(`/vacations/${selectedVaca.id}`,
         {
             method: "PATCH",
@@ -71,6 +73,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
         {
             handleVacaPatch(data)
             setSelectedVaca(data)
+            console.log(data)
         })
     }
 
@@ -173,7 +176,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
                 <Button onClick={ showActivity } className="editBut" id="editButtonStyle">Activity</Button>
             </div>
 
-            <form onSubmit={ submitVacaDetails}>
+            <form>
                 {isFlights?
                     <div className="editCont">
                         <div id="editDept">
@@ -192,7 +195,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
                             <input name="aFlightH" onChange={ handleDetailInput } placeholder="hh" className="editDeptIn" id="dfh"/>
                             <input name="aFlightMin" onChange={ handleDetailInput } placeholder="mm" className="editDeptIn" id="dfMin"/>
                         </div>
-                        <Button id="editSubmit">Submit</Button>
+                        <Button onClick={ submitVacaDetails } id="editSubmit">Submit</Button>
                     </div>
                 : <div></div> 
                 }
@@ -209,7 +212,7 @@ function Information({ selectedVaca, handleVacaPatch, handleAddActivity, setSele
                             <input name="oHotelH" onChange={ handleDetailInput } placeholder="hh" className="editHotel" id="hh"/>
                             <input name="oHotelM" onChange={ handleDetailInput } placeholder="mm" className="editHotel" id="hm"/>
                         </div>
-                        <Button id="hotelSubmit">Submit</Button>
+                        <Button onClick={ submitVacaDetails } id="hotelSubmit">Submit</Button>
                     </div>
                 : <div></div>
                 }

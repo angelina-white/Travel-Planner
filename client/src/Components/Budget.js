@@ -5,7 +5,7 @@ import Slider from '@mui/material/Slider';
 import Chart from "react-apexcharts";
 import Dropdown from 'react-bootstrap/Dropdown';
 
-function Budget({ selectedVaca, budgetList })
+function Budget({ selectedVaca, budgetList, setBudgetTotal })
 {
 
     const [highest, setHighest] = useState(Math.max(budgetList.hotel, budgetList.flight, budgetList.activities, budgetList.food, budgetList.shopping, budgetList.misc))
@@ -45,6 +45,7 @@ function Budget({ selectedVaca, budgetList })
         {
             setTotal(parseInt(sendData.hotel) + parseInt(sendData.flight) + parseInt(sendData.activities) + parseInt(sendData.food) + parseInt(sendData.shopping) + parseInt(sendData.misc))
             setHighest(Math.max(parseInt(sendData.hotel), parseInt(sendData.flight), parseInt(sendData.activities), parseInt(sendData.food), parseInt(sendData.shopping), parseInt(sendData.misc)))
+            setBudgetTotal(total)
             console.log(data)
         })
     }

@@ -92,7 +92,7 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, ha
                     <input onChange={ (e) => setVacaName(e.target.value) } placeholder="Enter new name..."  id="changeNameInput"/>
                     <Button onClick={ submitName } id="submitSettings">Submit</Button>
                 </div>
-                <div>
+                <div id="addUserCont">
                     <h3 className="settingsHeader">Add user to trip: </h3>
                     <input onChange={ addUserInput }placeholder="Enter username..." id="changeNameInput"/>
                     <Button onClick={ submitAddUser } id="submitSettings">Submit</Button>
