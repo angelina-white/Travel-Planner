@@ -8,10 +8,6 @@ import Timeline from "./Timeline"
 import Summary from "./Summary"
 import Budget from "./Budget"
 import { useSelector, useDispatch } from "react-redux";
-import { vacation } from "../actions"; //action
-import { goToSettings } from "../actions";
-import { updateName } from "../actions"; //action
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import chatPic from "../chatPic.jpg"
 import calendarPic from "../calendarPic.jpg"
@@ -23,10 +19,6 @@ import settingsPic3 from "../settingsPic3.jpg"
 
 function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, handleDeleteVaca, getActivities, activitiesList, handleAddActivity, handleActivityPatch, handleDeleteActivity, userList, getBudgets, budgetList, updateBudget})
 {
-    const isDetail = useSelector(state => state.isDetails); //state
-    const isSettings = useSelector(state => state.isSettings); //state
-    const isVacaName = useSelector(state => state.isVacaName); //state
-    const dispatch = useDispatch();
 
     const [vacationInput, setVacationInput] = useState("")
     function handleVacationInput(e)
@@ -351,8 +343,6 @@ function Home({ userId, username, vacationList, handleAddVaca, handleVacaPatch, 
                 </div>
                 :
                 <div id="tripNamesCont">
-                    {/* shows names */}
-                    {/* <div id="headerLine" /> */}
                     <h2 id="tripText">Trips</h2>
                     <div id="addVacaCont">
                         <input onChange={ handleVacationInput } placeholder="Enter vacation name..." id="vacaNameInput"></input>

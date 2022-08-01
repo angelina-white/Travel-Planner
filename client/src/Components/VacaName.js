@@ -14,7 +14,6 @@ function VacaName({ item, clickVacation })
 
     return (
         <li onClick={ handleClick } id="vacaNameCont">
-            {/* <img src={ luggagePic } id="namePic"/> */}
             <h3 id="nameText">{ item.vacationName }</h3>
         </li>
     )

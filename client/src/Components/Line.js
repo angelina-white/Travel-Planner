@@ -44,8 +44,6 @@ function Line({ item, selectedVaca })
         {
             setSections(subDay + 1)
             const part = item.aDay - start.day
-            // console.log(item.aDay)
-            // console.log(start.day)
             setDest(part)
         }
         else if (subYear==0 && subMonth!==0)
@@ -80,34 +78,29 @@ function Line({ item, selectedVaca })
             if (total <= 7)
             {
                 setDest(Math.abs(sections))
-                // console.log("hit < 7")
             }
             else if (total > 7 && total <= 14)
             {
                 const part = Math.abs(sections - 1)
                 setDest(part)
-                // console.log("hit 7-14")
             }
             else if (total > 14 && total <= 21)
             {
                 const part = Math.abs(sections - 2)
                 setDest(part)
-                // console.log("hit 14-21")
             }
             else if (total > 21 && total <= 28)
             {
                 const part = Math.abs(sections - 3)
                 setDest(part)
-                // console.log("hit 21-28")
             }
             else if (total > 28 && total <= 35)
             {
                 const part = Math.abs(sections - 4)
                 setDest(part)
-                // console.log("hit 28-35")
             }
             else{
-                // console.log("rock bottom")
+                console.log("past")
             }
         }
         else
@@ -116,18 +109,14 @@ function Line({ item, selectedVaca })
         }
     }, [])
 
-    // console.log(`dest ${dest}`)
-
 
     //width of line 700
     //divide width of line with sections
-    // console.log(`sections ${sections}`)
     const sectionLength = Math.round(700/sections)
     // console.log(`sectionlength ${sectionLength}`)
 
     //find which section to multiple with
     const section = (sectionLength * dest) + 100
-    // console.log(`section ${section}`)
 
     //figure out what marginLeft should be using start and end dates
     return (

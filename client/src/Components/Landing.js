@@ -38,66 +38,7 @@ function Landing({ setCurrentUser, renderLists })
             })
             .then(() => renderLists());
         }
-        
-        const [isForgot, setIsForgot] = useState(false)
-        function forgotPass(e)
-        {
-          setIsForgot((isForgot) => isForgot = !isForgot)
-        }
-    
-        const [resetEmail, setResetEmail] = useState("")
-    
-        function handleResetEmail(e)
-        {
-          setResetEmail(e.target.value)
-        }
-    
-        function sendReset()
-        {
-          const data = 
-          { 
-            email: resetEmail
-          }
-    
-          fetch(`/password/reset`,
-          {
-            method: 'POST',
-            headers: 
-            {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data)
-          })
-          .then(resp => resp.json())
-          // .then((data) =>
-          // {
-          //   const secret = data.password_digest
-          //   const payload =
-          //   {
-          //     id: data.id,
-          //     email: data.email
-          //   }
-          //   const token = jwt.sign(payload, secret, {expiresIn: '10m'})
-          //   const link = `http://localhost:3000/resetpassword/${data.id}/${token}`
-    
-          //   const newData = 
-          //   {
-          //     email: data.email,
-          //     link: link
-          //   }
-    
-          //   fetch(`/reset`,
-          //   {
-          //     method: 'POST',
-          //     headers: 
-          //     {
-          //         'Content-Type': 'application/json',
-          //     },
-          //     body: JSON.stringify(newData)
-          //   })
-          //   .then(resp => resp.json())
-          // })
-        }
+
     return (
         <div id="landingPage">
             <Router>

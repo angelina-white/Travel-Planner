@@ -1,18 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from 'react-bootstrap/Button';
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Toast from 'react-bootstrap/Toast';
 
 function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, handleDeleteVaca})
 {
-    const [showA, setShowA] = useState(true);
-    const [showB, setShowB] = useState(true);
-  
-    const toggleShowA = () => setShowA(!showA);
-    const toggleShowB = () => setShowB(!showB);
-
-
     const [vacaName, setVacaName] = useState("")
 
     function submitName()
@@ -70,8 +60,6 @@ function Settings({ handleNamePatch, setSelectedName, userList, selectedVaca, ha
         .then(resp => resp.json())
     }
 
-    // const [isEditName, setIsEditName] = useState(false)
-    // const [isAddUser, setIsAddUser] = useState(false)
     const [isDelete, setIsDelete] = useState(false)
 
     function deleteVaca()

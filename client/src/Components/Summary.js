@@ -1,4 +1,3 @@
-import SummaryActivity from "./SummaryActivity"
 import { useEffect, useState } from "react"
 
 function Summary({ selectedVaca, activitiesList, budgetList })
@@ -99,7 +98,9 @@ function Summary({ selectedVaca, activitiesList, budgetList })
     const dispActivities = activitiesList.map((item) =>
     {
         return (
-            <SummaryActivity item={ item } />
+            <li>
+                <h4>{ item.activityName }</h4>
+            </li>
         )
     })
 

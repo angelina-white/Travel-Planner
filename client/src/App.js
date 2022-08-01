@@ -2,7 +2,7 @@ import './App.css';
 import Home from "./Components/Home"
 import Landing from "./Components/Landing"
 import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Dropdown from 'react-bootstrap/Dropdown';
 
 function App() 
@@ -122,16 +122,6 @@ function App()
   return (
     <div className="App" id="grad">
       <Router>
-        {/* <div id="navbar">
-          <h1>Travel Planner</h1>
-          <nav>
-            <ul>
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-            </ul>
-          </nav>
-        </div> */}
         <div id="appCont">
           <div>
             <h1 id="travelPlannerTitle">Travel Planner</h1>
