@@ -14,9 +14,7 @@ function App()
   const [budgetList, setBudgetList] = useState([])
   const [userList, setUserList] = useState([]);
 
-  if(!currentUser) return <Landing setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
-
-  function renderLists(data)
+  function renderLists(username)
   {
     fetch('/auth')
     .then(res => 
@@ -38,6 +36,8 @@ function App()
       }
     })
   }
+
+  if(!currentUser) return <Landing setCurrentUser = { setCurrentUser } renderLists={ renderLists }/>
 
   //logs user out
   function handleLogout() {
