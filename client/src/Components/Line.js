@@ -42,7 +42,7 @@ function Line({ item, selectedVaca })
     {
         if (subYear==0 && subMonth==0)
         {
-            setSections(subDay + 1)
+            setSections(subDay)
             const part = item.aDay - start.day
             setDest(part)
         }

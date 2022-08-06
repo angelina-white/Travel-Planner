@@ -83,11 +83,16 @@ function ActivityItem({ item, handleActivityPatch, handleDeleteActivity})
 
     function handleDelete()
     {
+        console.log(item.id)
         fetch(`/activities/${item.id}`, {
             method: "DELETE",
           })
         .then((res) => res.json())
-        .then((data) => handleDeleteActivity(data));
+        .then((data) => 
+        {
+            console.log(data)
+            handleDeleteActivity(data)
+        });
     }
 
     const date = `${item.aMonth}/${item.aDay}/${item.aYear}`
